@@ -1,8 +1,11 @@
 <template>
+  <!--<Nav>-->
+    <!---->
+  <!--</Nav>-->
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
+  <!--<Footer></Footer>-->
 </template>
 
 <script>
