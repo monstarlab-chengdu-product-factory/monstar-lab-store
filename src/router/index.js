@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 import Good from '@/components/good/Good'
 import NotFound from '@/components/common/NotFound'
-const Order = () => import('@/components/order/Order')
-// import Order from '@/components/order/order'
+const Order = () => import(/* webpackChunkName: "group-order" */ '@/components/order/Order')
+// const Order = () => import(/* webpackChunkName: "group-order" */ '@/components/order/Order')
 // import User from '@/components/user/user'
 Vue.use(Router)
 

@@ -1,27 +1,31 @@
 <template>
-  <section>
+  <nav class="app-nav">
     <div class="board-con">board</div>
-    <nav>
-      <router-link to="/">good</router-link>
-      <router-link to="/order">order</router-link>
-      <router-link to="/user">user</router-link>
-    </nav>
-
     <div>
-      <router-link to="/login">登录</router-link>
-      <router-link to="/logup">注册</router-link>
+      <router-link v-for="nav in navs" :key="nav.id" :to="nav.linkUrl">{{nav.name}}</router-link>
     </div>
-
-
-  </section>
+  </nav>
 </template>
 
 <script>
+  import Navs from './nav.mock.js'
   export default {
-    name: 'AppNav'
+    name: 'AppNav',
+    data: function () {
+      return {
+        navs: Navs
+      }
+    }
   }
 </script>
 
-<style>
-
+<style lang="scss">
+  .app-nav{
+    .router-link-active{
+      background-color: #888;
+    }
+    .router-link-exact-active{
+      background: #333;
+    }
+  }
 </style>
