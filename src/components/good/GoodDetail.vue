@@ -1,6 +1,6 @@
 <template>
   <section>
-    detail
+    here is detail id:{{ $route.params.id }}
   </section>
 </template>
 

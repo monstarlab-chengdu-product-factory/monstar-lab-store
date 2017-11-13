@@ -17,6 +17,8 @@
     CarouselItem
   } from 'element-ui'
 
+  import {getCommercials} from './commercial.service.js'
+
   export default {
     name: 'Commercial',
     components: {
@@ -29,11 +31,11 @@
       }
     },
     created: function () {
-      let self = this
-      this.$http.get('/api/commercials').then(function (response) {
-        self.items = response.data
-        console.log(response.data)
-      })
+      getCommercials(this)
+        .then(data => {
+          this.items = data
+        })
+//        .catch(console.error('vue error'))
     }
   }
 </script>
@@ -43,7 +45,7 @@
     .slides {
       background-color: #eee;
     }
-    .link-item{
+    .link-item {
       display: block;
       width: 100%;
       height: 100%;
