@@ -53,7 +53,7 @@ app.use(hotMiddleware)
 Object.keys(proxyTable).forEach(function (context) {
   let options = proxyTable[context]
   if (typeof options === 'string') {
-    options = { target: options }
+    options = {target: options}
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
@@ -98,6 +98,28 @@ devMiddleware.waitUntilValid(() => {
     _resolve()
   })
 })
+
+/**
+*Simulate the web API start
+*/
+var appData = require('../data.json')
+var commercials = appData.commercials
+var goods = appData.goods
+
+var apiRoutes = express.Router()
+
+apiRoutes.get('/commercials', function (req, res) {
+  res.json(commercials)
+})
+apiRoutes.get('/goods', function (req, res) {
+  res.json(goods)
+})
+
+app.use('/api',apiRoutes)
+
+/**
+*Simulate the web API end
+*/
 
 module.exports = {
   ready: readyPromise,

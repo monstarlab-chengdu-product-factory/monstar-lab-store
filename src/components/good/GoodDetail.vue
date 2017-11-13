@@ -1,12 +1,12 @@
 <template>
   <section>
-    commercial
+    detail
   </section>
 </template>
 
 <script>
   export default {
-    name: 'Commercial'
+    name: 'goodDetail'
   }
 </script>
 

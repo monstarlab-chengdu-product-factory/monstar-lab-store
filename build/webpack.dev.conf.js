@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
@@ -31,6 +32,12 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/assets',
+        to: 'static/img',
+      }
+    ])
   ]
 })
