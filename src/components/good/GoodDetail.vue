@@ -1,12 +1,12 @@
 <template>
   <section>
-    commercial
+    here is detail id:{{ $route.params.id }}
   </section>
 </template>
 
 <script>
   export default {
-    name: 'Commercial'
+    name: 'goodDetail'
   }
 </script>
 

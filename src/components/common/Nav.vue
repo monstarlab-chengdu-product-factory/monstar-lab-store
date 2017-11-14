@@ -2,7 +2,7 @@
   <nav class="app-nav">
     <div class="board-con">board</div>
     <div>
-      <router-link v-for="nav in navs" :key="nav.id" :to="nav.linkUrl">{{nav.name}}</router-link>
+      <router-link v-for="item in items" :key="item.id" :to="item.linkUrl">{{item.name}}</router-link>
     </div>
   </nav>
 </template>
@@ -13,7 +13,7 @@
     name: 'AppNav',
     data: function () {
       return {
-        navs: Navs
+        items: Navs
       }
     }
   }
