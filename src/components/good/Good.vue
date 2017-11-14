@@ -2,7 +2,6 @@
   <div class="good-con">
     <index-commercial/>
     <good-list/>
-
   </div>
 </template>
 

@@ -2,7 +2,6 @@
 node_modules/
 theme/
 package-lock.json
-package.json
 selenium-debug.log
 .idea/
 .DS_Store
