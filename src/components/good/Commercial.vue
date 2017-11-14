@@ -1,30 +1,21 @@
 <template>
   <section class="commercial-con">
-    <carousel>
-      <carousel-item v-for="item in items" :key="item.id" class="slides">
+    <el-carousel>
+      <el-carousel-item v-for="item in items" :key="item.id" class="slides">
         <router-link :to="{name:'good-detail',params:{ id:item.id}}" class="link-item">
           <h3>{{item.name}}</h3>
           <img v-bind:src="item.coverUrl" alt="cover">
         </router-link>
-      </carousel-item>
-    </carousel>
+      </el-carousel-item>
+    </el-carousel>
   </section>
 </template>
 
 <script>
-  import {
-    Carousel,
-    CarouselItem
-  } from 'element-ui'
-
   import {getCommercials} from './commercial.service.js'
 
   export default {
     name: 'Commercial',
-    components: {
-      CarouselItem,
-      Carousel
-    },
     data: function () {
       return {
         items: {}
