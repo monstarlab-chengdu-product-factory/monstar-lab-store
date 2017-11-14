@@ -3,7 +3,8 @@ import App from './App'
 import router from './router'
 import $http from 'vue-resource'
 import Element from 'element-ui'
-import '../element-variables.scss'
+import '../customize.scss'
+
 Vue.config.productionTip = false
 
 Vue.use($http)

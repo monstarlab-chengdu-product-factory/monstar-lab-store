@@ -1,6 +1,6 @@
 <template>
   <section>
-    good-list
+
   </section>
 </template>
 

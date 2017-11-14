@@ -8,6 +8,7 @@
         </router-link>
       </carousel-item>
     </carousel>
+    <el-button type="primary">zheli</el-button>
   </section>
 </template>
 
