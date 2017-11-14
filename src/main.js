@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import $http from 'vue-resource'
-// global
+
 import Element from 'element-ui'
-import '../element-variables.scss'
+import '../customize.scss'
 Vue.use(Element, { size: 'medium' })
 
 Vue.config.productionTip = false
@@ -15,5 +15,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
-  // render: h => h(App)
 })

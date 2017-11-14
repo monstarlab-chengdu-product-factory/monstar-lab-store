@@ -16,6 +16,10 @@
 
   export default {
     name: 'Commercial',
+    components: {
+      CarouselItem,
+      Carousel
+    },
     data: function () {
       return {
         items: {}

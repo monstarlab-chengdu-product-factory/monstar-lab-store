@@ -1,6 +1,6 @@
 <template>
   <section class="good-list">
-    <el-button type="primary">dddd</el-button>
+    goodlist
   </section>
 </template>
 
@@ -10,6 +10,6 @@
   }
 </script>
 
-<style lang="scss">
+<style>
 
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <footer>
+  <el-footer>
     here is footer
-  </footer>
+  </el-footer>
 </template>
 
 <script>
@@ -10,6 +10,13 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .el-footer{
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
 
 </style>
