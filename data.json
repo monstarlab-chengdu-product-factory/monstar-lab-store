@@ -1,0 +1,39 @@
+{
+  "commercials":[
+    {
+      "id": 1,
+      "name": "test-commercial-1",
+      "coverUrl": "/static/img/logo.svg"
+    },
+    {
+      "id": 2,
+      "name": "test-commercial-2",
+      "coverUrl": "/static/img/logo.svg"
+    },
+    {
+      "id": 3,
+      "name": "test-commercial-3",
+      "coverUrl": "/static/img/logo.svg"
+    }
+  ],
+  "goods":[
+    {
+      "id": 1,
+      "name":"web是商品",
+      "listIntro":"listIntro1"
+    },
+    {
+      "id": 2,
+      "name":"IOS是商品",
+      "listIntro":"listIntro2"
+    },
+    {
+      "id": 3,
+      "name":"Android是商品",
+      "listIntro":"listIntro3"
+    }
+  ],
+  "order":[
+
+  ]
+}
