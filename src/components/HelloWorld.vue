@@ -1,3 +1,4 @@
+
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -17,6 +18,9 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <el-button type="primary" plain class="button-own">hwahc</el-button>
+    <a href="#">点我</a>
+    <el-input type="text">这里是一个input</el-input>
   </div>
 </template>
 
@@ -32,7 +36,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style  lang="scss" scoped >
+  /*@import  '../assets/scss/base/_button.scss';*/
+
+
 h1, h2 {
   font-weight: normal;
 }
@@ -50,4 +57,9 @@ li {
 a {
   color: #42b983;
 }
+
+.button-own{
+  background-color: #2d2f33;
+}
+
 </style>
