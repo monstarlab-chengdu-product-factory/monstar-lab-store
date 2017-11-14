@@ -19,5 +19,4 @@ test/e2e/reports
 *.ntvs*
 *.njsproj
 *.sln
-.gitignore
 
