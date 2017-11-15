@@ -2,7 +2,6 @@
   <section>
   <el-row class="item-container" >
     <el-col  :span="20" :offset="2" class="product-list" v-for="prodcut in products" :key="prodcut.id" >
-      <router-link :to="{name:'product-detail',params:{ id:prodcut.id}}" class="link-item">
       <div class="img-container">
         <img v-bind:src="prodcut.icon" alt="thumbnail">
       </div>
@@ -11,7 +10,6 @@
         <h2>{{prodcut.brief}}</h2>
         <p>{{prodcut.discription}}</p>
       </div>
-        </router-link>
     </el-col>
   </el-row>
   </section>
@@ -44,6 +42,9 @@
 
   }
   .description-container{
+  h1,h2{
+    color:map-get($global-color, d);
+  }
     h2{
       margin: 10px 0;
     }
