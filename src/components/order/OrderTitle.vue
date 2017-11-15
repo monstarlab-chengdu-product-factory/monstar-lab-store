@@ -5,8 +5,8 @@
 <script>
   export default {
     name: 'OrderTitle',
-    props: ["title"],
-    data(){
+    props: ['title'],
+    data () {
       return {
         title: this.title
       }

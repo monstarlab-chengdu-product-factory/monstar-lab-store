@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { ProductService } from './Product.service.js'
+  import { ProductService } from '../product/Product.service.js'
   import TypeSelector from './TypeSelector'
   export default {
     name: 'TypeSelectorList',
