@@ -1,18 +1,18 @@
 <template>
   <div class="good-con">
     <index-commercial/>
-    <good-list/>
+    <product-list/>
   </div>
 </template>
 
 <script>
   import Commercial from './Commercial'
-  import GoodList from './GoodList.vue'
+  import ProductList from './ProductList.vue'
   export default {
-    name: 'good',
+    name: 'product',
     components: {
       'index-commercial': Commercial,
-      'good-list': GoodList
+      'product-list': ProductList
     }
   }
 </script>

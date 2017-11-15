@@ -1,12 +1,13 @@
 <template>
-  <section class="good-list">
-    goodlist
+  <section class="product-list">
+
+
   </section>
 </template>
 
 <script>
   export default {
-    name: 'GoodList'
+    name: 'productList'
   }
 </script>
 

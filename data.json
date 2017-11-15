@@ -16,21 +16,64 @@
       "coverUrl": "/static/img/logo.svg"
     }
   ],
-  "goods":[
+  "products":[
     {
-      "id": 1,
-      "name":"web是商品",
-      "listIntro":"listIntro1"
-    },
-    {
-      "id": 2,
-      "name":"IOS是商品",
-      "listIntro":"listIntro2"
-    },
-    {
-      "id": 3,
-      "name":"Android是商品",
-      "listIntro":"listIntro3"
+      "msg" : "success",
+      "code" : "0000",
+      "data" : [
+        {
+          "id" : 1,
+          "name" : "web网站",
+          "icon" : "/resource/images/productTypes/icon/T01.jpg",
+          "brief" : "",
+          "discription" : "",
+          "functions" : [
+            {
+              "id" : 34,
+              "name" : "基本功能",
+              "icon" : "/resource/images/productTypes/icon/T0101.jpg",
+              "brief" : "",
+              "discription" : ""
+            },
+            {
+              "id" : 35,
+              "name" : "高级功能",
+              "icon" : "/resource/images/productTypes/icon/T0102.jpg",
+              "brief" : "",
+              "discription" : ""
+            },
+            {
+              "id" : 36,
+              "name" : "电商功能",
+              "icon" : "/resource/images/productTypes/icon/T0103.jpg",
+              "brief" : "",
+              "discription" : ""
+            },
+            {
+              "id" : 37,
+              "name" : "社交功能",
+              "icon" : "/resource/images/productTypes/icon/T0104.jpg",
+              "brief" : "",
+              "discription" : ""
+            },
+            {
+              "id" : 38,
+              "name" : "其它功能",
+              "icon" : "/resource/images/productTypes/icon/T0105.jpg",
+              "brief" : "",
+              "discription" : ""
+            }
+          ]
+        },
+        {
+          "id" : 2,
+          "name" : "APP应用",
+          "icon" : "/resource/images/productTypes/icon/T02.jpg",
+          "brief" : "",
+          "discription" : "",
+          "functions" : []
+        }
+      ]
     }
   ],
   "order":[
