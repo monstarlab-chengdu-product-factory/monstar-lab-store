@@ -13,7 +13,7 @@
     components: {
       ProductList,
       'index-commercial': Commercial,
-      'Product-list': ProductList
+      'product-list': ProductList
     }
   }
 </script>
