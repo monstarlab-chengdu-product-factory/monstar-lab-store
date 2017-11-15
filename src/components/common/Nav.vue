@@ -1,31 +1,72 @@
 <template>
   <nav class="app-nav">
-    <div class="board-con">board</div>
-    <div>
-      <router-link v-for="item in items" :key="item.id" :to="item.linkUrl">{{item.name}}</router-link>
-    </div>
+    <router-link to="/products" class="board-con">
+      <img src="../../assets/image/logo-white.svg" alt="MonstarLab">
+    </router-link>
+
+    <el-menu class="list-con" mode="horizontal">
+      <el-menu-item v-for="item in items" :key="item.id" index="item.id" class="list-item">
+        <router-link :to="item.url">{{item.title}}</router-link>
+      </el-menu-item>
+    </el-menu>
   </nav>
 </template>
 
 <script>
-  import Navs from './nav.mock.js'
+  import { NavService } from './nav.service.js'
+
   export default {
     name: 'AppNav',
-    data: function () {
+    data () {
       return {
-        items: Navs
+        items: {}
       }
+    },
+    created () {
+      let service = new NavService()
+      service.getNavs(this)
+        .then(data => {
+          this.items = data
+        })
+//        .catch(console.error('vue error'))
     }
+
   }
 </script>
 
-<style lang="scss">
-  .app-nav{
-    .router-link-active{
-      background-color: #888;
+<style lang="scss" scoped>
+  @import "../../assets/stylesheet/variable";
+
+  .app-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: map-get($global-z-index, b);
+    width: 100%;
+    height: map-get($nav-height, a);
+    padding: 0 map-get($global-padding, a);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: map-get($global-color, e);
+  }
+
+  .list-con {
+    background-color: transparent;
+    border-bottom: none;
+    .list-item {
+      color: #fff;
+      border-bottom: none;
+      &:hover {
+        background-color: map-get($global-color, b);
+      }
+      a {
+        display: block;
+      }
     }
-    .router-link-exact-active{
-      background: #333;
-    }
+  }
+
+  .el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
+    border-bottom: none;
   }
 </style>

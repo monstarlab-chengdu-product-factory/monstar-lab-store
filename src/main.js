@@ -5,6 +5,8 @@ import $http from 'vue-resource'
 
 import Element from 'element-ui'
 import '../customize.scss'
+import './assets/stylesheet/style.scss'
+
 Vue.use(Element, { size: 'medium' })
 
 Vue.config.productionTip = false
