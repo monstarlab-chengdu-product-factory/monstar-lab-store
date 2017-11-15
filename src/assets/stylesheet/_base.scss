@@ -1,0 +1,28 @@
+body {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav,section,div,footer {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 4.4rem;
+}
+
+.app-main {
+  min-height: 100%;
+  padding-top: map-get($nav-height, a);
+}

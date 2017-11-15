@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-nav/>
-    <router-view/>
+    <div class="app-main">
+      <router-view/>
+    </div>
     <app-footer/>
   </div>
 </template>
@@ -18,6 +20,3 @@
     }
   }
 </script>
-
-<style>
-</style>

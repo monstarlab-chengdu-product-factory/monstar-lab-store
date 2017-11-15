@@ -2,7 +2,7 @@
   "name": "vue",
   "version": "1.0.0",
   "description": "vue demo",
-  "author": "szm <zhumei.song@monstar-lab-cn.com>",
+  "author": "monstarlab",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
