@@ -103,16 +103,21 @@ devMiddleware.waitUntilValid(() => {
 *Simulate the web API start
 */
 var appData = require('../data.json')
+var navs = appData.navs
 var commercials = appData.commercials
-var goods = appData.goods
+var products = appData.products
 
 var apiRoutes = express.Router()
+
+apiRoutes.get('/navs',function (req, res) {
+  res.json(navs)
+})
 
 apiRoutes.get('/commercials', function (req, res) {
   res.json(commercials)
 })
-apiRoutes.get('/goods', function (req, res) {
-  res.json(goods)
+apiRoutes.get('/products', function (req, res) {
+  res.json(products)
 })
 
 app.use('/api',apiRoutes)

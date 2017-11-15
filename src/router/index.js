@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Good from '@/components/good/Good'
-import GoodDetail from '@/components/good/GoodDetail'
+import Product from '@/components/product/Product'
+import ProductDetail from '@/components/product/ProductDetail'
 import NotFound from '@/components/common/NotFound'
 const Order = () => import(/* webpackChunkName: "group-order" */ '@/components/order/Order')
 
@@ -12,11 +12,11 @@ export default new Router({
   mode: 'history',
   base: __dirname,
   routes: [
-    {path: '/goods', name: 'good', component: Good},
-    {path: '/goods/:id', name: 'good-detail', component: GoodDetail},
+    {path: '/products', name: 'products', component: Product},
+    {path: '/products/:id', name: 'product-detail', component: ProductDetail},
     {path: 'order', name: 'order', component: Order},
     // {path: 'user', name: 'user', component: User},
-    {path: '', redirect: '/goods'},
+    {path: '', redirect: '/products'},
     {path: '*', component: NotFound}
   ]
 })
