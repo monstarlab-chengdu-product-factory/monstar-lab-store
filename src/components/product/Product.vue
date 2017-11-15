@@ -1,6 +1,7 @@
 <template>
   <div class="product-con">
     <index-commercial/>
+    <p class="title">业务一览</p>
     <product-list/>
   </div>
 </template>
@@ -13,7 +14,14 @@
     components: {
       ProductList,
       'index-commercial': Commercial,
-      'Product-list': ProductList
+      'product-list': ProductList
     }
   }
 </script>
+<style lang="scss" scoped>
+  .title{
+    text-align: center;
+    height: 50px;
+    line-height: 50px
+  }
+</style>
