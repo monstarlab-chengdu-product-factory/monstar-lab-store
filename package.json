@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
+    "vue-cli": "^2.9.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
