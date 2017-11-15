@@ -1,5 +1,5 @@
 <template>
-  <div class="good-con">
+  <div class="product-con">
     <index-commercial/>
     <product-list/>
   </div>
@@ -7,10 +7,11 @@
 
 <script>
   import Commercial from './Commercial'
-  import ProductList from './ProductList.vue'
+  import ProductList from './ProductList'
   export default {
-    name: 'product',
+    name: 'Product',
     components: {
+      ProductList,
       'index-commercial': Commercial,
       'product-list': ProductList
     }

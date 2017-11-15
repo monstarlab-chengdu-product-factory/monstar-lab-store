@@ -35,7 +35,7 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsPlugin(),
     new CopyWebpackPlugin([
       {
-        from: 'src/assets',
+        from: 'src/assets/image',
         to: 'static/img',
       }
     ])
