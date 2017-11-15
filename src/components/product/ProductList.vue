@@ -48,15 +48,13 @@
     p{
       color:map-get($global-color, g) ;
     }
-
   }
   .product-list{
     display: flex;
     padding: 40px 0;
     justify-content: center;
     overflow: hidden;
-    border-top:1px solid map-get($global-color, g) ;
-
+    border-top:1px solid map-get($global-color, borderColor)  ;
   }
   .img-container{
     width:300px;
