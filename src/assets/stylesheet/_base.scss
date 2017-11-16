@@ -1,3 +1,5 @@
+@import "variable";
+
 body {
   position: relative;
 }
@@ -6,7 +8,7 @@ a {
   text-decoration: none;
 }
 
-nav,section,div,footer {
+nav, section, div, footer {
   box-sizing: border-box;
 }
 
@@ -22,12 +24,14 @@ h1 {
   font-size: 4.4rem;
   line-height: 4.4rem;
 }
-h2{
+
+h2 {
   font-size: 2rem;
   line-height: 2rem;
 }
-p{
- font-size: 1.5rem;
+
+p {
+  font-size: 1.5rem;
   line-height: 1.5rem;
 
 }

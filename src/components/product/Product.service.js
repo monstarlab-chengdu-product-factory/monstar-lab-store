@@ -1,4 +1,4 @@
-export class Products {
+export class ProductService {
   constructor () {
     this.productUrl = '/api/products'
   }
