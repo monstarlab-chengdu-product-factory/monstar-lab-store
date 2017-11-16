@@ -1,12 +1,13 @@
 <template>
   <section class="commercial-con">
+    <div class="test">立即报价</div>
     <el-carousel :autoplay="false" class="carousel-con">
       <el-carousel-item v-for="item in items" :key="item.id">
-        <router-link :to="{name:'product-detail',params:{ id:item.id}}" class="link-item">
+        <router-link to="/" class="link-item">
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <el-button>立即报价</el-button>
+            <button>开始我的报价</button>
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
