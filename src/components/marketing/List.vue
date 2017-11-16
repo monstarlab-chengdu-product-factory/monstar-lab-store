@@ -35,23 +35,21 @@
 </script>
 
 <style lang="scss" scoped>
-
   @import "../../assets/stylesheet/variable";
 
   .item-container {
     flex-direction: column;
-
   }
 
   .description-container {
     h1, h2 {
-      color: map-get($global-color, d);
+      color: map-get($global-color-base, a);
     }
     h2 {
       margin: 10px 0;
     }
     p {
-      color: map-get($global-color, g);
+      color: map-get($global-color-base, c);
     }
   }
 
@@ -60,7 +58,7 @@
     padding: 40px 0;
     justify-content: center;
     overflow: hidden;
-    border-top: 1px solid map-get($global-color, borderColor);
+    border-top: 1px solid map-get($global-color, border);
   }
 
   .img-container {
@@ -74,5 +72,4 @@
       width: 100%;
     }
   }
-
 </style>
