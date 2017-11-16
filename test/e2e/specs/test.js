@@ -3,10 +3,10 @@ module.exports = {
     const devServer = browser.globals.devServerURL
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
+      .waitForElementVisible('.app-nav', 5000)
+      .assert.elementPresent('.link-item')
+      .assert.containsText('h1', 'test-commercial-1')
+      .assert.elementCount('img', 4)
       .url(devServer + '/szm/')
       .assert.containsText('h1', 'Hello!')
       .url(devServer + '/form/')
