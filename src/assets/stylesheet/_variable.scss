@@ -19,4 +19,15 @@ $global-z-index: (
 $nav-height: (
   a:60px,
   b:48px,
-)
+);
+$global-width: (
+  break-point-a: 1200px,
+  break-point-b: 782px,
+  break-point-c: 1000px,
+  break-point-d: 1000px,
+  a:1000px,
+  b:960px,
+  c:650px,
+  d:260px,
+  e:238px, //width of form
+);
