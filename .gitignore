@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Created by .ignore support plugin (hsz.mobi) 
 node_modules/
 theme/
 package-lock.json
@@ -8,15 +8,11 @@ selenium-debug.log
 dist/
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 test/unit/coverage
 test/e2e/reports
-
 # Editor directories and files
 .idea
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-
+package.json
+Dockerfile
+.gitignore
