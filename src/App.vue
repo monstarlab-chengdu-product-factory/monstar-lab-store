@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import AppNav from './components/common/nav'
+  import AppNav from './components/common/Nav'
   import AppFooter from './components/common/Footer'
   export default {
     name: 'app',
