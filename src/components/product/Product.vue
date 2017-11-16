@@ -1,21 +1,12 @@
 <template>
   <div class="product-con">
-    <index-commercial/>
-    <p class="title">业务一览</p>
-    <product-list/>
+    product center 壳子
   </div>
 </template>
 
 <script>
-  import Commercial from './Commercial'
-  import ProductList from './ProductList'
   export default {
-    name: 'Product',
-    components: {
-      ProductList,
-      'index-commercial': Commercial,
-      'product-list': ProductList
-    }
+    name: 'Product'
   }
 </script>
 <style lang="scss" scoped>
