@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { NavService } from './nav.service.js'
+  import { NavService } from './Nav.service.js'
 
   export default {
     name: 'AppNav',

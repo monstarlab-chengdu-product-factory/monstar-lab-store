@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { CommercialService } from './commercial.service.js'
+  import { CommercialService } from './Commercial.service.js'
 
   export default {
     name: 'Commercial',
