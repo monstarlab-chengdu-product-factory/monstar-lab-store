@@ -15,7 +15,7 @@
   </section>
 </template>
 <script>
-  import { Products } from './Product.service.js'
+  import { ProductService } from './Product.service.js'
   export default {
     name: 'productList',
     data: function () {
@@ -24,8 +24,8 @@
       }
     },
     created () {
-      let product = new Products()
-      product.getproducts(this)
+      let product = new ProductService()
+      product.getProducts(this)
         .then(data => {
           this.products = data
         })
