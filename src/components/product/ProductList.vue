@@ -42,6 +42,9 @@
 
   }
   .description-container{
+  h1,h2{
+    color:map-get($global-color, d);
+  }
     h2{
       margin: 10px 0;
     }
