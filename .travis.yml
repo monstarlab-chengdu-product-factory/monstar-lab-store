@@ -15,5 +15,6 @@ cache:
 
 notifications:
     slack: monstarchengduproduct:yPLK92xTwbvPsteD7prRt4lM
+    slack:
         on_success: change
         on_failure: always
