@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import SelectorButtonGroup from './SelectorButtonGroup'
+  import SelectorButtonGroup from '../common/SelectorButtonGroup'
   export default {
     name: 'ProductTypeTab',
     components: {
