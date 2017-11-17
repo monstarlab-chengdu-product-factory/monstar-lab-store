@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import ProductTypeLIst from '@/components/product/ProductTypeLIst'
-
 describe('ProductTypeLIst.vue', () => {
   it('ProductTypeLIst component is correct', () => {
     const Constructor = Vue.extend(ProductTypeLIst)
