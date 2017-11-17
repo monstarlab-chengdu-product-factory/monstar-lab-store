@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import ProductTypeLIst from '@/components/product/ProductTypeLIst'
-describe('ProductTypeLIst.vue', () => {
-  const Constructor = Vue.extend(ProductTypeLIst)
+import ProductTypeList from '@/components/product/ProductTypeList'
+describe('ProductTypeList.vue', () => {
+  const Constructor = Vue.extend(ProductTypeList)
   const vm = new Constructor().$mount()
-  it('ProductTypeLIst component is correct', () => {
+  it('ProductTypeList component is correct', () => {
     expect(vm.$el.getElementsByTagName('li')).to.have.length
   })
-  it('ProductTypeLIst has img', () => {
+  it('ProductTypeList has img', () => {
     expect(vm.$el.getElementsByTagName('img')).to.be.ok
   })
   // it('ProductTypeLIst has a click function', () => {
