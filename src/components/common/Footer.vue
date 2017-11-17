@@ -21,8 +21,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 3.5rem map-get($global-padding,a);
-    background-color: map-get($global-color, b);
-    color: map-get($global-color, g);
+    background-color: map-get($global-color-base, a);
+    color: map-get($global-color-base, b);
 
     img{
       opacity: .5;
