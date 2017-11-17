@@ -4,6 +4,6 @@ describe('ProductNextButton.vue', () => {
   it('ProductNextButton component is correct', () => {
     const Constructor = Vue.extend(ProductNextButton)
     const vm = new Constructor().$mount()
-    expect(vm.$el.getElementsByTagName('button')).to.be.ok
+    expect(vm.$el.querySelector('button'))
   })
 })
