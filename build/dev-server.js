@@ -120,11 +120,11 @@ apiRoutes.get('/commercials', function (req, res) {
 apiRoutes.get('/products', function (req, res) {
   res.json(products)
 })
-
-apiRoutes.get('/products/:id', function (req, res) {
-  var id = req.params.id
-  res.json(products[id])
-})
+//
+// apiRoutes.get('/products/:id', function (req, res) {
+//   var id = req.params.id
+//   res.json(products[id])
+// })
 
 app.use('/api', apiRoutes)
 

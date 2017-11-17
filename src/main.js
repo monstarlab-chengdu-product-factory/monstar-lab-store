@@ -3,11 +3,24 @@ import App from './App'
 import router from './router'
 import $http from 'vue-resource'
 
-import Element from 'element-ui'
+import {
+  Button,
+  Select,
+  Row,
+  Col,
+  Menu,
+  MenuItem
+} from 'element-ui'
 import '../customize.scss'
 import './assets/stylesheet/style.scss'
 
-Vue.use(Element, { size: 'medium' })
+Vue.prototype.$ELEMENT = {size: 'medium'}
+Vue.use(Button)
+Vue.use(Select)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Menu)
+Vue.use(MenuItem)
 
 Vue.config.productionTip = false
 Vue.use($http)
@@ -16,5 +29,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })

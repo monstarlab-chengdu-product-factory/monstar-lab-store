@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: map-get($global-color, e);
+    background-color: map-get($global-color-base,secondary);
   }
 
   .list-con {
@@ -58,7 +58,7 @@
       color: #fff;
       border-bottom: none;
       &:hover {
-        background-color: map-get($global-color, b);
+        background-color: map-get($global-color-base, a);
       }
       a {
         display: block;
