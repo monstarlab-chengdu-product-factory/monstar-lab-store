@@ -1,6 +1,6 @@
 <template>
     <ul class="type-container">
-      <li v-for="type in types" :key="type.id" class="type-item">
+      <li v-for="type in types" :key="type.id" class="type-item click" >
         <img v-bind:src="type.icon" alt="icon">
         <div class="description-container"><h1>{{type.name}}</h1>
           <p>{{type.brief}}</p></div>
@@ -17,6 +17,11 @@
         types: {}
       }
     },
+//    methods () {
+//      on_click () {
+//
+//      }
+//    },
     created () {
       let service = new ProductService()
       service.getProducts(this)
@@ -27,8 +32,9 @@
   }
 </script>
 <style lang="scss" scoped>
+  @import "../../assets/stylesheet/variable";
 .type-item{
-  width: 46%;
+  width: 45%;
   margin: 20px;
   position: relative;
   overflow:hidden;
@@ -53,4 +59,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+  .click{
+    border: 2px solid  map-get($global-color-base,primary);
+  }
 </style>
