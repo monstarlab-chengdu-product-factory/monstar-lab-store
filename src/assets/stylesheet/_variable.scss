@@ -5,11 +5,13 @@ $global-color-base: (
   third:#3cba92,
   a:#2d2d2d,
   b:dimgray,
-  c:#ccc,
+  c:#dddddd,
+  d: #404040
 );
 $global-color: (
   border:map-get($global-color-base, c),
-  footer:map-get($global-color-base, a)
+  footer:map-get($global-color-base, a),
+  text-main: map-get($global-color-base, d)//主要,大面积文字色
 );
 $global-padding: (
   a:15px,
@@ -22,4 +24,7 @@ $global-z-index: (
 $nav-height: (
   a:60px,
   b:48px,
+);
+$global-config: (
+  use-scaler-system:false
 )
