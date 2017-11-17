@@ -1,12 +1,15 @@
+$global-color-base: (
+  primary:#2ba08e,
+  primary-dark:#174e46,
+  secondary:#0ba360,
+  third:#3cba92,
+  a:#2d2d2d,
+  b:dimgray,
+  c:#ccc,
+);
 $global-color: (
-  a:#2ba08e,
-  b:#2d2d2d,
-  c:#174e46,
-  d:#333,
-  e:#0ba360,
-  f:#3cba92,
-  g:dimgray,
-  borderColor:#ccc,
+  border:map-get($global-color-base, c),
+  footer:map-get($global-color-base, a)
 );
 $global-padding: (
   a:15px,

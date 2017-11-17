@@ -1,24 +1,25 @@
 <template>
   <section class="commercial-con">
     <div class="test">立即报价</div>
-    <el-carousel :autoplay="false" class="carousel-con">
-      <el-carousel-item v-for="item in items" :key="item.id">
+    <carousel :autoplay="false" class="carousel-con">
+      <carousel-item v-for="item in items" :key="item.id">
         <router-link to="/" class="link-item">
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <button>开始我的报价</button>
+            <el-button type="primary">开始我的报价</el-button>
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
           </div>
         </router-link>
-      </el-carousel-item>
-    </el-carousel>
+      </carousel-item>
+    </carousel>
   </section>
 </template>
 
 <script>
+  import { Carousel, CarouselItem } from 'element-ui'
   import { CommercialService } from './Commercial.service.js'
 
   export default {
@@ -27,6 +28,10 @@
       return {
         items: {}
       }
+    },
+    components: {
+      Carousel,
+      CarouselItem
     },
     created () {
       let service = new CommercialService()
@@ -43,7 +48,7 @@
   @import "../../assets/stylesheet/variable";
 
   .commercial-con {
-    background: linear-gradient(-180deg, map-get($global-color, e) 0%, map-get($global-color, f) 100%);
+    background: linear-gradient(-180deg, map-get($global-color-base,secondary) 0%, map-get($global-color-base, third) 100%);
   }
 
   .link-item {
