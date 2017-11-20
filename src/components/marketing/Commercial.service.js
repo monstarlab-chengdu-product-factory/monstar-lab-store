@@ -1,9 +1,10 @@
+import axios from 'axios'
 export class CommercialService {
   constructor () {
-    this.commercialUrl = '/api/commercials'
+    this.url = '/api/commercials'
   }
-  getCommercials (context) {
-    return context.$http.get(this.commercialUrl)
+  getCommercials () {
+    return axios.get(this.url)
       .then((response) => response.data)
     // .catch(console.log('error'))
   }
