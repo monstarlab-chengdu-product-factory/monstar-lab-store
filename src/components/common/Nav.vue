@@ -33,9 +33,9 @@
         .then(data => {
           this.items = data
         })
-       .catch(err => {
-         console.log(err)
-       })
+        .catch(err => {
+          console.log(err)
+        })
     }
 
   }
@@ -50,12 +50,13 @@
     left: 0;
     z-index: map-get($global-z-index, b);
     width: 100%;
+    max-width: map-get($global-width, break-point-lg);
     height: map-get($nav-height, a);
     padding: 0 map-get($global-padding, a);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: map-get($global-color-base,secondary);
+    background-color: map-get($global-color-base, secondary);
   }
 
   .list-con {
@@ -75,5 +76,8 @@
 
   .el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
     border-bottom: none;
+  }
+  .el-menu--horizontal .el-menu-item:hover, .el-menu--horizontal .el-menu-item:focus {
+    background-color: transparent;
   }
 </style>

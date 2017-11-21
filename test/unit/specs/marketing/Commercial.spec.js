@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import vueRouter from 'vue-router'
 import Router from '../../../../src/router/index'
-import data from '../../../../data.json'
+// import data from '../../../../data.json'
 import Commercial from '@/components/marketing/Commercial'
 
 Vue.use(vueRouter)
@@ -20,4 +20,3 @@ describe('Commercial.vue', () => {
     })
   })
 })
-
