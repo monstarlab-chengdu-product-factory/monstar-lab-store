@@ -47,7 +47,7 @@
     },
     created () {
       let service = new ProductTypesService()
-      service.getProductTypes(this)
+      service.getProductTypes()
         .then(data => {
           this.productTypes = data
           if (data.length > 0) {

@@ -25,8 +25,9 @@
     },
     created () {
       let service = new ProductService()
-      service.getProducts(this)
+      service.getProducts()
         .then(data => {
+          console.log(data)
           this.items = data
         })
 //        .catch(console.log('product ERROR'))
