@@ -1,0 +1,386 @@
+
+/**********************************
+	border
+**********************************/
+@mixin bd($width, $style, $color) {
+  border: $width $style $color;
+}
+
+@mixin bdt($width, $style, $color) {
+  border-top: $width $style $color;
+}
+
+@mixin bdr($width, $style, $color) {
+  border-right: $width $style $color;
+}
+
+@mixin bdb($width, $style, $color) {
+  border-bottom: $width $style $color;
+}
+
+@mixin bdl($width, $style, $color) {
+  border-left: $width $style $color;
+}
+
+/**********************************
+	break-point
+**********************************/
+@mixin break_point($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin flexbox($justify-content,$align-items) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+
+/**********************************
+	font size
+**********************************/
+@mixin font-size($ps-size: 0px, $bold: 0) {
+  @if ($ps-size != inherit) or ($ps-size != 0px) {
+    font-size: $ps-size * $scaler-rate;
+    @if($use-scaler-system == true) {
+      font-size: rem($ps-size);
+    }
+  }
+  @if($bold == 1)or($bold == true) {
+    font-weight: bold;
+  }
+}
+
+/**********************************
+	box
+**********************************/
+@mixin box($display: block, $width: auto, $height: auto, $line-height: inherit, $vertical-align: middle, $position: center, $text-align: inherit, $overflow: hidden) {
+  display: $display;
+  width: rem($width);
+  height: rem($height);
+  @if ($line-height != inherit) {
+    line-height: rem($line-height);
+  }
+  @if ($display == inline-block) {
+    vertical-align: $vertical-align;
+  }
+  @if ($display == block) {
+    margin: 0 auto;
+    @if ($position == left) or ($position == right) {
+      float: $position;
+    }
+  }
+  @if ($text-align != inherit) {
+    text-align: $text-align;
+  }
+  overflow: $overflow;
+}
+
+
+/**********************************
+	box shadow
+**********************************/
+@mixin box-shadow ($x, $y, $blur, $color, $expand: outset) {
+  @if ($expand == inset) {
+    box-shadow: rem($x) rem($y) $blur $color inset;
+    -webkit-box-shadow: rem($x) rem($y) $blur $color inset;
+    -moz-box-shadow: rem($x) rem($y) $blur $color inset;
+    -o-box-shadow: rem($x) rem($y) $blur $color inset;
+  }
+  @else {
+    box-shadow: rem($x) rem($y) $blur $color;
+    -webkit-box-shadow: rem($x) rem($y) $blur $color;
+    -moz-box-shadow: rem($x) rem($y) $blur $color;
+    -o-box-shadow: rem($x) rem($y) $blur $color;
+  }
+}
+
+
+/**********************************
+	background image
+**********************************/
+@mixin background-image ($image-url: none, $repeat: no-repeat, $position-x: center, $position-y: center, $background-size-x: auto, $background-size-y: auto, $background-color: inherit) {
+  @if ($image-url != none) {
+    background-image: url($image-url);
+  }
+  @else {
+    background-image: none;
+  }
+  @if ($background-color != inherit) {
+    background-color: $background-color;
+  }
+  background-repeat: $repeat;
+  background-position: rem($position-x) rem($position-y);
+  background-size: rem($background-size-x) rem($background-size-y);
+}
+
+
+/**********************************
+	position and location
+**********************************/
+@mixin position-location ($position: absolute, $top: 0, $bottom: auto, $left: 0, $right: auto, $zindex: 10) {
+  position: $position;
+  @if ($position == absolute) or ($position == fixed) {
+    top: rem($top);
+    bottom: rem($bottom);
+    left: rem($left);
+    right: rem($right);
+    z-index: $zindex; 
+  }
+}
+
+/**********************************
+	vertical align middle
+**********************************/
+@mixin vertical-align-middle ($display: block, $text-align: inherit) {
+  @if ($text-align != inherit) {
+    text-align: $text-align;
+  }
+  display: $display;
+  //white-space: nowrap;
+  &:after {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+  }
+}
+
+/**********************************
+	vertical align box
+**********************************/
+@mixin vertical-align-container ($content-box: img, $display: block, $text-align: inherit) {
+  @include vertical-align-middle($display, $text-align);
+  @if ($content-box == img) {
+    img {
+      display: inline-block;
+      max-height: 100%;
+      max-width: 100%;
+      vertical-align: middle;
+    }
+  }
+  @else {
+    .#{$content-box} {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+/**********************************
+	border radius
+**********************************/
+@mixin border-radius ($radius: 0) {
+  -webkit-border-radius: rem($radius);
+  -moz-border-radius: rem($radius);
+  -o-border-radius: rem($radius);
+  border-radius: rem($radius);
+}
+
+/**********************************
+	box sizing
+**********************************/
+@mixin box-sizing ($box-type: border-box) {
+  box-sizing: $box-type;
+  -webkit-box-sizing: $box-type;
+  -moz-box-sizing: $box-type;
+  -o-box-sizing: $box-type;
+}
+
+/**********************************
+	block list
+**********************************/
+@mixin block-list ($display: inline-block, $width: auto, $height: auto, $item-width: auto, $item-height: auto, $item-margin-left: 0, $item-margin-right: 0, $item-margin-top: 0, $item-margin-bottom: 0, $item-as: block, $item-text-align: inherit, $direction: left) {
+  @if ($direction == down) {
+    $item-as: block;
+  }
+  @if ($item-as == inline-block) {
+    @include box ($display, $width, $height, inherit, middle, center, $direction);
+  }
+  @if ($item-as == block) {
+    @include box ($display, $width, $height);
+  }
+  & > li {
+    @if ($item-as == block){
+      @if ($direction == down) {
+        @include box ($item-as, $item-width, $item-height, inherit, middle, none, $item-text-align);
+      }
+      @else {
+        @include box ($item-as, $item-width, $item-height, inherit, middle, $direction, $item-text-align);
+      }
+    }
+    @if ($item-as == inline-block) {
+      @if ($direction == down) {
+        @include box ($item-as, $item-width, $item-height, $text-align: $item-text-align);
+      }
+      @else {
+        @include box ($item-as, $item-width, $item-height, $text-align: $item-text-align);
+      }
+    }
+    @if ($item-margin-left != auto) and ($item-margin-left != 0) and ($item-margin-left != 0%) and ($item-margin-left != none) {
+      margin-left: rem($item-margin-left);
+    }
+    @if ($item-margin-right != auto) and ($item-margin-right != 0) and ( $item-margin-right != 0%) and ($item-margin-right != none) {
+      margin-right: rem($item-margin-right);
+    }
+    @if ($item-margin-top != auto) and ($item-margin-top != 0) and ($item-margin-top != 0%) and ($item-margin-top != none) {
+      margin-top: rem($item-margin-top);
+    }
+    @if ($item-margin-bottom != auto) and ($item-margin-bottom != 0) and ( $item-margin-bottom != 0%) and ($item-margin-bottom != none) {
+      margin-bottom: rem($item-margin-bottom);
+    }
+    @if ($direction == down) {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @if ($direction == left) {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    @if ($direction == right) {
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+  @if ($item-as == block) and ($direction != down) {
+    @extend %clearfix;
+  }
+}
+
+/**********************************
+	font style
+**********************************/
+@mixin font-style ($font-family: "microsoft yahei", $font-size: 12px, $font-color: inherit, $line-height: inherit, $font-weight: normal, $font-italic: 0) {
+  @if ($font-color != inherit) {
+    color: $font-color;
+  }
+  font-family: $font-family;
+  @include font-size($font-size, $line-height);
+  font-weight: $font-weight;
+  @if ($font-italic == 1) or ($font-italic == true) or ($font-italic == italic){
+    font-style: italic;
+  }
+}
+
+/**********************************
+	text ellipsis
+**********************************/
+@mixin ellipsis($line-count: 1){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if($line-count > 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-count;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+}
+/**********************************
+	triangle
+**********************************/
+@mixin triangle($direction: tl, $color: #fff, $border-width: 100px) {
+  display: block;
+  width: 0;
+  height: 0;
+  @if($direction == tl){
+    border-top: rem($border-width) solid $color;
+    border-right: rem($border-width) solid transparent;
+  }
+  @if($direction == tr){
+    border-top: rem($border-width) solid $color;
+    border-left: rem($border-width) solid transparent;
+  }
+  @if($direction == bl){
+    border-bottom: rem($border-width) solid $color;
+    border-right: rem($border-width) solid transparent;
+  }
+  @if($direction == br){
+    border-bottom: rem($border-width) solid $color;
+    border-left: rem($border-width) solid transparent;
+  }
+}
+
+/**********************************
+	transform
+**********************************/
+@mixin transform($action: rotate, $value: 0deg) {
+  transform: #{$action + "("}#{$value + ")"};
+  -webkit-transform: #{$action + "("}#{$value + ")"};
+  -moz-transform: #{$action + "("}#{$value + ")"};
+  -o-transform: #{$action + "("}#{$value + ")"};
+}
+
+/**********************************
+	animation
+**********************************/
+@mixin animation($name: _default, $duration: 1s, $timing: linear, $delay: 0, $iteration: infinite, $direction: normal, $fill-mode: none) {
+  @if($name != _default) {
+    animation-name: $name;
+    -webkit-animation-name: $name;
+    -moz-animation-name: $name;
+    -ms-animation-name: $name;
+    -o-animation-name: $name;
+    
+    animation-duration: $duration;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -ms-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    
+    animation-timing-function: $timing;
+    -webkit-animation-timing-function: $timing;
+    -moz-animation-timing-function: $timing;
+    -ms-animation-timing-function: $timing;
+    -o-animation-timing-function: $timing;
+    
+    animation-delay: $delay;
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay: $delay;
+    -ms-animation-delay: $delay;
+    -o-animation-delay: $delay;
+    
+    animation-iteration-count: $iteration;
+    -webkit-animation-iteration-count: $iteration;
+    -moz-animation-iteration-count: $iteration;
+    -ms-animation-iteration-count: $iteration;
+    -o-animation-iteration-count: $iteration;
+    
+    animation-direction: $direction;
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    -ms-animation-direction: $direction;
+    -o-animation-direction: $direction;
+    
+    animation-fill-mode: $fill-mode;
+    -webkit-fill-mode: $fill-mode;
+    -moz-fill-mode: $fill-mode;
+    -ms-fill-mode: $fill-mode;
+    -o-fill-mode: $fill-mode;
+  }
+}
+
+/**********************************
+	animation-keyframes
+**********************************/
+@mixin keyframes($name: _default) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}

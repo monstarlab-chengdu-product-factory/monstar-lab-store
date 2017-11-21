@@ -5,11 +5,13 @@ $global-color-base: (
   third: #3cba92,
   a: #2d2d2d,
   b: #696969,
-  c: #ccc,
+  c:#dddddd,
+  d: #404040
 );
 $global-color: (
   border: map-get($global-color-base, c),
-  footer: map-get($global-color-base, a)
+  footer: map-get($global-color-base, a),
+  text-main: map-get($global-color-base, d)
 );
 $global-width: (
   break-point-xs: 414px,
@@ -36,3 +38,6 @@ $global-animation-speed: (
   b: $global-animation-speed-base * 2,
   c: $global-animation-speed-base * 3,
 );
+$global-config: (
+  use-scaler-system:false
+)
