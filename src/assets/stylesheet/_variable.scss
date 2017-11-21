@@ -6,18 +6,18 @@ $global-color-base: (
   a: #2d2d2d,
   b: #696969,
   c:#dddddd,
-  d: #404040
+  d: #404040,
 );
 $global-color: (
   border: map-get($global-color-base, c),
   footer: map-get($global-color-base, a),
-  text-main: map-get($global-color-base, d)
+  text-main: map-get($global-color-base, d),
 );
 $global-width: (
   break-point-xs: 414px,
   break-point-sm: 768px,
   break-point-md: 992px,
-  break-point-lg: 1200px
+  break-point-lg: 1200px,
 );
 $nav-height: (
   a: 60px,
@@ -25,7 +25,7 @@ $nav-height: (
 );
 $global-padding: (
   a: 15px,
-  b: 12px
+  b: 12px,
 );
 $global-z-index: (
   a: 10,
@@ -39,5 +39,5 @@ $global-animation-speed: (
   c: $global-animation-speed-base * 3,
 );
 $global-config: (
-  use-scaler-system:false
+  use-scaler-system:false,
 )
