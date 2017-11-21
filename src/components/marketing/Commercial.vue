@@ -1,13 +1,12 @@
 <template>
   <section class="commercial-con">
-    <div class="test">立即报价</div>
-    <carousel :autoplay="false" class="carousel-con">
+    <carousel :autoplay="false" class="carousel-con" :if="items">
       <carousel-item v-for="item in items" :key="item.id">
         <router-link to="/" class="link-item">
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <el-button type="primary">开始我的报价</el-button>
+            <el-button type="primary">{{buttonText}}</el-button>
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
@@ -26,7 +25,8 @@
     name: 'Commercial',
     data () {
       return {
-        items: {}
+        items: {},
+        buttonText: '开始我的报价'
       }
     },
     components: {
@@ -35,11 +35,11 @@
     },
     created () {
       let service = new CommercialService()
-      service.getCommercials(this)
-        .then(data => {
-          this.items = data
-        })
-//        .catch(console.error('vue error'))
+      service.getCommercials().then(data => {
+        console.log(data)
+        this.items = data
+      })
+      //        .catch(console.error('vue error'))
     }
   }
 </script>
@@ -48,7 +48,11 @@
   @import "../../assets/stylesheet/variable";
 
   .commercial-con {
-    background: linear-gradient(-180deg, map-get($global-color-base,secondary) 0%, map-get($global-color-base, third) 100%);
+    background: linear-gradient(
+        -180deg,
+        map-get($global-color-base, secondary) 0%,
+        map-get($global-color-base, third) 100%
+    );
   }
 
   .link-item {
