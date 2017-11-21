@@ -1,7 +1,7 @@
 {
   "name": "store",
   "version": "1.0.0",
-  "description": "vue demo",
+  "description": "store",
   "author": "monstarlab",
   "private": true,
   "scripts": {
