@@ -1,6 +1,8 @@
-/* Scss Document */
+
+@import "variable";
+
 //使用缩放系统
-$use-scaler-system : false; //map-get($global-config, use-scaler-system);
+$use-scaler-system : map-get($global-config, use-scaler-system);
 $scaler-rate : 1;
 
 /*去除单位*/

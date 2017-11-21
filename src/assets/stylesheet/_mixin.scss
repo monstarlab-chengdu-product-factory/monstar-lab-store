@@ -1,4 +1,7 @@
 
+@import "variable";
+@import "extend";
+
 /**********************************
 	border
 **********************************/
@@ -31,8 +34,11 @@
   }
 }
 
-@mixin flexbox($justify-content,$align-items) {
+@mixin flexbox($flex-direction: row, $justify-content: center, $align-items: center, $flex-wrap: wrap) {
   display: flex;
+  display: -webkit-flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
   justify-content: $justify-content;
   align-items: $align-items;
 }
@@ -286,7 +292,7 @@
 /**********************************
 	triangle
 **********************************/
-@mixin triangle($direction: tl, $color: #fff, $border-width: 100px) {
+@mixin triangle($direction: tl, $border-width: 20px, $color: #fff) {
   display: block;
   width: 0;
   height: 0;
@@ -384,3 +390,4 @@
     @content;
   }
 }
+
