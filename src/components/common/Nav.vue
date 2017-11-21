@@ -6,13 +6,14 @@
 
     <el-menu class="list-con" mode="horizontal">
       <el-menu-item v-for="item in items" :key="item.id" index="item.id" class="list-item">
-        <router-link :to="item.url">{{item.title}}</router-link>
+        <router-link :to="item.url">{{item.name}}</router-link>
       </el-menu-item>
     </el-menu>
   </nav>
 </template>
 
 <script>
+  import { Menu, MenuItem } from 'element-ui'
   import { NavService } from './Nav.service.js'
 
   export default {
@@ -22,13 +23,19 @@
         items: {}
       }
     },
+    components: {
+      elMenu: Menu,
+      elMenuItem: MenuItem
+    },
     created () {
       let service = new NavService()
-      service.getNavs(this)
+      service.getNavs()
         .then(data => {
           this.items = data
         })
-//        .catch(console.error('vue error'))
+       .catch(err => {
+         console.log(err)
+       })
     }
 
   }

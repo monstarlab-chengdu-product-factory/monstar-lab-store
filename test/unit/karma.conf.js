@@ -6,7 +6,7 @@
 var webpackConfig = require('../../build/webpack.test.conf')
 const isDocker = require('is-docker')()
 // require('phantomjs-prebuilt').path = './node_modules/.bin/phantomjs'
-
+const apiHost = 'http://localhost:8080'
 module.exports = function (config) {
   config.set({
     // to run in additional browsers:
@@ -27,6 +27,11 @@ module.exports = function (config) {
     files: ['./index.js'],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
+    },
+    proxies: {
+      '/api/navs': `${apiHost}/api/navs`,
+      '/api/commercials': `${apiHost}/api/commercials`,
+      'api/products': `${apiHost}/api/products`
     },
     webpack: webpackConfig,
     webpackMiddleware: {
