@@ -20,7 +20,6 @@ export default new Router({
     {path: '/products', name: 'productList', component: ProductList},
     {
       path: '/orders',
-      name: 'order',
       component: Order,
       children: [
         {
