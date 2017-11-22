@@ -1,14 +1,16 @@
 <template>
   <nav class="app-nav">
-    <router-link to="/products" class="board-con">
-      <img src="../../assets/image/logo-white.svg" alt="MonstarLab">
-    </router-link>
+    <div class="wrapper">
+      <router-link to="/products" class="board-con">
+        <img src="../../assets/image/logo-white.svg" alt="MonstarLab">
+      </router-link>
 
-    <el-menu class="list-con" mode="horizontal">
-      <el-menu-item v-for="item in items" :key="item.id" index="item.id" class="list-item">
-        <router-link :to="item.url">{{item.name}}</router-link>
-      </el-menu-item>
-    </el-menu>
+      <el-menu class="list-con" mode="horizontal">
+        <el-menu-item v-for="item in items" :key="item.id" index="item.id" class="list-item">
+          <router-link :to="item.url">{{item.name}}</router-link>
+        </el-menu-item>
+      </el-menu>
+    </div>
   </nav>
 </template>
 
@@ -50,13 +52,17 @@
     left: 0;
     z-index: map-get($global-z-index, b);
     width: 100%;
-    max-width: map-get($global-width, break-point-lg);
     height: map-get($nav-height, a);
-    padding: 0 map-get($global-padding, a);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: map-get($global-color-base, secondary);
+    background-color: map-get($global-color-base, primary);
+    .wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width:map-get($global-width,break-point-lg);
+      margin: 0 auto;
+      padding: 0 map-get($global-padding, a);
+    }
   }
 
   .list-con {
@@ -77,6 +83,7 @@
   .el-menu--horizontal > .el-menu-item.is-active, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
     border-bottom: none;
   }
+
   .el-menu--horizontal .el-menu-item:hover, .el-menu--horizontal .el-menu-item:focus {
     background-color: transparent;
   }

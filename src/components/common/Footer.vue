@@ -1,9 +1,11 @@
 <template>
   <footer>
-    <router-link to="/products" class="board-con">
-      <img src="../../assets/image/logo-white.svg" alt="MonstarLab">
-    </router-link>
-    <p>Copyright (C) 梦思特科技(成都)有限公司. All Rights Reserved</p>
+    <div class="wrapper">
+      <router-link to="/products" class="board-con">
+        <img src="../../assets/image/logo-white.svg" alt="MonstarLab">
+      </router-link>
+      <p>Copyright (C) 梦思特科技(成都)有限公司. All Rights Reserved</p>
+    </div>
   </footer>
 </template>
 
@@ -17,13 +19,18 @@
   @import "../../assets/stylesheet/variable";
 
   footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3.5rem map-get($global-padding,a);
+    width: 100%;
     background-color: map-get($global-color-base, a);
-    color: map-get($global-color-base, b);
-
+    .wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: map-get($global-width,break-point-lg);
+      margin: 0 auto;
+      padding: 3.5rem map-get($global-padding,a);
+      color: map-get($global-color-base, b);
+    }
     img{
       opacity: .5;
     }
