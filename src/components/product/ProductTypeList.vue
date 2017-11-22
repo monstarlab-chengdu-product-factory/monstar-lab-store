@@ -1,7 +1,7 @@
 <template>
     <ul class="type-container">
-      <li v-for="type in types" :key="type.id" class="type-item click" >
-        <img v-bind:src="type.icon" alt="icon">
+      <li v-for="type in types" :key="type.id" class="type-item" v-bind:class="{click:active}" @click="on_click" >
+        <img v-bind:src='type.icon' alt='icon'>
         <div class="description-container"><h1>{{type.name}}</h1>
           <p>{{type.brief}}</p></div>
       </li>
@@ -14,14 +14,17 @@
     name: 'ProductTypeList',
     data: function () {
       return {
-        types: {}
+        types: {
+        },
+        active: false,
+        click: 'click'
       }
     },
-//    methods () {
-//      on_click () {
-//
-//      }
-//    },
+    methods: {
+      on_click () {
+        this.active = !this.active
+      }
+    },
     created () {
       let service = new ProductService()
       service.getProducts(this)
