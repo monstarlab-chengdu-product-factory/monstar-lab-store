@@ -4,12 +4,10 @@ theme/
 package-lock.json
 selenium-debug.log
 .idea/
-.DS_Store
 dist/
 npm-debug.log*
 yarn-debug.log*
 test/unit/coverage
 test/e2e/reports
 # Editor directories and files
-.idea
 .vscode
