@@ -1,7 +1,8 @@
 <template>
   <div class="product-list">
-    <order-title :proTitle="title"></order-title>
-    <product-type-tab></product-type-tab>
+    <ms-order-title :proTitle="title"></ms-order-title>
+    <ms-product-type-tab></ms-product-type-tab>
+    <ms-type-product-list :proButtonList="products" :proHideCheckbox="true" :proSize="'medium'"></ms-type-product-list>
     <div class="product-module">
     </div>
   </div>
@@ -20,17 +21,28 @@
 <script>
   import OrderTitle from '../order/OrderTitle'
   import ProductTypeTab from './ProductTypeTab'
+  import CheckButtonGroup from '../common/CheckButtonGroup'
+  import { ProductService } from './Product.service.js'
   export default {
     name: 'ProductList',
     components: {
-      'product-type-tab': ProductTypeTab,
-      'order-title': OrderTitle
+      'ms-product-type-tab': ProductTypeTab,
+      'ms-order-title': OrderTitle,
+      'ms-type-product-list': CheckButtonGroup
     },
     props: [],
     data () {
       return {
-        title: '第二步: 功能评估'
+        title: '第二步: 功能评估',
+        products: [{}]
       }
+    },
+    created () {
+      let service = new ProductService()
+      service.getProducts()
+        .then(data => {
+          this.products = data
+        })
     }
   }
 </script>

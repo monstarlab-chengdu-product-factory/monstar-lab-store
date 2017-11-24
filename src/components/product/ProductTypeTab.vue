@@ -1,10 +1,10 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <cat-selector-group :proButtonList="productTypes" @anySelectorSelected="getSubTypes"></cat-selector-group>
+      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
     </div>
     <div class="type-selector">
-      <type-selector-group :proButtonList="subTypes"></type-selector-group>
+      <type-selector-group :proButtonList="subTypes" :proSingleSelected="true"></type-selector-group>
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
   .product-type-tab {
     padding-top: rem(10px);
   }
+  
   .cat-selector {
     .selector-button {
       &.selected {

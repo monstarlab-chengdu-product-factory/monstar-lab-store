@@ -2,7 +2,7 @@
   <div class="selector-button-group">
     <ul>
       <li v-for="(button, index) in buttons" :key="button.id">
-        <selector-button :proLabel="button.name" :proIndex="index" @selectorSelected="anySelectorSelected" @selectorUnselected="anySelectorUnselected"/>
+        <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index" @selectorSelected="anySelectorSelected" @selectorUnselected="anySelectorUnselected"/>
       </li>
       <li v-if="proAppendAble" class="action-cell">
         <a href="#" class="action-add"><span class="icon icon-add">+</span></a>
@@ -26,6 +26,7 @@
   .action-cell {
     text-align: center;
   }
+  
   .action-add {
     @extend %smallActionButton;
   }
@@ -61,10 +62,17 @@
     },
     methods: {
       anySelectorSelected: function (selectorData) {
+        // let selectedRef = 'button' + selectorData.index
         if (this.proSingleSelected) {
-          this.buttons.foreach(function (value, index, array) {
+          let componentThis = this
+          componentThis.buttons.forEach(function (value, index, array) {
             if (selectorData.index !== index) {
-              value.selected = false
+              console.log(selectorData.index + ' | ' + index)
+              // componentThis.buttons[index].proSelected = false
+              // console.log(this.index)
+              // console.log(componentThis.$data.buttons[index].selected)
+              // console.log(this.proSingleSelected)
+              // array[index].selected = false
             }
           })
         }

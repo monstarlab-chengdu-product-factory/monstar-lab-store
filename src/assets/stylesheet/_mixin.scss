@@ -292,25 +292,29 @@
 /**********************************
 	triangle
 **********************************/
-@mixin triangle($direction: tl, $border-width: 20px, $color: #fff) {
+@mixin triangle($direction: tl, $border-width: 20px, $color: #fff, $border-radius: 0) {
   display: block;
   width: 0;
   height: 0;
   @if($direction == tl){
     border-top: rem($border-width) solid $color;
     border-right: rem($border-width) solid transparent;
+    border-top-left-radius: rem($border-radius);
   }
   @if($direction == tr){
     border-top: rem($border-width) solid $color;
     border-left: rem($border-width) solid transparent;
+    border-top-right-radius: rem($border-radius);
   }
   @if($direction == bl){
     border-bottom: rem($border-width) solid $color;
     border-right: rem($border-width) solid transparent;
+    border-bottom-left-radius: rem($border-radius);
   }
   @if($direction == br){
     border-bottom: rem($border-width) solid $color;
     border-left: rem($border-width) solid transparent;
+    border-bottom-right-radius: rem($border-radius);
   }
 }
 

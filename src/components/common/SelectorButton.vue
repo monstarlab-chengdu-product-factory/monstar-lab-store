@@ -29,7 +29,7 @@
       cursor: pointer;
     }
     .action-remove {
-      // @extend %smallActionButton;
+      @extend %smallActionButton;
       @include position-location ($top: 50%, $left: auto, $right: -21px);
       @include border-radius (8px);
       margin-top: rem(-8px);
@@ -85,6 +85,26 @@
         removeAble: this.proRemoveAble,
         editAble: this.proEditAble,
         index: this.proIndex
+      }
+    },
+    watch: {
+      proId (value) {
+        this.id = value
+      },
+      proLabel (value) {
+        this.label = value
+      },
+      proSelected (value) {
+        this.selected = value
+      },
+      proRemoveAble (value) {
+        this.removeAble = value
+      },
+      proEditAble (value) {
+        this.editAble = value
+      },
+      proIndex (value) {
+        this.index = value
       }
     },
     methods: {
