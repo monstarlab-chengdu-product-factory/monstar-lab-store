@@ -1,8 +1,9 @@
 image: node:8.9.1
-script:
-     - echo "Running npm install"
-     - npm install
-     - npm run dev
+CI:
+  script:
+       - echo "Running npm install"
+       - npm install
+       - npm run dev
 
 trigger_build:
   stage: deploy
