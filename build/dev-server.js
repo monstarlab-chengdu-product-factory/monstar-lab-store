@@ -75,7 +75,7 @@ var _reject
 var readyPromise = new Promise((resolve, reject) => {
   _resolve = resolve
   _reject = reject
-}).catch(error => { console.log('caught', error.message); });
+})
 
 var server
 var portfinder = require('portfinder')
