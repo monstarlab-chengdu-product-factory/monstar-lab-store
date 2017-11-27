@@ -1,36 +1,43 @@
 $global-color-base: (
-  primary:#2ba08e,
-  primary-dark:#174e46,
-  secondary:#0ba360,
-  third:#3cba92,
-  a:#2d2d2d,
-  b:dimgray,
-  c:#ccc,
+  primary: #2ba08e,
+  primary-dark: #174e46,
+  secondary: #0ba360,
+  third: #3cba92,
+  a: #2d2d2d,
+  b: #696969,
+  c:#dddddd,
+  d: #404040,
 );
 $global-color: (
-  border:map-get($global-color-base, c),
-  footer:map-get($global-color-base, a)
-);
-$global-padding: (
-  a:15px,
-);
-$global-z-index: (
-  a:10,
-  b:100,
-  c:1000,
-);
-$nav-height: (
-  a:60px,
-  b:48px,
+  border: map-get($global-color-base, c),
+  footer: map-get($global-color-base, a),
+  text-main: map-get($global-color-base, d),
 );
 $global-width: (
-  break-point-a: 1200px,
-  break-point-b: 782px,
-  break-point-c: 1000px,
-  break-point-d: 1000px,
-  a:1000px,
-  b:960px,
-  c:650px,
-  d:260px,
-  e:238px, //width of form
+  break-point-xs: 414px,
+  break-point-sm: 768px,
+  break-point-md: 992px,
+  break-point-lg: 1200px,
 );
+$nav-height: (
+  a: 60px,
+  b: 48px,
+);
+$global-padding: (
+  a: 15px,
+  b: 12px,
+);
+$global-z-index: (
+  a: 10,
+  b: 100,
+  c: 1000,
+);
+$global-animation-speed-base: .2s;
+$global-animation-speed: (
+  a: $global-animation-speed-base * 1,
+  b: $global-animation-speed-base * 2,
+  c: $global-animation-speed-base * 3,
+);
+$global-config: (
+  use-scaler-system:false,
+)

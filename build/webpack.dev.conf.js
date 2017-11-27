@@ -33,11 +33,11 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new FriendlyErrorsPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/assets/image',
-        to: 'static/img',
-      }
-    ])
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: 'src/assets/image',
+    //     to: 'static/img',
+    //   }
+    // ])
   ]
 })

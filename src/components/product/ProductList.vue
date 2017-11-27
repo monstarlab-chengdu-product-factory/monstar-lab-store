@@ -1,8 +1,6 @@
 <template>
   <div class="product-list">
-    <div class="product-type-tab">
-      <product-type-tab></product-type-tab>
-    </div>
+    <product-type-tab></product-type-tab>
     <div class="product-module">
     </div>
   </div>

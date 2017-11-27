@@ -1,13 +1,13 @@
 <template>
   <section class="commercial-con">
-    <div class="test">立即报价</div>
-    <carousel :autoplay="false" class="carousel-con">
+    <carousel :autoplay="false" class="carousel-con" :if="items">
       <carousel-item v-for="item in items" :key="item.id">
         <router-link to="/" class="link-item">
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <el-button type="primary">开始我的报价</el-button>
+            <router-link to="/product">{{buttonText}}</router-link>
+            <!--<el-button type="primary" @click="next">{{buttonText}}</el-button>-->
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
@@ -21,25 +21,29 @@
 <script>
   import { Carousel, CarouselItem } from 'element-ui'
   import { CommercialService } from './Commercial.service.js'
-
   export default {
     name: 'Commercial',
     data () {
       return {
-        items: {}
+        items: {},
+        buttonText: '开始我的报价'
       }
     },
+//    methods: {
+//      next () {
+//        this.$router.push({name: 'product'})
+//      }
+//    },
     components: {
       Carousel,
       CarouselItem
     },
     created () {
       let service = new CommercialService()
-      service.getCommercials(this)
-        .then(data => {
-          this.items = data
-        })
-//        .catch(console.error('vue error'))
+      service.getCommercials().then(data => {
+        this.items = data
+      })
+      //        .catch(console.error('vue error'))
     }
   }
 </script>
@@ -48,7 +52,11 @@
   @import "../../assets/stylesheet/variable";
 
   .commercial-con {
-    background: linear-gradient(-180deg, map-get($global-color-base,secondary) 0%, map-get($global-color-base, third) 100%);
+    background: linear-gradient(
+        -180deg,
+        map-get($global-color-base, secondary) 0%,
+        map-get($global-color-base, third) 100%
+    );
   }
 
   .link-item {

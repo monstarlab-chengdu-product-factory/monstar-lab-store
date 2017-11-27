@@ -1,28 +1,22 @@
 <template>
     <ul class="type-container">
-      <li v-for="type in types" :key="type.id" class="type-item" v-bind:class="{click:active}" @click="on_click" >
-        <img v-bind:src='type.icon' alt='icon'>
-        <div class="description-container"><h1>{{type.name}}</h1>
-          <p>{{type.brief}}</p></div>
+      <li v-for="type in types" :key="type.id" class="type-item "  >
+        <product-item :type="type"></product-item>
       </li>
     </ul>
 </template>
 
 <script>
   import {ProductService} from '../product/Product.service.js'
+  import ProductItem from '../product/ProductItem.vue'
   export default {
     name: 'ProductTypeList',
+    components: {
+      'product-item': ProductItem
+    },
     data: function () {
       return {
-        types: {
-        },
-        active: false,
-        click: 'click'
-      }
-    },
-    methods: {
-      on_click () {
-        this.active = !this.active
+        types: {}
       }
     },
     created () {
@@ -37,24 +31,16 @@
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
 .type-item{
-  width: 45%;
+  width: 30%;
   margin: 20px;
   position: relative;
   overflow:hidden;
-  height: 200px;
-
+  height: 300px;
   img{
     width: 100%;
     border-radius: 4px;
   }
-.description-container{
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  text-align: center;
 
-}
 }
 .type-container{
   width: 100%;
@@ -62,7 +48,4 @@
   display: flex;
   flex-wrap: wrap;
 }
-  .click{
-    border: 2px solid  map-get($global-color-base,primary);
-  }
 </style>
