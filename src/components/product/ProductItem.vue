@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <input type="checkbox" v-model="checkbox" :id="type.id">
+    <input type="checkbox" v-model="checkbox" :id="type.id" :value="type.id" @click="click()">
     <label v-bind:for="type.id">
       <img v-bind:src='type.icon' alt='icon'>
       <div class="description-container"><h1>{{type.name}}</h1>
@@ -11,22 +11,19 @@
 
 </template>
 <script>
-  import {ProductService} from '../product/Product.service.js'
   export default {
     name: 'ProductItem',
     props: ['type'],
     data: function () {
       return {
         types: {},
-        checkbox: false
+        checkbox: []
       }
     },
-    created () {
-      let service = new ProductService()
-      service.getProducts(this)
-        .then(data => {
-          this.types = data
-        })
+    methods: {
+      click () {
+        this.$emit('checkbox', this.checkbox)
+      }
     }
   }
   </script>

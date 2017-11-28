@@ -50,7 +50,6 @@
     left: 0;
     z-index: map-get($global-z-index, b);
     width: 100%;
-    max-width: map-get($global-width, break-point-lg);
     height: map-get($nav-height, a);
     padding: 0 map-get($global-padding, a);
     display: flex;

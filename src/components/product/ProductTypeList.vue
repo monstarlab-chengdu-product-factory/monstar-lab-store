@@ -1,7 +1,7 @@
 <template>
-    <ul class="type-container">
-      <li v-for="type in types" :key="type.id" class="type-item "  >
-        <product-item :type="type"></product-item>
+    <ul class="type-container" >
+      <li v-for="type in types" :key="type.id" class="type-item "   v-model="checkbox">
+        <product-item :type="type" v-on:checkbox="checkVal"></product-item>
       </li>
     </ul>
 </template>
@@ -16,7 +16,13 @@
     },
     data: function () {
       return {
-        types: {}
+        types: {},
+        checkbox: {}
+      }
+    },
+    methods: {
+      checkVal (value) {
+        this.checkbox = value
       }
     },
     created () {
