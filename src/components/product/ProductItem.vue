@@ -6,9 +6,7 @@
       <div class="description-container"><h1>{{type.name}}</h1>
         <p>{{type.brief}}</p></div>
     </label>
-
   </div>
-
 </template>
 <script>
   export default {

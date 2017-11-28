@@ -5,7 +5,7 @@
       <type-list></type-list>
     </div>
     <div class="next-button" >
-      <el-button type="primary" plain @click="next">下一步</el-button>
+      <el-button type="primary" plain @click="next" >下一步</el-button>
     </div>
   </div>
 </template>
