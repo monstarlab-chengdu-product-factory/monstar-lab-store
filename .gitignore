@@ -12,4 +12,3 @@ test/e2e/reports
 # Editor directories and files
 .vscode
 .gitignore
-package.json
