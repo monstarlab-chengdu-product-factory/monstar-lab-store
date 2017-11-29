@@ -1,6 +1,6 @@
 <template>
   <div class="order-step step1">
-    <order-title message="第一步: 项目类型"/>
+    <order-title :proTitle="title"></order-title>
     <type-selector-list/>
     <el-button type="primary">下一步</el-button>
   </div>
@@ -15,6 +15,11 @@
     components: {
       'order-title': OrderTitle,
       'type-selector-list': TypeSelectorList
+    },
+    data () {
+      return {
+        title: '第一步: 项目类型'
+      }
     }
   }
 </script>

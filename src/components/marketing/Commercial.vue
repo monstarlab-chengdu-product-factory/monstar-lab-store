@@ -6,7 +6,8 @@
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <el-button type="primary">{{buttonText}}</el-button>
+            <router-link to="/product">{{buttonText}}</router-link>
+            <!--<el-button type="primary" @click="next">{{buttonText}}</el-button>-->
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
@@ -16,11 +17,9 @@
     </carousel>
   </section>
 </template>
-
 <script>
   import { Carousel, CarouselItem } from 'element-ui'
   import { CommercialService } from './Commercial.service.js'
-
   export default {
     name: 'Commercial',
     data () {
@@ -29,6 +28,11 @@
         buttonText: '开始我的报价'
       }
     },
+//    methods: {
+//      next () {
+//        this.$router.push({name: 'product'})
+//      }
+//    },
     components: {
       Carousel,
       CarouselItem
@@ -36,7 +40,6 @@
     created () {
       let service = new CommercialService()
       service.getCommercials().then(data => {
-        console.log(data)
         this.items = data
       })
       //        .catch(console.error('vue error'))
