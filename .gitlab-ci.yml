@@ -1,0 +1,15 @@
+image: node:8.9.1
+cache:
+  path:
+    - node_modules
+
+CI:
+  script:
+       - echo "Running npm install"
+       - npm install
+       - npm run test
+
+trigger_build:
+  stage: deploy
+  script:
+    - "curl -X POST -F token=TOKEN -F ref=REF_NAME http://localhost:8087/api/v4/projects/1/trigger/pipeline"
