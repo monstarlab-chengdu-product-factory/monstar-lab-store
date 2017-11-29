@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import {
   Button,
   Select,
@@ -9,6 +10,7 @@ import {
 } from 'element-ui'
 import '../customize.scss'
 import './assets/stylesheet/style.scss'
+
 Vue.prototype.$ELEMENT = {size: 'medium'}
 Vue.use(Button)
 Vue.use(Select)
@@ -20,6 +22,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {App}
 })

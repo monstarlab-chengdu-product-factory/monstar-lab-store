@@ -5,59 +5,137 @@
         <p>类型 机能数88</p>
         <router-link to='/'>调整需求</router-link>
       </header>
-      <section class="table-con">
-        <el-row class="table-title">
-          <el-col :span="4">功能</el-col>
-          <el-col :span="20">
-            <el-col :span="5">模块</el-col>
-            <el-col :span="14">机能点</el-col>
-            <el-col :span="5">工时(人/日)</el-col>
-          </el-col>
-        </el-row>
+      <el-table
+        :data="store"
+        stripe
+        :span-method="objectSpanMethod"
+        border
+        show-summary
+        style="width: 100%">
+        <el-table-column
+          prop="id"
+          label="功能"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="模块"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="amount1"
+          label="机能点">
+        </el-table-column>
+        <el-table-column
+          prop=""
+          width="120"
+          label="工时(人/日)">
+          <template slot-scope="scope">
+            <el-button size="mini" @click="handleReduce(scope.$index, scope.row)">-</el-button>
+            <input value="5">
+            <el-button size="mini" @click="handleAdd(scope.$index, scope.row)">+</el-button>
+          </template>
 
-        <el-row v-for="data in datas" :key="data.id" class="table-main">
-          <el-col :span="4">{{data.functionType}}</el-col>
-          <el-col :span="20">
-            <el-col :span="5">
-              222
-            </el-col>
-            <el-col :span="14" class="story-list">
-              3333
-            </el-col>
-            <el-col :span="5">
-              <span>-</span>
-              <input class="input" value="3">
-              <span>+</span>
-            </el-col>
-          </el-col>
-        </el-row>
+        </el-table-column>
+      </el-table>
 
-        <el-row>
-          <el-col>预留BUFF<input value="20">% 项目单价 2000 元/人／日</el-col>
-          <el-col>工时合计</el-col>
-          <el-col>800</el-col>
-        </el-row>
+      <!--<el-row>-->
+      <!--<el-col>预留BUFF<input value="20">% 项目单价 2000 元/人／日</el-col>-->
+      <!--<el-col>工时合计</el-col>-->
+      <!--<el-col>800</el-col>-->
+      <!--</el-row>-->
 
-        <el-row>
-          <el-col :span="24">商品种类合计 ¥9999.88</el-col>
-        </el-row>
-      </section>
+      <!--<el-row>-->
+      <!--<el-col :span="24">商品种类合计 ¥9999.88</el-col>-->
+      <!--</el-row>-->
+      <!--</section>-->
     </div>
   </div>
 </template>
 <script>
+  import { mapMutations } from 'vuex'
+  import { Table, TableColumn } from 'element-ui'
   export default {
     name: 'OrderDetail',
+    components: {
+      elTable: Table,
+      elTableColumn: TableColumn
+    },
     data () {
       return {
-        datas: [{
-          functionType: '基本功能',
-          modules: [{
-            module: '第三方登录',
-            story: '微信 QQ 微博',
-            hour: '3'
-          }]
+        store: [{
+          id: '1',
+          functionTypeName: '基本功能',
+          title: '注册登录',
+          functionUnits: [
+            {
+              title: '登录',
+              unitPrice: 1000,
+              hour: 5
+            },
+            {
+              title: '注册',
+              unitPrice: 1000,
+              hour: 5
+            }
+          ]
         }]
+      }
+    },
+    methods: {
+      objectSpanMethod ({row, column, rowIndex, columnIndex}) {
+        if (columnIndex === 0) {
+          if (rowIndex % 2 === 0) {
+            return {
+              rowspan: 2,
+              colspan: 1
+            }
+          } else {
+            return {
+              rowspan: 0,
+              colspan: 0
+            }
+          }
+        }
+      },
+
+      getSummaries (param) {
+        const {columns, data} = param
+        const sums = []
+        columns.forEach((column, index) => {
+          if (index === 0) {
+            sums[index] = '总价'
+            return
+          }
+          const values = data.map(item => Number(item[column.property]))
+          if (!values.every(value => isNaN(value))) {
+            sums[index] = values.reduce((prev, curr) => {
+              const value = Number(curr)
+              if (!isNaN(value)) {
+                return prev + curr
+              } else {
+                return prev
+              }
+            }, 0)
+            sums[index] += ' 元'
+          } else {
+            sums[index] = 'N/A'
+          }
+        })
+
+        return sums
+      },
+
+      handleReduce (index, row) {
+        console.log(index, row)
+      },
+
+      ...mapMutations({
+        handleReduce: 'increment'
+      }),
+
+      handleAdd (index, row) {
+        console.log(index, row)
       }
     }
   }
@@ -65,41 +143,20 @@
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
 
-  $table-line-height: 60px;
-
-  .list-item {
-    border: 1px solid map-get($global-color-base, c);
-  }
-
   .table-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: $table-line-height;
+    height: 60px;
     padding: 0 map-get($global-padding, a);
     border-left: 5px solid map-get($global-color-base, primary);
     background-color: #fff;
     a {
-      padding: .5rem 1rem;
+      padding: 1rem 1.5rem;
       border-radius: 3px;
       background-color: map-get($global-color-base, primary);
       color: #fff;
-    }
-  }
-
-  .table-con {
-    line-height: $table-line-height;
-    .el-row {
-      border-top: 1px solid map-get($global-color-base, c);
-    }
-    .table-title {
-      border-top: 1px solid map-get($global-color-base, c);
-      line-height: 50px;
-      text-align: center;
-    }
-    .table-main {
-      background-color: #fff;
     }
   }
 
