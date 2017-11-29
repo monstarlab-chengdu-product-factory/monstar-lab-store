@@ -1,32 +1,27 @@
 <template>
   <div class="item">
-    <input type="checkbox" v-model="checkbox" :id="type.id">
+    <input type="checkbox" :id="type.id" :value="type.id" @click="click(type.id,$event)" >
     <label v-bind:for="type.id">
       <img v-bind:src='type.icon' alt='icon'>
       <div class="description-container"><h1>{{type.name}}</h1>
         <p>{{type.brief}}</p></div>
     </label>
-
   </div>
-
 </template>
 <script>
-  import {ProductService} from '../product/Product.service.js'
   export default {
     name: 'ProductItem',
     props: ['type'],
     data: function () {
       return {
-        types: {},
-        checkbox: false
+        types: {}
       }
     },
-    created () {
-      let service = new ProductService()
-      service.getProducts(this)
-        .then(data => {
-          this.types = data
-        })
+    methods: {
+      click (typeId, event) {
+        let checked = event.target.checked
+        this.$emit('checkbox', checked, typeId)
+      }
     }
   }
   </script>

@@ -11,11 +11,11 @@
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
-  
+
   .product-type-tab {
     padding-top: rem(10px);
   }
-  
+
   .cat-selector {
     .selector-button {
       &.selected {

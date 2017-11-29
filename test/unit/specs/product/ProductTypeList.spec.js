@@ -9,7 +9,4 @@ describe('ProductTypeList.vue', () => {
   it('ProductTypeList has img', () => {
     expect(vm.$el.querySelector('img'))
   })
-  // it('ProductTypeLIst has a click function', () => {
-  //   expect(typeof vm.methods.on_click).to.be.a('function')
-  // })
 })
