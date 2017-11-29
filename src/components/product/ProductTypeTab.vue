@@ -21,7 +21,7 @@
     props: [],
     data () {
       return {
-        productTypes: [{}]
+        productTypes: {}
       }
     },
     created () {

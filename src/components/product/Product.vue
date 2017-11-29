@@ -2,7 +2,7 @@
   <div class="product-container">
     <product-name name="第一步:项目类型"></product-name>
     <div class="product-type">
-      <type-list></type-list>
+      <type-list v-on:checkbox="getChecked"></type-list>
     </div>
     <div class="next-button" >
       <el-button type="primary" plain @click="next" >下一步</el-button>
@@ -13,6 +13,7 @@
 <script>
   import ProductName from './ProductName.vue'
   import ProductTypeList from './ProductTypeList.vue'
+//  import bus from './ProductItem.vue'
   export default {
     name: 'Product',
     components: {
@@ -25,6 +26,10 @@
       }
     },
     methods: {
+      getChecked (checkboxes) {
+        this.id = checkboxes
+        console.log(this.id)
+      },
       next () {
         this.$router.push({name: 'order', params: {id: this.id}})
       }

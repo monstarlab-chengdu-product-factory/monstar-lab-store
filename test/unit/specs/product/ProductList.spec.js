@@ -13,10 +13,7 @@ describe('ProductList.vue', () => {
   it('product-type-tab内应该有cat-selector的div', () => {
     expect(vm.$el.querySelector('.product-type-tab div.cat-selector'))
   })
-  it('product-type-tab内应该有type-selector的div', () => {
-    expect(vm.$el.querySelector('.product-type-tab div.type-selector'))
-  })
-  it('type-selector内应该有selector-button-group的div', () => {
-    expect(vm.$el.querySelector('.type-selector div.selector-button-group'))
-  })
+  // it('', () => {
+  //   expect(typeof vm.$el.components).to.be('function')
+  // })
 })

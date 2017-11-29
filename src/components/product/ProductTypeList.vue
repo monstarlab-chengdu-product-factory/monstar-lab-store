@@ -9,6 +9,7 @@
 <script>
   import {ProductService} from '../product/Product.service.js'
   import ProductItem from '../product/ProductItem.vue'
+
   export default {
     name: 'ProductTypeList',
     components: {
@@ -17,12 +18,17 @@
     data: function () {
       return {
         types: {},
-        checkbox: {}
+        checkbox: []
       }
     },
     methods: {
-      checkVal (value) {
-        this.checkbox = value
+      checkVal (checked, value) {
+        if (checked) {
+          this.checkbox.push(value)
+        } else {
+          this.checkbox.splice(this.checkbox.indexOf(value), 1)
+        }
+        this.$emit('checkbox', this.checkbox)
       }
     },
     created () {

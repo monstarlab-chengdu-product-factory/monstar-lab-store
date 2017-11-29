@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <input type="checkbox" v-model="checkbox" :id="type.id" :value="type.id" @click="click()">
+    <input type="checkbox" :id="type.id" :value="type.id" @click="click(type.id,$event)" >
     <label v-bind:for="type.id">
       <img v-bind:src='type.icon' alt='icon'>
       <div class="description-container"><h1>{{type.name}}</h1>
@@ -14,13 +14,13 @@
     props: ['type'],
     data: function () {
       return {
-        types: {},
-        checkbox: []
+        types: {}
       }
     },
     methods: {
-      click () {
-        this.$emit('checkbox', this.checkbox)
+      click (typeId, event) {
+        let checked = event.target.checked
+        this.$emit('checkbox', checked, typeId)
       }
     }
   }
