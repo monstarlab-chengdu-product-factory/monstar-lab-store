@@ -1,7 +1,7 @@
 <template>
-    <ul class="type-container">
-      <li v-for="type in types" :key="type.id" class="type-item "  >
-        <product-item :type="type"></product-item>
+    <ul class="type-container" >
+      <li v-for="type in types" :key="type.id" class="type-item "   v-model="checkbox">
+        <product-item :type="type" v-on:checkbox="checkVal"></product-item>
       </li>
     </ul>
 </template>
@@ -9,6 +9,7 @@
 <script>
   import {ProductService} from '../product/Product.service.js'
   import ProductItem from '../product/ProductItem.vue'
+
   export default {
     name: 'ProductTypeList',
     components: {
@@ -16,7 +17,18 @@
     },
     data: function () {
       return {
-        types: {}
+        types: {},
+        checkbox: []
+      }
+    },
+    methods: {
+      checkVal (checked, value) {
+        if (checked) {
+          this.checkbox.push(value)
+        } else {
+          this.checkbox.splice(this.checkbox.indexOf(value), 1)
+        }
+        this.$emit('checkbox', this.checkbox)
       }
     },
     created () {

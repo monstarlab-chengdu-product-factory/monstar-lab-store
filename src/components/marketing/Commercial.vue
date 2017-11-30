@@ -17,7 +17,6 @@
     </carousel>
   </section>
 </template>
-
 <script>
   import { Carousel, CarouselItem } from 'element-ui'
   import { CommercialService } from './Commercial.service.js'

@@ -1,0 +1,16 @@
+@import "variable";
+@import "function";
+@import "mixin";
+
+@mixin smallActionButton($btn-display: inline-block, $btn-width: 20px, $btn-height: 20px, $btn-line-height: 20px, $btn-bg-color: #fff, $btn-text-color: #000, $btn-text-align: center, $btn-font-size: 12px, $btn-border-radius: 0) {
+  @include box($display: $btn-display, $width: $btn-width, $height: $btn-height, $line-height: $btn-line-height, $text-align: $btn-text-align);
+  @include border-radius ($btn-border-radius);
+  @include font-size($btn-font-size);
+  background-color: $btn-bg-color;
+  color: $btn-text-color;
+}
+
+
+%smallActionButton {
+  @include smallActionButton($btn-width: 16px, $btn-height: 16px, $btn-line-height: 16px, $btn-bg-color: map-get($global-color-base, e), $btn-text-color: #fff, $btn-font-size: 10px, $btn-border-radius: 4px);
+}
