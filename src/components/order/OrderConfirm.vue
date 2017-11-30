@@ -38,6 +38,7 @@
     </div>
   </section>
 </template>
+
 <script>
   import OrderDetail from './OrderDetail'
   export default {
@@ -53,6 +54,7 @@
     }
   }
 </script>
+
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
 
