@@ -26,7 +26,7 @@
   .action-cell {
     text-align: center;
   }
-  
+
   .action-add {
     @extend %smallActionButton;
   }
@@ -67,7 +67,6 @@
           let componentThis = this
           componentThis.buttons.forEach(function (value, index, array) {
             if (selectorData.index !== index) {
-              console.log(selectorData.index + ' | ' + index)
               // componentThis.buttons[index].proSelected = false
               // console.log(this.index)
               // console.log(componentThis.$data.buttons[index].selected)

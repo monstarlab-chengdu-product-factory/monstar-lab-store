@@ -2,6 +2,7 @@
   <div class="product-type-tab">
     <div class="cat-selector">
       <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
+      <el-button class="change" plain type="primary">修改平台</el-button>
     </div>
     <div class="type-selector">
       <type-selector-group :proButtonList="subTypes" :proSingleSelected="true"></type-selector-group>
@@ -17,7 +18,8 @@
   }
 
   .cat-selector {
-    .selector-button {
+    position: relative;
+  .selector-button {
       &.selected {
         &:after {
           display: none;
@@ -27,6 +29,14 @@
     + .type-selector {
       margin-top: rem(10px);
     }
+      .change{
+        position: absolute;
+        right: 0;
+        width: 158px;
+        height: 48px;
+        top:0;
+
+      }
   }
 </style>
 
