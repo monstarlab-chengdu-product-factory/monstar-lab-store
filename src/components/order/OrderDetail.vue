@@ -1,90 +1,103 @@
 <template>
   <div class="list-con">
-    <div class="list-item">
+    <div class="list-item" v-for="p in products" :key="p.id">
       <header class="table-header">
-        <p>类型 机能数88</p>
+        <p>{{p.firstClassName}} 机能数88</p>
         <router-link to='/'>调整需求</router-link>
       </header>
+
       <el-table
-        :data="store"
+        :data="p.secondary"
         stripe
         :span-method="objectSpanMethod"
         border
         show-summary
         style="width: 100%">
         <el-table-column
-          prop="id"
+          prop="secondaryClassName"
           label="功能"
           width="120">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="thirdClassName"
           label="模块"
           width="120">
         </el-table-column>
         <el-table-column
-          prop="amount1"
+          prop="productsName"
           label="机能点">
+
         </el-table-column>
         <el-table-column
-          prop=""
-          width="120"
-          label="工时(人/日)">
+          prop="hour"
+          width="160"
+          label="工时(人/日)"
+          class-name="hour-col">
           <template slot-scope="scope">
-            <el-button size="mini" @click="decrement(scope.$index, scope.row)">-</el-button>
-            <input type="number" :value="count">
-            <el-button size="mini" @click="increment(scope.$index, scope.row)">+</el-button>
+            <el-input-number v-model="count" @change="handleChange" :min="1" :max="100" size="mini"></el-input-number>
           </template>
 
         </el-table-column>
       </el-table>
 
-      <!--<el-row>-->
-      <!--<el-col>预留BUFF<input value="20">% 项目单价 2000 元/人／日</el-col>-->
-      <!--<el-col>工时合计</el-col>-->
-      <!--<el-col>800</el-col>-->
-      <!--</el-row>-->
+      <el-row>
+        <el-col>预留BUFF<input value="20">% 项目单价 2000 元/人／日</el-col>
+        <el-col>工时合计</el-col>
+        <el-col>800</el-col>
+      </el-row>
 
-      <!--<el-row>-->
-      <!--<el-col :span="24">商品种类合计 ¥9999.88</el-col>-->
-      <!--</el-row>-->
-      <!--</section>-->
+      <el-row>
+        <el-col :span="24">商品种类合计 ¥9999.88</el-col>
+      </el-row>
     </div>
   </div>
 </template>
 <script>
-  import { Table, TableColumn } from 'element-ui'
+  import { Table, TableColumn, InputNumber } from 'element-ui'
 
   export default {
     name: 'OrderDetail',
     components: {
       elTable: Table,
-      elTableColumn: TableColumn
+      elTableColumn: TableColumn,
+      elInputNumber: InputNumber
     },
     data () {
       return {
-        store: [{
-          id: '1',
-          functionTypeName: '基本功能',
-          title: '注册登录',
-          functionUnits: [
-            {
-              title: '登录',
-              unitPrice: 1000,
-              hour: 5
-            },
-            {
-              title: '注册',
-              unitPrice: 1000,
-              hour: 5
-            }
-          ]
-        }]
-      }
-    },
-    computed: {
-      count () {
-        return this.$store.state.count
+        count: 1,
+        total: {
+          price: 19922.00
+        },
+        products: [
+          {
+            id: 1,
+            firstClassName: 'web服务',
+            secondary: [
+              {
+                id: 1,
+                parentId: 1,
+                secondaryClassName: '基本功能',
+                thirdClassName: '前台注册登录',
+                productsName: [
+                  '登录', '注册'
+                ]
+              },
+              {
+                id: 2,
+                parentId: 1,
+                secondaryClassName: '基本功能',
+                thirdClassName: '前台注册登录',
+                productsName: [
+                  '登录', '注册'
+                ]
+              }
+            ]
+          },
+          {
+            id: 2,
+            firstClassName: 'ios服务'
+          }
+        ]
       }
     },
     methods: {
@@ -103,7 +116,6 @@
           }
         }
       },
-
       getSummaries (param) {
         const {columns, data} = param
         const sums = []
@@ -127,18 +139,12 @@
             sums[index] = 'N/A'
           }
         })
-
         return sums
       },
-
-      increment () {
-        this.$store.commit('increment')
-      },
-
-      decrement () {
-        this.$store.commit('decrement')
+      handleChange (value) {
+        console.log(value)
+//        this.$store.commit('count')
       }
-
     }
   }
 </script>
@@ -162,5 +168,19 @@
       color: #fff;
     }
   }
+
+  .list-item {
+    margin-bottom: 4em;
+  }
+
+  .hour-col{
+    background-color: #000;
+    text-align: center;
+    .el-input-number--mini {
+      width: 100px;
+    }
+  }
+
+
 
 </style>

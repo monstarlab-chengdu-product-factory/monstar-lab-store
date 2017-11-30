@@ -41,3 +41,11 @@ p {
   min-height: 100%;
   padding-top: map-get($nav-height, a);
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"]{
+  -moz-appearance: textfield;
+}
