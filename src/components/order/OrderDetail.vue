@@ -31,9 +31,9 @@
           width="120"
           label="工时(人/日)">
           <template slot-scope="scope">
-            <el-button size="mini" @click="handleReduce(scope.$index, scope.row)">-</el-button>
-            <input value="5">
-            <el-button size="mini" @click="handleAdd(scope.$index, scope.row)">+</el-button>
+            <el-button size="mini" @click="decrement(scope.$index, scope.row)">-</el-button>
+            <input type="number" :value="count">
+            <el-button size="mini" @click="increment(scope.$index, scope.row)">+</el-button>
           </template>
 
         </el-table-column>
@@ -53,8 +53,8 @@
   </div>
 </template>
 <script>
-  import { mapMutations } from 'vuex'
   import { Table, TableColumn } from 'element-ui'
+
   export default {
     name: 'OrderDetail',
     components: {
@@ -80,6 +80,11 @@
             }
           ]
         }]
+      }
+    },
+    computed: {
+      count () {
+        return this.$store.state.count
       }
     },
     methods: {
@@ -126,20 +131,18 @@
         return sums
       },
 
-      handleReduce (index, row) {
-        console.log(index, row)
+      increment () {
+        this.$store.commit('increment')
       },
 
-      ...mapMutations({
-        handleReduce: 'increment'
-      }),
-
-      handleAdd (index, row) {
-        console.log(index, row)
+      decrement () {
+        this.$store.commit('decrement')
       }
+
     }
   }
 </script>
+
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
 
