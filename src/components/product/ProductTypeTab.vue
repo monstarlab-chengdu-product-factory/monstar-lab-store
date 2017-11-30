@@ -33,11 +33,12 @@
 <script>
   import { ProductTypesService } from './ProductTypes.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
+  import SubGroup from '../product/SubGroup'
   export default {
     name: 'ProductTypeTab',
     components: {
       'cat-selector-group': SelectorButtonGroup,
-      'type-selector-group': SelectorButtonGroup
+      'type-selector-group': SubGroup
     },
     props: {},
     data () {

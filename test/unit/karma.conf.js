@@ -32,7 +32,7 @@ module.exports = function (config) {
       '/api/navs': `${apiHost}/api/navs`,
       '/api/commercials': `${apiHost}/api/commercials`,
       '/api/products': `${apiHost}/api/products`,
-      '/api/productTypes': `${apiHost}/api/productTypes`,
+      '/api/productTypes': `${apiHost}/api/productTypes`
     },
     webpack: webpackConfig,
     webpackMiddleware: {

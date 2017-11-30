@@ -10,7 +10,7 @@
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
-  
+
   .product-list {
     width: rem(1200px);
     margin: 0 auto;
