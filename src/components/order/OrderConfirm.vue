@@ -18,11 +18,6 @@
             <h3>价目概览</h3>
             <ul>
               <li>pintai:price</li>
-              <li>pintai:price</li>
-              <li>pintai:price</li>
-              <li>pintai:price</li>
-              <li>pintai:price</li>
-              <li>pintai:price</li>
             </ul>
           </el-col>
         </el-row>
