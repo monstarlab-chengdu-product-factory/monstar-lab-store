@@ -1,12 +1,17 @@
 <template>
-  <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
-    <span v-show="!editAble">{{ label }}</span>
-    <input v-show="editAble" type="text" v-model="label">
-    <span class="icon icon-checked"></span>
-  </el-checkbox>
+  <div>
+    <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
+      <span v-show="!editAble">{{ label }}</span>
+      <input v-show="editAble" type="text" v-model="label">
+      <span class="icon icon-checked"></span>
+    </el-checkbox>
+    <el-button class="child-button">whs</el-button>
+  </div>
+
 </template>
 
 <script>
+  import SelectorButtonGroup from './SelectorButtonGroup.vue'
   export default {
     name: 'CheckButton',
     props: {

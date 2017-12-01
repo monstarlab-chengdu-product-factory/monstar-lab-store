@@ -50,7 +50,7 @@
 <style lang='scss' scoped>
   @import "../../assets/stylesheet/_variable.scss";
   .item {
-    width: 14rem;
+    min-width: 14rem;
     height: 4rem;
     line-height: 4rem;
     position: relative;
