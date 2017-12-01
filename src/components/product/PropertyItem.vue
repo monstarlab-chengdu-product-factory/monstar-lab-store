@@ -8,15 +8,15 @@
 </template>
 <script>
   export default {
-    name: 'FunctionItem',
+    name: 'PropertyItem',
     props: {
-      function: {},
-      functionItems: {}
+      property: {},
+      propertyItems: {}
     },
     data () {
       return {
-        properties: this.function,
-        items: this.functionItems
+        properties: this.property,
+        items: this.propertyItems
       }
     }
 

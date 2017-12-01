@@ -1,12 +1,12 @@
 <template>
   <div class="product-list">
-    <ms-order-title :proTitle="title"></ms-order-title>
-    <ms-product-type-tab></ms-product-type-tab>
+    <order-title :proTitle="title"></order-title>
+    <product-type-tab></product-type-tab>
     <el-row class="model-title" :gutter="20">
-      <el-col v-for="item in table" :span="3">{{item.name}}</el-col>
+      <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
       <el-button class="all">全选</el-button>
     </el-row>
-    <ms-type-product-list :proButtonList="products" :proHideCheckbox="true" :proSize="'medium'"></ms-type-product-list>
+    <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
     <div class="product-module">
     </div>
   </div>
@@ -16,18 +16,21 @@
   import ProductTypeTab from './ProductTypeTab'
   import CheckButtonGroup from '../common/CheckButtonGroup'
   import { ProductService } from './Product.service.js'
+  import Products from '../../api/property.js'
   export default {
     name: 'ProductList',
     components: {
-      'ms-product-type-tab': ProductTypeTab,
-      'ms-order-title': OrderTitle,
-      'ms-type-product-list': CheckButtonGroup
+      'product-type-tab': ProductTypeTab,
+      'order-title': OrderTitle,
+      'type-product-list': CheckButtonGroup
     },
     props: [],
     data () {
       return {
         title: '第二步: 功能评估',
         products: [{}],
+        property: {
+        },
         table: [
           {'name': '模块'},
           {'name': '机能'}
@@ -35,11 +38,15 @@
       }
     },
     created () {
-      let service = new ProductService()
-      service.getProducts()
+      let productService = new ProductService()
+      productService.getProducts()
         .then(data => {
           this.products = data
         })
+      Products.getProperties(properties => {
+        this.property = properties
+        console.log(this.property)
+      })
     }
   }
 </script>
