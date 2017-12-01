@@ -22,11 +22,9 @@
       }
     }
   }
-
   .action-cell {
     text-align: center;
   }
-
   .action-add {
     @extend %smallActionButton;
   }

@@ -5,15 +5,18 @@
       <input v-show="editAble" type="text" v-model="label">
       <span class="icon icon-checked"></span>
     </el-checkbox>
-    <el-button class="child-button">whs</el-button>
+    <button-group class="child-button" :proLabel="title" :proIndex="index">whs</button-group>
   </div>
 
 </template>
 
 <script>
-  import SelectorButtonGroup from './SelectorButtonGroup.vue'
+  import SelectorButton from './SelectorButton'
   export default {
     name: 'CheckButton',
+    components: {
+      'button-group': SelectorButton
+    },
     props: {
       proId: {
       },
@@ -28,7 +31,8 @@
       proIndex: {
       },
       proSize: {
-      }
+      },
+      subButton: {}
     },
     data () {
       return {
@@ -37,7 +41,8 @@
         label: this.proLabel,
         editAble: this.proEditAble,
         index: this.proIndex,
-        size: this.proSize
+        size: this.proSize,
+        title: this.subButton
       }
     },
     watch: {
