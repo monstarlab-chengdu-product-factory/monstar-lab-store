@@ -19,9 +19,7 @@
         items: this.propertyItems
       }
     }
-
   }
-
 </script>
 <style lang='scss' scoped>
 
