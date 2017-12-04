@@ -5,7 +5,7 @@
       <input v-show="editAble" type="text" v-model="label">
       <span class="icon icon-checked"></span>
     </el-checkbox>
-    <button-group class="child-button" :proLabel="title" :proIndex="index"></button-group>
+    <button-group class="child-button" :proLabel="title.title" :proIndex="index" v-for="title in titles" :key="title.id"></button-group>
   </div>
 </template>
 <script>
@@ -40,7 +40,7 @@
         editAble: this.proEditAble,
         index: this.proIndex,
         size: this.proSize,
-        title: this.subButton
+        titles: this.subButton
       }
     },
     watch: {
@@ -110,6 +110,7 @@
     margin: 10px 0;
   }
   .selector-button{
+    margin: 0 10px;
     height: 34px;
     line-height: 34px;
     width: auto;

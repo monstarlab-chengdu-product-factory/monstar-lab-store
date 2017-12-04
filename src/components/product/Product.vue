@@ -31,7 +31,7 @@
         console.log(this.id)
       },
       next () {
-        this.$router.push({name: 'products', params: {id: this.id}})
+        this.$router.push({name: 'productList', params: {id: this.id}})
       }
     }
   }
