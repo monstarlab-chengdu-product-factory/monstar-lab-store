@@ -12,7 +12,7 @@
       <router-link to="/">跳过其他功能进入下一平台</router-link>
     </div>
   </div>
-</template>s
+</template>
 <script>
   import OrderTitle from '../order/OrderTitle'
   import ProductTypeTab from './ProductTypeTab'

@@ -5,7 +5,7 @@
       <input v-show="editAble" type="text" v-model="label">
       <span class="icon icon-checked"></span>
     </el-checkbox>
-    <button-group class="child-button" :proLabel="title.title" :proIndex="index" v-for="title in titles"></button-group>
+    <button-group class="child-button" :proLabel="title.title" :proIndex="index" v-for="title in titles" :key="title.id"></button-group>
   </div>
 </template>
 <script>
