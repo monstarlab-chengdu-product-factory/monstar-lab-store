@@ -1,8 +1,7 @@
 <template>
   <div>
     <el-row type="flex" :gutter="20">
-      <el-col v-for="(label,index) in labels" :span="2" class="item" :key="index" :class="{editing:label===edited}"
-             >
+      <el-col v-for="(label,index) in labels" :span="2" class="item" :key="index" :class="{editing:label===edited}">
         <label @dblclick="edit(label)" @keyup.enter="edit(label)" :class="{active:index==num}"  @click="tab(index)">{{ label.name }}</label>
         <input type="text"  @keyup="edit(label)" v-model="label.name" @keyup.enter="edit(label)" @blur="edit(label)"
                @keyup.esc="cancel(label)" class="edit">
