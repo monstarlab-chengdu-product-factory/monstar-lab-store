@@ -1,6 +1,5 @@
 <template>
-  <div class="selector-button-group">
-    <ul>
+    <ul class="selector-button-group">
       <li v-for="(button, index) in buttons" :key="button.id">
         <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index" @selectorSelected="anySelectorSelected" @selectorUnselected="anySelectorUnselected"/>
       </li>
@@ -8,18 +7,15 @@
         <a href="#" class="action-add"><span class="icon icon-add">+</span></a>
       </li>
     </ul>
-  </div>
 </template>
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
 
   .selector-button-group {
-    ul {
       @include flexbox($justify-content: left);
       li {
         margin-right: rem(30px);
-      }
     }
   }
   .action-cell {

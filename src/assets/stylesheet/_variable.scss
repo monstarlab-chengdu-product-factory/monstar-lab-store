@@ -13,7 +13,7 @@ $global-color-base: (
 );
 
 $global-color: (
-  border: map-get($global-color-base, c),
+  border: map-get($global-color-base, primary),
   footer: map-get($global-color-base, a),
   text-main: map-get($global-color-base, d),
 );

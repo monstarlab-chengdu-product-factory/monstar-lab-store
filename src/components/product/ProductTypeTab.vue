@@ -2,7 +2,10 @@
   <div class="product-type-tab">
     <div class="cat-selector">
       <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
-      <el-button class="change" plain type="primary">修改平台</el-button>
+      <el-button class="change" plain type="primary" @click="change">{{alternative?'保存':'修改平台'}}</el-button>
+      <div class="alternative" v-if="alternative">
+        <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
+      </div>
     </div>
     <div class="type-selector">
       <type-selector-group :proButtonList="subTypes" :proSingleSelected="true"></type-selector-group>
@@ -11,14 +14,30 @@
 </template>
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
-
+  @import "../../assets/stylesheet/_variable.scss";
   .product-type-tab {
     padding-top: rem(10px);
   }
+.alternative{
+  margin:10px 0;
+  .selector-button-group{
+    li{
+      width: 210px;
+      height: 89px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed map_get($global-color-base,c);
+    }
 
+  }
+}
   .cat-selector {
     position: relative;
-  .selector-button {
+    .selector-button {
+      width: 150px;
+      line-height: 48px;
+      height: 48px;
       &.selected {
         &:after {
           display: none;
@@ -42,11 +61,11 @@
   import { ProductTypesService } from './ProductTypes.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
-  import Vue from 'vue'
-  import {
-    Button
-  } from 'element-ui'
-  Vue.use(Button)
+//  import Vue from 'vue'
+//  import {
+//    Button
+//  } from 'element-ui'
+//  Vue.use(Button)
   export default {
     name: 'ProductTypeTab',
     components: {
@@ -57,7 +76,8 @@
     data () {
       return {
         productTypes: [{}],
-        subTypes: [{}]
+        subTypes: [{}],
+        alternative: false
       }
     },
     created () {
@@ -73,7 +93,12 @@
     methods: {
       getSubTypes: function (typeData) {
         this.subTypes = this.productTypes[typeData.index].functions
+      },
+      change () {
+        console.log('click')
+        this.alternative = !this.alternative
       }
     }
+
   }
 </script>
