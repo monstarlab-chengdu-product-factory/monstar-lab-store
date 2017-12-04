@@ -91,6 +91,14 @@
     margin: 60px 0;
     width: 100%;
     text-align: center;
+  a{
+    display: block;
+    line-height: 2;
+    color:map_get($global-color-base,f);
+  &:hover{
+     text-decoration: underline;
+   }
+  }
   }
   .function-next{
     width: 300px;
@@ -98,12 +106,5 @@
     font-size: 18px;
     font-weight:300;
   }
-  .router-link-active{
-    display: block;
-    line-height: 2;
-    color:map_get($global-color-base,f);
-    &:hover{
-       text-decoration: underline;
-     }
-  }
+
 </style>
