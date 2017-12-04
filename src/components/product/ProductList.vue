@@ -7,10 +7,12 @@
       <el-button class="all">全选</el-button>
     </el-row>
     <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
-    <div class="product-module">
+    <div class="next-button">
+      <el-button type="primary" plain  class="function-next">下一步</el-button>
+      <router-link to="/">跳过其他功能进入下一平台</router-link>
     </div>
   </div>
-</template>
+</template>s
 <script>
   import OrderTitle from '../order/OrderTitle'
   import ProductTypeTab from './ProductTypeTab'
@@ -84,5 +86,24 @@
     color: map_get($global-color-base,primary);
     background-color: #ffffff;
     border: solid 1px map_get($global-color-base,c);
+  }
+  .next-button{
+    margin: 60px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .function-next{
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    font-weight:300;
+  }
+  .router-link-active{
+    display: block;
+    line-height: 2;
+    color:map_get($global-color-base,f);
+    &:hover{
+       text-decoration: underline;
+     }
   }
 </style>
