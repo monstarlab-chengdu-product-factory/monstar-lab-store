@@ -1,7 +1,7 @@
 <template>
   <el-checkbox-group :size="size">
     <check-button v-for="(button, index) in buttons" :key="button.id" :proHideCheckbox="hideCheckbox" :proLabel="button.title" :proIndex="index"
-                  :subButton="button.functionUnits.title"></check-button>
+                  :subButton="button.functionUnits[0].title"></check-button>
   </el-checkbox-group>
 </template>
 
@@ -10,6 +10,7 @@
   .el-checkbox-group{
     width: 100%;
     display: flex;
+    flex-direction: column;
      margin: 20px 0;
   }
 </style>

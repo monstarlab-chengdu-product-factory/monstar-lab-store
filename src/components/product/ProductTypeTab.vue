@@ -9,7 +9,6 @@
     </div>
   </div>
 </template>
-
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
 
@@ -39,7 +38,6 @@
       }
   }
 </style>
-
 <script>
   import { ProductTypesService } from './ProductTypes.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'

@@ -1,15 +1,13 @@
 <template>
-  <div>
+  <div class="checkbox-group">
     <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
       <span v-show="!editAble">{{ label }}</span>
       <input v-show="editAble" type="text" v-model="label">
       <span class="icon icon-checked"></span>
     </el-checkbox>
-    <button-group class="child-button" :proLabel="title" :proIndex="index">whs</button-group>
+    <button-group class="child-button" :proLabel="title" :proIndex="index"></button-group>
   </div>
-
 </template>
-
 <script>
   import SelectorButton from './SelectorButton'
   export default {
@@ -74,7 +72,11 @@
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
   .el-checkbox {
+    margin-right: 20px;
+    width: 100px;
+    height: 40px;
     overflow: hidden;
+
   &.hide-checkbox {
      background-color: #fff;
      position: relative;
@@ -102,5 +104,16 @@
   }
   }
   }
+  }
+  .checkbox-group{
+    display: flex;
+    margin: 10px 0;
+  }
+  .selector-button{
+    height: 34px;
+    line-height: 34px;
+    width: auto;
+    min-width: 84px;
+
   }
 </style>

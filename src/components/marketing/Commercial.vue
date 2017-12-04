@@ -53,7 +53,7 @@
   .commercial-con {
     background: linear-gradient(
         -180deg,
-        map-get($global-color-base, secondary) 0%,
+        map-get($global-color-base, primary) 0%,
         map-get($global-color-base, third) 100%
     );
   }
@@ -63,10 +63,13 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    max-width: map-get($global-width, break-point-lg);
     height: 100%;
+    margin: 0 auto;
+    padding: 0 map-get($global-padding, a);
     color: #fff;
     .text-con {
-      padding-left: 8rem;
+      width: 40%;
       h1 {
         padding-bottom: 2rem;
       }
@@ -74,9 +77,24 @@
         padding-bottom: 4rem;
         font-size: 2rem;
       }
+      a{
+        display: block;
+        width: 15rem;
+        padding: 1rem 0;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        font-weight: 400;
+        text-align: center;
+        color: #fff;
+        &:hover{
+          color: map-get($global-color,text-main);
+          background-color: #fff;
+        }
+      }
     }
     .img-con {
-      padding-right: 8rem;
+      width: 60%;
+      text-align: center;
     }
   }
 </style>
