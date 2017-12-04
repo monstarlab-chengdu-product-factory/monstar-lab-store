@@ -18,6 +18,12 @@
 
 <script>
   import CheckButton from './CheckButton'
+  import Vue from 'vue'
+  import {
+    CheckboxGroup
+  } from 'element-ui'
+  Vue.use(CheckboxGroup)
+
   export default {
     name: 'CheckButtonGroup',
     components: {

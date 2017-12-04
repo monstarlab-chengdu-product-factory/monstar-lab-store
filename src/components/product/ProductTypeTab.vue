@@ -42,6 +42,11 @@
   import { ProductTypesService } from './ProductTypes.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
+  import Vue from 'vue'
+  import {
+    Button
+  } from 'element-ui'
+  Vue.use(Button)
   export default {
     name: 'ProductTypeTab',
     components: {
