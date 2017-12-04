@@ -19,12 +19,9 @@
   import CheckButtonGroup from '../common/CheckButtonGroup'
   import { ProductService } from './Product.service.js'
   import Products from '../../api/property.js'
-  import VueRouter from 'vue-router'
-  const router = new VueRouter()
   export default {
     name: 'ProductList',
     components: {
-      router,
       'product-type-tab': ProductTypeTab,
       'order-title': OrderTitle,
       'type-product-list': CheckButtonGroup
