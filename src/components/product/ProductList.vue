@@ -9,7 +9,7 @@
     <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
     <div class="next-button">
       <el-button type="primary" plain  class="function-next">下一步</el-button>
-      <router-link to="/">跳过其他功能进入下一平台</router-link>
+      <a href="#">跳过其他功能进入下一平台</a>
     </div>
   </div>
 </template>
