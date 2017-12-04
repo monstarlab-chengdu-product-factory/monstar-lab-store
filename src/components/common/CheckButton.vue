@@ -1,48 +1,20 @@
 <template>
-  <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
-    <span v-show="!editAble">{{ label }}</span>
-    <input v-show="editAble" type="text" v-model="label">
-    <span class="icon icon-checked"></span>
-  </el-checkbox>
+  <div class="checkbox-group">
+    <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
+      <span v-show="!editAble">{{ label }}</span>
+      <input v-show="editAble" type="text" v-model="label">
+      <span class="icon icon-checked"></span>
+    </el-checkbox>
+    <button-group class="child-button" :proLabel="title" :proIndex="index"></button-group>
+  </div>
 </template>
-
-<style lang="scss">
-  @import "../../assets/stylesheet/components_import";
-  .el-checkbox {
-    overflow: hidden;
-    &.hide-checkbox {
-      background-color: #fff;
-      position: relative;
-      &.is-checked {
-        color: #fff;
-        background-color: map-get($global-color-base, primary);
-        border-color: map-get($global-color-base, primary);
-        &:after {
-          content: "";
-          @include triangle($direction: br, $border-width: 14px);
-          @include position-location ($top: auto, $bottom: 0, $left: auto, $right: 0);
-        }
-      }
-      .el-checkbox__inner {
-        display: none;
-      }
-      .el-checkbox__label {
-        padding-left: 8px;
-      }
-      .el-checkbox__input {
-        &.is-checked {
-           &+ .el-checkbox__label {
-             color: #fff;
-           }
-        }
-      }
-    }
-  }
-</style>
-
 <script>
+  import SelectorButton from './SelectorButton'
   export default {
     name: 'CheckButton',
+    components: {
+      'button-group': SelectorButton
+    },
     props: {
       proId: {
       },
@@ -57,7 +29,8 @@
       proIndex: {
       },
       proSize: {
-      }
+      },
+      subButton: {}
     },
     data () {
       return {
@@ -66,7 +39,8 @@
         label: this.proLabel,
         editAble: this.proEditAble,
         index: this.proIndex,
-        size: this.proSize
+        size: this.proSize,
+        title: this.subButton
       }
     },
     watch: {
@@ -95,3 +69,51 @@
     }
   }
 </script>
+<style lang="scss">
+  @import "../../assets/stylesheet/components_import";
+  .el-checkbox {
+    margin-right: 20px;
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+
+  &.hide-checkbox {
+     background-color: #fff;
+     position: relative;
+  &.is-checked {
+     color: #fff;
+     background-color: map-get($global-color-base, primary);
+     border-color: map-get($global-color-base, primary);
+  &:after {
+     content: "";
+   @include triangle($direction: br, $border-width: 14px);
+   @include position-location ($top: auto, $bottom: 0, $left: auto, $right: 0);
+   }
+  }
+  .el-checkbox__inner {
+    display: none;
+  }
+  .el-checkbox__label {
+    padding-left: 8px;
+  }
+  .el-checkbox__input {
+  &.is-checked {
+  &+ .el-checkbox__label {
+       color: #fff;
+     }
+  }
+  }
+  }
+  }
+  .checkbox-group{
+    display: flex;
+    margin: 10px 0;
+  }
+  .selector-button{
+    height: 34px;
+    line-height: 34px;
+    width: auto;
+    min-width: 84px;
+
+  }
+</style>

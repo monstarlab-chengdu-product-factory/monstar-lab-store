@@ -1,24 +1,37 @@
 <template>
   <el-checkbox-group :size="size">
-    <ms-check-button v-for="(button, index) in buttons" :key="button.id" :proHideCheckbox="hideCheckbox" :proLabel="button.name" :proIndex="index"></ms-check-button>
+    <check-button v-for="(button, index) in buttons" :key="button.id" :proHideCheckbox="hideCheckbox" :proLabel="button.title" :proIndex="index"
+                  :subButton="button.functionUnits[0].title"></check-button>
   </el-checkbox-group>
 </template>
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
+  .el-checkbox-group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+     margin: 20px 0;
+  }
 </style>
 
 
 <script>
   import CheckButton from './CheckButton'
+  import Vue from 'vue'
+  import {
+    CheckboxGroup
+  } from 'element-ui'
+  Vue.use(CheckboxGroup)
+
   export default {
     name: 'CheckButtonGroup',
     components: {
-      'ms-check-button': CheckButton
+      'check-button': CheckButton
     },
     props: {
       proSize: {
-        default: 'small'
+        default: 'big'
       },
       proAppendAble: {
         default: false

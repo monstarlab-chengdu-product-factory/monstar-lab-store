@@ -107,6 +107,7 @@ var navs = appData.navs
 var commercials = appData.commercials
 var products = appData.products
 var productTypes = appData.productTypes
+var property = appData.property
 
 var apiRoutes = express.Router()
 
@@ -124,6 +125,9 @@ apiRoutes.get('/products', function (req, res) {
 
 apiRoutes.get('/productTypes', function (req, res) {
   res.json(productTypes)
+})
+apiRoutes.get('/property', function (req, res) {
+  res.json(property)
 })
 //
 // apiRoutes.get('/products/:id', function (req, res) {

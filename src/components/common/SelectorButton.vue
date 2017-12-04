@@ -13,7 +13,7 @@
   @import "../../assets/stylesheet/components_import";
 
   .selector-button {
-    @include box($display: inline-block, $width: auto, $height: 40px, $line-height: 40px, $text-align: center, $overflow: visible);
+    @include box($display: inline-block, $width: 150px, $height: 48px, $line-height: 48px, $text-align: center, $overflow: visible);
     @include bd(1px, solid, map-get($global-color, border));
     @include border-radius (4px);
     background-color: #fff;
