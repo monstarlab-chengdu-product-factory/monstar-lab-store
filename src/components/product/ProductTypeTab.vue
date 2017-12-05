@@ -7,9 +7,6 @@
         <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
       </div>
     </div>
-    <div class="type-selector">
-      <type-selector-group :proButtonList="subTypes" :proSingleSelected="true"></type-selector-group>
-    </div>
   </div>
 </template>
 <style lang="scss">
@@ -61,11 +58,6 @@
   import { ProductTypesService } from './ProductTypes.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
-//  import Vue from 'vue'
-//  import {
-//    Button
-//  } from 'element-ui'
-//  Vue.use(Button)
   export default {
     name: 'ProductTypeTab',
     components: {
@@ -85,8 +77,12 @@
       service.getProductTypes()
         .then(data => {
           this.productTypes = data
+//          console.log(data)
+//          console.log(data.id)
+//          this.subTypes = this.productTypes
           if (data.length > 0) {
-            this.subTypes = data[0].functions
+//            this.subTypes = data.id
+//            console.log(this.subTypes)
           }
         })
     },
@@ -99,6 +95,5 @@
         this.alternative = !this.alternative
       }
     }
-
   }
 </script>

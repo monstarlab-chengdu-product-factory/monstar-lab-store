@@ -2,7 +2,7 @@
   <div class="selector-button" v-bind:class="{'selected' : selected, 'remove-able' : removeAble}">
     <div class="wrapper" v-on:click="toggleSelect">
       <label v-show="!editAble">{{ label }}</label>
-      <input v-show="editAble" type="text" v-model="label">
+      <input v-show="editAble" type="radio" v-model="label">
       <span v-show="selected" class="icon icon-checked"></span>
     </div>
     <a href="#" v-show="removeAble" class="action-remove"><span class="icon icon-remove">X</span></a>
