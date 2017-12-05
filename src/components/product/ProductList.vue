@@ -47,7 +47,6 @@
         })
       Products.getProperties(properties => {
         this.property = properties
-        console.log(this.property)
       })
     }
   }

@@ -18,6 +18,7 @@
     @include border-radius (4px);
     background-color: #fff;
     min-height: rem(40px);
+    color: map-get($global-color-base, primary);
     min-width: rem(100px);
     position: relative;
     .wrapper {
