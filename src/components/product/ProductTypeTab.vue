@@ -1,7 +1,7 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
+      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" ></cat-selector-group>
       <el-button class="change" plain type="primary" @click="change">{{alternative?'保存':'修改平台'}}</el-button>
       <div class="alternative" v-if="alternative">
         <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
@@ -77,19 +77,9 @@
       service.getProductTypes()
         .then(data => {
           this.productTypes = data
-//          console.log(data)
-//          console.log(data.id)
-//          this.subTypes = this.productTypes
-          if (data.length > 0) {
-//            this.subTypes = data.id
-//            console.log(this.subTypes)
-          }
         })
     },
     methods: {
-      getSubTypes: function (typeData) {
-        this.subTypes = this.productTypes[typeData.index].functions
-      },
       change () {
         console.log('click')
         this.alternative = !this.alternative

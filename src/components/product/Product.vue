@@ -39,7 +39,7 @@
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
   .product-container {
-    margin: 60px auto;
+    margin: 60px 180px;
     width: map-get($global-width, a)
   }
   .product-type{

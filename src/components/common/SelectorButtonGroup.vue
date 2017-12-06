@@ -1,17 +1,16 @@
 <template>
   <div>
     <ul class="selector-button-group">
-      <li v-for="(button, index) in buttons" :key="button.id">
-        <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index"
-                         @selectorSelected="anySelectorSelected" @selectorUnselected="anySelectorUnselected" :class="{active:index==num}"  @click="tab(index)"/>
-        <div class="type-selector" v-show="index===num">
-          <sub-type :proSingleSelected="true" :subtitle="button.functions" class="sub-type"></sub-type>
-        </div>
+      <li v-for="(button, index) in buttons" :key="button.id"  @click=tab(index)>
+        <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index"/>
       </li>
-      <li v-if="proAppendAble" class="action-cell">
-        <a href="#" class="action-add"><span class="icon icon-add">+</span></a>
-      </li>
+      <!--<li v-if="proAppendAble" class="action-cell">-->
+        <!--<a href="#" class="action-add"><span class="icon icon-add">+</span></a>-->
+      <!--</li>-->
     </ul>
+    <div class="type-selector">
+      <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -48,26 +47,14 @@
       'sub-type': SubGroup
     },
     props: {
-      proAppendAble: {
-        default: false
-      },
       proButtonList: {
         default: [{}]
-      },
-      proSingleSelected: {
-        default: false
       }
     },
     data () {
       return {
         buttons: this.proButtonList,
-//        subtitles: [
-//          {'name': '基本功能'},
-//          {'name': '基本功能'},
-//          {'name': '基本功能'}
-//        ]
-        subtitles: '',
-        num: 1
+        num: 0
       }
     },
     watch: {
@@ -75,24 +62,30 @@
         this.buttons = value
       }
     },
-
+    computed: {
+      subtitles () {
+        return this.buttons[this.num].functions
+      }
+    },
     methods: {
-      anySelectorSelected: function (selectorData) {
-        // let selectedRef = 'button' + selectorData.index
-        if (this.proSingleSelected) {
-          let componentThis = this
-          componentThis.buttons.forEach(function (value, index, array) {
-            if (selectorData.index !== index) {
-            }
-          })
-        }
-        this.$emit('anySelectorSelected', selectorData)
-      },
-      anySelectorUnselected: function (selectorData) {
-        this.$emit('anySelectorUnselected', selectorData)
-      },
+//      anySelectorSelected: function (selectorData) {
+//        // let selectedRef = 'button' + selectorData.index
+//        if (this.proSingleSelected) {
+//          let componentThis = this
+//          componentThis.buttons.forEach(function (value, index, array) {
+//            if (selectorData.index !== index) {
+//            }
+//          })
+//        }
+//        this.$emit('anySelectorSelected', selectorData)
+//      },
+//      anySelectorUnselected: function (selectorData) {
+//        this.$emit('anySelectorUnselected', selectorData)
+//      },
       tab (index) {
         this.num = index
+        console.log(this.num)
+        console.log(this.buttons[this.num].functions)
       }
     }
   }
