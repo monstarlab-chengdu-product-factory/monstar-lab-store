@@ -30,7 +30,7 @@
       "coverUrl": "/static/img/logo.svg"
     }
   ],
-  "productTypes":[
+  "products":[
     {
       "id" : 1,
       "name" : "web网站",
@@ -350,7 +350,7 @@
     {
       "id" : 3,
       "moduleCode" : "M02",
-      "title" : "传照片",
+      "title" : "第三方登录",
       "brief" : "第三方登录模块",
       "icon" : "/resource/images/products/icon/M02.jpg",
       "description" :  "第三方登录模块",

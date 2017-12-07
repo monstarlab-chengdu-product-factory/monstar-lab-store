@@ -55,7 +55,7 @@
   }
 </style>
 <script>
-  import { ProductTypesService } from './ProductTypes.service.js'
+  import { ProductService } from './Product.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
   export default {
@@ -73,8 +73,8 @@
       }
     },
     created () {
-      let service = new ProductTypesService()
-      service.getProductTypes()
+      let service = new ProductService()
+      service.getProducts()
         .then(data => {
           this.productTypes = data
         })
