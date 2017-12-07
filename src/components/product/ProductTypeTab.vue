@@ -1,7 +1,7 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" ></cat-selector-group>
+      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" v-show="ids&&ids.length>0" :showIds="ids"></cat-selector-group>
       <el-button class="change" plain type="primary" @click="change">{{alternative?'保存':'修改平台'}}</el-button>
       <div class="alternative" v-if="alternative">
         <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
@@ -64,7 +64,7 @@
       'cat-selector-group': SelectorButtonGroup,
       'type-selector-group': SubGroup
     },
-    props: {},
+    props: ['ids'],
     data () {
       return {
         productTypes: [{}],

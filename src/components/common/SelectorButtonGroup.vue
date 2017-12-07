@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="selector-button-group">
-      <li v-for="(button, index) in buttons" :key="button.id"  @click=tab(index)>
+      <li v-for="(button, index) in buttons" :key="button.id"  @click=tab(index) v-bind:id="button.id" v-show="showIds && showIds.indexOf(button.id)!=-1">
         <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index"/>
       </li>
       <!--<li v-if="proAppendAble" class="action-cell">-->
@@ -46,11 +46,10 @@
       'selector-button': SelectorButton,
       'sub-type': SubGroup
     },
-    props: {
-      proButtonList: {
-        default: [{}]
-      }
-    },
+    props: [
+      'showIds',
+      'proButtonList'
+    ],
     data () {
       return {
         buttons: this.proButtonList,
@@ -85,7 +84,7 @@
       tab (index) {
         this.num = index
         console.log(this.num)
-        console.log(this.buttons[this.num].functions)
+        console.log(this.subtitles)
       }
     }
   }

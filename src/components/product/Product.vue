@@ -28,10 +28,9 @@
     methods: {
       getChecked (checkboxes) {
         this.id = checkboxes
-        console.log(this.id)
       },
       next () {
-        this.$router.push({name: 'productList', params: {id: this.id}})
+        this.$router.push({name: 'productList', query: {id: this.id}})
       }
     }
   }
@@ -39,7 +38,7 @@
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/variable";
   .product-container {
-    margin: 60px 180px;
+    margin: 60px auto;
     width: map-get($global-width, a)
   }
   .product-type{
