@@ -5,6 +5,7 @@
         <input type="text"  @keyup="edit(label)" v-model="label.name" @keyup.enter="edit(label)" @blur="edit(label)"
                @keyup.esc="cancel(label)" class="edit">
       </el-col>
+      <button class="add" @click="addItem">+</button>
     </el-row>
 </template>
 <script>
@@ -44,6 +45,9 @@
       cancel (label) {
         label.name = this.editedCache
         this.edited = null
+      },
+      addItem () {
+        console.log('this is log')
       }
     }
   }

@@ -2,7 +2,7 @@
   <div class="checkbox-group">
     <el-checkbox v-bind:class="{'hide-checkbox': proHideCheckbox}" :label="proLabel" :size="proSize" border>
       <span v-show="!editAble">{{ proLabel }}</span>
-      <input v-show="editAble" type="text" v-model="proLabel">
+      <input v-show="editAble" type="radio" v-model="proLabel">
       <span class="icon icon-checked"></span>
     </el-checkbox>
     <button-group class="child-button" :proLabel="item.title" :proIndex="proIndex" v-for="item in subButton" :key="item.id"></button-group>
