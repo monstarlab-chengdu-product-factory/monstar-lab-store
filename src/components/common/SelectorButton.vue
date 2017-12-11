@@ -40,7 +40,7 @@
     }
   }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../assets/stylesheet/components_import";
   .selector-button {
   @include box($display: inline-block, $width: 150px, $height: 48px, $line-height: 48px, $text-align: center, $overflow: visible);
@@ -49,7 +49,8 @@
     background-color: #fff;
     min-height: rem(40px);
     color: map-get($global-color-base, primary);
-    min-width: rem(100px);
+    /*min-width: rem(100px);*/
+    width: 150px;
     position: relative;
   .wrapper {
   @include font-size(16px);
@@ -59,14 +60,6 @@
   label {
     cursor: pointer;
   }
-  /*.action-remove {*/
-  /*@extend %smallActionButton;*/
-  /*@include position-location ($top: 50%, $left: auto, $right: -20px);*/
-  /*@include border-radius (8px);*/
-    /*line-height: 1.3;*/
-    /*margin-top: rem(-8px);*/
-    /*cursor: pointer;*/
-  /*}*/
   &.remove-able {
      margin-right: rem(26px);
   .action-remove {

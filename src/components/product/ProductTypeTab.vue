@@ -58,11 +58,13 @@
     }
   }
 </script>
-<style lang="scss">
+<style lang="scss" >
   @import "../../assets/stylesheet/components_import";
-  @import "../../assets/stylesheet/_variable.scss";
   .product-type-tab {
     padding-top: rem(10px);
+  }
+  .type-selector{
+    overflow-x: scroll;
   }
   .alternative{
     margin:10px 0;
@@ -75,7 +77,6 @@
     align-items: center;
     border: 1px dashed map_get($global-color-base,c);
   }
-
   }
   }
   .cat-selector {

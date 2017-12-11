@@ -64,11 +64,14 @@
   }
   .action-remove {
   @extend %smallActionButton;
-  @include position-location ($top: 50%, $left: auto, $right: -15px);
+  @include position-location ($top: 50%, $left: auto, $right: -25px);
   @include border-radius (8px);
     line-height: 1.3;
     margin-top: rem(-8px);
     cursor: pointer;
+  &:hover{
+    background-color: map_get($global-color-base,b);
+   }
   }
   }
   .action-cell {

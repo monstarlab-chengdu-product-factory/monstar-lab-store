@@ -9,7 +9,7 @@
     <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
     <div class="next-button">
       <el-button type="primary" plain  class="function-next">下一步</el-button>
-      <a href="#">跳过其他功能进入下一平台</a>
+      <router-link to="/">跳过其他功能进入下一平台</router-link>
     </div>
   </div>
 </template>
@@ -100,9 +100,14 @@
   .next-button{
     margin: 60px 0;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   a{
     display: block;
+    width: 300px;
+    text-align: center;
     line-height: 2;
     color:map_get($global-color-base,f);
   &:hover{
