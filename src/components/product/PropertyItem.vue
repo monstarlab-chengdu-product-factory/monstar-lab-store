@@ -1,8 +1,8 @@
 <template>
   <ul>
     <li class="function-property">
-      <el-button class="button-father">{{properties}}</el-button>
-      <el-button class="button-child">{{items}}</el-button>
+      <el-button class="button-father">{{property}}</el-button>
+      <el-button class="button-child">{{propertyItems}}</el-button>
     </li>
   </ul>
 </template>
@@ -15,8 +15,6 @@
     },
     data () {
       return {
-        properties: this.property,
-        items: this.propertyItems
       }
     }
   }

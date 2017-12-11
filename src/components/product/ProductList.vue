@@ -1,7 +1,8 @@
 <template>
   <div class="product-list">
+    <div>User {{ $route.query.id }}</div>
     <order-title :proTitle="title"></order-title>
-    <product-type-tab></product-type-tab>
+    <product-type-tab :ids="ids"></product-type-tab>
     <el-row class="model-title" :gutter="20">
       <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
       <el-button class="all">全选</el-button>
@@ -48,6 +49,17 @@
       Products.getProperties(properties => {
         this.property = properties
       })
+    },
+    computed: {
+      ids: function () {
+        return this.$route.query.id.map(function (value) {
+          return Number(value)
+        })
+      }
+    },
+    mounted () {
+//      console.log(this.$route.params.id)
+//      console.log(this.$route.query.id)
     }
   }
 </script>

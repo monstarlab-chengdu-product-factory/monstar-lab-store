@@ -1,11 +1,11 @@
 <template>
   <div class="checkbox-group">
-    <el-checkbox v-bind:class="{'hide-checkbox': hideCheckbox}" :label="label" :size="size" border>
-      <span v-show="!editAble">{{ label }}</span>
-      <input v-show="editAble" type="text" v-model="label">
+    <el-checkbox v-bind:class="{'hide-checkbox': proHideCheckbox}" :label="proLabel" :size="proSize" border>
+      <span v-show="!editAble">{{ proLabel }}</span>
+      <input v-show="editAble" type="text" v-model="proLabel">
       <span class="icon icon-checked"></span>
     </el-checkbox>
-    <button-group class="child-button" :proLabel="title.title" :proIndex="index" v-for="title in titles" :key="title.id"></button-group>
+    <button-group class="child-button" :proLabel="item.title" :proIndex="proIndex" v-for="item in subButton" :key="item.id"></button-group>
   </div>
 </template>
 <script>
@@ -34,33 +34,7 @@
     },
     data () {
       return {
-        id: this.proId,
-        hideCheckbox: this.proHideCheckbox,
-        label: this.proLabel,
-        editAble: this.proEditAble,
-        index: this.proIndex,
-        size: this.proSize,
-        titles: this.subButton
-      }
-    },
-    watch: {
-      proId (value) {
-        this.id = value
-      },
-      proLabel (value) {
-        this.label = value
-      },
-      proHideCheckbox (value) {
-        this.hideCheckbox = value
-      },
-      proEditAble (value) {
-        this.editAble = value
-      },
-      proIndex (value) {
-        this.index = value
-      },
-      proSize (value) {
-        this.size = value
+        editAble: false
       }
     },
     methods: {

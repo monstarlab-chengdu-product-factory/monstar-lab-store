@@ -5,9 +5,6 @@ import data from '../../../../data.json'
 describe('ProductList.vue', () => {
   const Constructor = Vue.extend(ProductList)
   const vm = new Constructor().$mount()
-  it('应该有h1的标题', () => {
-    expect(vm.$el.querySelector('h1'))
-  })
   it('组建加载成功后标题应该是文字第二步: 功能评估', () => {
     expect(vm.title).to.equal('第二步: 功能评估')
   })

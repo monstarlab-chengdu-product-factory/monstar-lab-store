@@ -1,14 +1,11 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
+      <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" v-show="ids&&ids.length>0" :showIds="ids"></cat-selector-group>
       <el-button class="change" plain type="primary" @click="change">{{alternative?'保存':'修改平台'}}</el-button>
       <div class="alternative" v-if="alternative">
         <cat-selector-group :proButtonList="productTypes" :proSingleSelected="true" @anySelectorSelected="getSubTypes"></cat-selector-group>
       </div>
-    </div>
-    <div class="type-selector">
-      <type-selector-group :proButtonList="subTypes" :proSingleSelected="true"></type-selector-group>
     </div>
   </div>
 </template>
@@ -58,21 +55,16 @@
   }
 </style>
 <script>
-  import { ProductTypesService } from './ProductTypes.service.js'
+  import { ProductService } from './Product.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
-//  import Vue from 'vue'
-//  import {
-//    Button
-//  } from 'element-ui'
-//  Vue.use(Button)
   export default {
     name: 'ProductTypeTab',
     components: {
       'cat-selector-group': SelectorButtonGroup,
       'type-selector-group': SubGroup
     },
-    props: {},
+    props: ['ids'],
     data () {
       return {
         productTypes: [{}],
@@ -81,24 +73,17 @@
       }
     },
     created () {
-      let service = new ProductTypesService()
-      service.getProductTypes()
+      let service = new ProductService()
+      service.getProducts()
         .then(data => {
           this.productTypes = data
-          if (data.length > 0) {
-            this.subTypes = data[0].functions
-          }
         })
     },
     methods: {
-      getSubTypes: function (typeData) {
-        this.subTypes = this.productTypes[typeData.index].functions
-      },
       change () {
         console.log('click')
         this.alternative = !this.alternative
       }
     }
-
   }
 </script>
