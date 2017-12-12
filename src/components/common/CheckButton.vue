@@ -10,8 +10,10 @@
         <!--<input type="checkbox">-->
         <input type="text" autofocus v-model="item.title" v-if="item.editing" @blur="edit(item)" @keyup.enter="edit(item)">
         <label @dblclick="edit(item)">{{ item.title }}</label>
+        <span v-if="item.editable" class="action-remove" @click="remove(index)">x</span>
       </li>
     </ul>
+    <!--add function item-->
     <div class="add" @click="addItem()">+</div>
   </div>
 </template>
@@ -44,15 +46,17 @@
       addItem () {
         this.subButton.push({
           title: '输入机能名',
-          editing: false
+          editing: false,
+          editable: true
         })
       },
       edit (item) {
         item.editing = !item.editing
+        item.editable = false
+      },
+      remove (index) {
+        this.subButton.splice(index, 1)
       }
-//      active (index) {
-//        this.num = index
-//      }
     }
   }
 </script>
@@ -119,7 +123,6 @@
     width: auto;
     display: flex;
     align-items: center;
-
   li {
     min-width: 84px;
     height: 40px;
@@ -161,8 +164,6 @@
     top:0;
     left: 0;
     font-weight: 300;
-    /*padding-left: 10px;*/
-    /*display: none;*/
   }
   }
   .add{
@@ -178,5 +179,16 @@
   .active{
     background-color: map-get($global-color-base, primary);
     color: #fff;
+  }
+  .action-remove {
+  @extend %smallActionButton;
+  @include position-location ($top: 50%, $left: auto, $right: -20px);
+  @include border-radius (8px);
+    line-height: 1.3;
+    margin-top: rem(-8px);
+    cursor: pointer;
+  &:hover{
+     background-color: map_get($global-color-base,b);
+   }
   }
 </style>

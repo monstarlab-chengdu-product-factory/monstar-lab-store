@@ -49,7 +49,6 @@
     background-color: #fff;
     min-height: rem(40px);
     color: map-get($global-color-base, primary);
-    /*min-width: rem(100px);*/
     width: 150px;
     position: relative;
   .wrapper {
