@@ -6,7 +6,7 @@
       <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
       <el-button class="all">全选</el-button>
     </el-row>
-    <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
+    <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'" v-on:typeID="getTypeId()"></type-product-list>
     <div class="next-button">
       <el-button type="primary" plain  class="function-next">下一步</el-button>
       <router-link to="/">跳过其他功能进入下一平台</router-link>
@@ -49,6 +49,12 @@
         this.property = properties
       })
     },
+    methods: {
+      getTypeId (value) {
+        this.property = Products.getPropertiesByFunctionId(value)
+        console.log(this.property)
+      }
+    }
 //    computed: {
 //      ids: function () {
 //        return this.$route.query.id.map(function (value) {
@@ -56,10 +62,10 @@
 //        })
 //      }
 //    },
-    mounted () {
+//    mounted () {
 //      console.log(this.$route.params.id)
 //      console.log(this.$route.query.id)
-    }
+//    }
   }
 </script>
 

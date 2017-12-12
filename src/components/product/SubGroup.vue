@@ -2,7 +2,7 @@
     <el-row type="flex" :gutter="20">
       <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:edited===label}">
         <label @dblclick="edit(label,index)"
-               :class="{active:index==num}"  @click="tab(index)" >{{ label.name }}</label>
+               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}{{label.id}}</label>
         <input type="text"  v-model="label.name" @keyup.enter="blur(label,index)"  @keyup.esc="cancel(label)" @blur="blur(label,index)" class="edit">
         <span v-show="label.editable" class="action-remove" @click="removeItem(index)">x</span>
       </el-col>
@@ -47,8 +47,10 @@
         }
         this.edited = null
       },
-      tab (index) {
+      tab (index, label) {
         this.num = index
+        this.$emit('typeID', label.id)
+        console.log(label.id)
       },
       status () {
         this.active = !this.active
