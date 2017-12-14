@@ -55,16 +55,6 @@
       },
       pushItem () {
         console.log('s')
-      },
-      getTypeId (functionId) {
-        console.log(functionId)
-        this.property = this.productTypes.filter((v) => v.functionTypeId === functionId)
-//        console.log(value)
-//        let service = new ProductService()
-//        service.getPropertiesByFunctionId(value)
-//          .then(value => {
-//            this.property = value
-//          })
       }
     }
   }

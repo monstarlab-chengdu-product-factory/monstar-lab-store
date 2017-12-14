@@ -52,19 +52,8 @@
       })
       let _this = this
       bus.$on('typeId', function (value) {
-        console.log(value)
-        _this.proper = _this.property.filter(function (v) {
-          return v.functionTypeId === value
-        })
+        _this.proper = _this.property.filter(v => v.functionTypeId === value)
       })
-    },
-    methods: {
-//      getTypeId () {
-//        bus.$on('typeId', function (value) {
-//          console.log(value)
-//          this.proper = this.property.filter((v) => v.functionTypeId === value)
-//        })
-//      }
     }
 //    computed: {
 //      ids: function () {
