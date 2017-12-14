@@ -7,7 +7,7 @@
     </div>
     <ul class="child-button">
       <li v-for="(item,index) in subButton" :key="item.id">
-        <!--<input type="checkbox">-->
+        <input type="checkbox">
         <input type="text" autofocus v-model="item.title" v-if="item.editing" @blur="edit(item)" @keyup.enter="edit(item)">
         <label @dblclick="edit(item)">{{ item.title }}</label>
         <span v-if="item.editable" class="action-remove" @click="remove(index)">x</span>
@@ -49,6 +49,10 @@
           editing: false,
           editable: true
         })
+//        axios.get('/user?ID=12345')
+//          .then(function () {
+//
+//          })
       },
       edit (item) {
         item.editing = !item.editing

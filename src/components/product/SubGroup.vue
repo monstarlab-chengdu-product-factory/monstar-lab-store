@@ -11,6 +11,7 @@
 </template>
 <script>
   import Vue from 'vue'
+  import bus from '../../util/bus.js'
   import {
     Row,
     Col,
@@ -49,7 +50,7 @@
       },
       tab (index, label) {
         this.num = index
-        this.$emit('typeID', label.id)
+        bus.$emit('typeId', label.id)
         console.log(label.id)
       },
       status () {

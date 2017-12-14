@@ -39,6 +39,13 @@
           title: '输入默认值'
         })
       }
+//      getTypeId () {
+//        bus.$on('typeId', function (value) {
+//          this.property = value
+//          console.log(this.property)
+//          console.log(value)
+//        })
+//      }
 //      anyButtonChecked: function (buttonData) {
 //        this.$emit('anyButtonChecked', buttonData)
 //      },

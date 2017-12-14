@@ -6,7 +6,7 @@
         <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
       </div>
       <div class="type-selector">
-        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"  v-on:typeID="getTypeId"></sub-type>
+        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"  v-on:typeId="getTypeId"></sub-type>
       </div>
       <el-button class="change" plain type="primary" @click="change">{{alternative?'保存':'修改平台'}}</el-button>
     </div>
@@ -56,9 +56,15 @@
       pushItem () {
         console.log('s')
       },
-      getTypeId (value) {
-        this.property = ProductService.getPropertiesByFunctionId(value)
-        console.log(this.property)
+      getTypeId (functionId) {
+        console.log(functionId)
+        this.property = this.productTypes.filter((v) => v.functionTypeId === functionId)
+//        console.log(value)
+//        let service = new ProductService()
+//        service.getPropertiesByFunctionId(value)
+//          .then(value => {
+//            this.property = value
+//          })
       }
     }
   }

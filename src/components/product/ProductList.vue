@@ -6,7 +6,7 @@
       <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
       <el-button class="all">全选</el-button>
     </el-row>
-    <type-product-list :proButtonList="property" :proHideCheckbox="true" :proSize="'big'" v-on:typeID="getTypeId()"></type-product-list>
+    <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'" ></type-product-list>
     <div class="next-button">
       <el-button type="primary" plain  class="function-next">下一步</el-button>
       <router-link to="/">跳过其他功能进入下一平台</router-link>
@@ -19,6 +19,7 @@
   import CheckButtonGroup from '../common/CheckButtonGroup'
   import { ProductService } from './Product.service.js'
   import Products from '../../api/property.js'
+  import bus from '../../util/bus.js'
   export default {
     name: 'ProductList',
     components: {
@@ -36,7 +37,8 @@
         table: [
           {'name': '模块'},
           {'name': '机能'}
-        ]
+        ],
+        proper: ''
       }
     },
     created () {
@@ -48,12 +50,21 @@
       Products.getProperties(properties => {
         this.property = properties
       })
+      let _this = this
+      bus.$on('typeId', function (value) {
+        console.log(value)
+        _this.proper = _this.property.filter(function (v) {
+          return v.functionTypeId === value
+        })
+      })
     },
     methods: {
-      getTypeId (value) {
-        this.property = Products.getPropertiesByFunctionId(value)
-        console.log(this.property)
-      }
+//      getTypeId () {
+//        bus.$on('typeId', function (value) {
+//          console.log(value)
+//          this.proper = this.property.filter((v) => v.functionTypeId === value)
+//        })
+//      }
     }
 //    computed: {
 //      ids: function () {
