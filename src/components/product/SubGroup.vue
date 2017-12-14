@@ -1,20 +1,27 @@
 <template>
     <el-row type="flex" :gutter="20">
-      <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:label===edited}">
-        <label @dblclick="edit(label)" @keyup.enter="edit(label)" :class="{active:index==num}"  @click="tab(index)" >{{ label.name }}</label>
-        <input type="text"  @keyup="edit(label)" v-model="label.name" @keyup.enter="edit(label)" @blur="edit(label)"
-               @keyup.esc="cancel(label)" class="edit">
+      <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:edited===label}">
+        <label @dblclick="edit(label,index)"
+               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}{{label.id}}</label>
+        <input type="text"  v-model="label.name" @keyup.enter="blur(label,index)"  @keyup.esc="cancel(label)" @blur="blur(label,index)" class="edit">
+        <span v-show="label.editable" class="action-remove" @click="removeItem(index)">x</span>
       </el-col>
+      <div class="add" @click="addItem">+</div>
     </el-row>
 </template>
 <script>
   import Vue from 'vue'
+  import bus from '../../util/bus.js'
   import {
     Row,
-    Col
+    Col,
+    Tabs,
+    TabPane
   } from 'element-ui'
   Vue.use(Row)
   Vue.use(Col)
+  Vue.use(Tabs)
+  Vue.use(TabPane)
   export default {
     name: 'SubGroup',
     props: ['subtitle'],
@@ -22,34 +29,53 @@
       return {
         edited: null,
         active: false,
-        num: 0
+        num: 0,
+        editable: false
       }
     },
     methods: {
-      edit (label) {
+      edit (label, index) {
         this.editedCache = label.name
         this.edited = label
-        console.log(label)
         if (!label) {
-          this.remove(label)
+          this.removeItem(index)
         }
+        label.editable = false
       },
-      tab (index) {
+      blur (label, index) {
+        if (!label.name) {
+          this.removeItem(index)
+        }
+        this.edited = null
+      },
+      tab (index, label) {
         this.num = index
-        console.log(this.labels)
+        bus.$emit('typeId', label.id)
+        console.log(label.id)
       },
       status () {
         this.active = !this.active
       },
       cancel (label) {
         label.name = this.editedCache
+        console.log('this')
         this.edited = null
+      },
+      addItem () {
+        this.subtitle.push({
+          name: '输入功能名',
+          editable: true
+        })
+      },
+      removeItem (index) {
+        this.subtitle.splice(index, 1)
+        console.log(index)
       }
     }
   }
 </script>
 <style lang='scss' scoped>
-  @import "../../assets/stylesheet/_variable.scss";
+  @import "../../assets/stylesheet/components_import";
   .item {
     min-width: 14rem;
     height: 4rem;
@@ -60,6 +86,9 @@
       top:0;
       left: 0;
       border: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
       font-size: 20px;
       &:focus{
     outline: 0;
@@ -69,6 +98,15 @@
   }
   .el-row{
     margin: 20px 0;
+    align-items: center;
+  }
+  .action-remove {
+  @extend %smallActionButton;
+  @include position-location ($top: 50%, $left: auto, $right: 10px);
+  @include border-radius (8px);
+    line-height: 1.3;
+    margin-top: rem(-8px);
+    cursor: pointer;
   }
   label{
     width: 100%;
@@ -88,7 +126,7 @@
       display: block;
       width: 100%;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.8rem;
       color: map_get($global-color-base,primary);
       height: 100%
     }
@@ -97,6 +135,11 @@
     border-bottom: 4px solid map_get($global-color-base,primary);
     color: #000;
   }
-
-
+  .add{
+    width: 15px;
+    height: 15px;
+    border: 1px solid map_get($global-color-base,c);
+    text-align: center;
+    cursor: pointer;
+  }
 </style>
