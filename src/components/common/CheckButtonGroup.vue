@@ -1,6 +1,6 @@
 <template>
-  <el-checkbox-group :size="size">
-    <check-button v-for="(button, index) in buttons" :key="button.id" :proHideCheckbox="hideCheckbox"
+  <el-checkbox-group :size="proSize">
+    <check-button v-for="(button, index) in proButtonList" :key="button.id" :proHideCheckbox="proHideCheckbox"
                   :proLabel="button.title" :proIndex="index"
                   :subButton="button.functionUnits"></check-button>
   </el-checkbox-group>
@@ -19,12 +19,6 @@
 
 <script>
   import CheckButton from './CheckButton'
-  import Vue from 'vue'
-  import {
-    CheckboxGroup
-  } from 'element-ui'
-  Vue.use(CheckboxGroup)
-
   export default {
     name: 'CheckButtonGroup',
     components: {
@@ -46,24 +40,6 @@
     },
     data () {
       return {
-        size: this.proSize,
-        buttons: this.proButtonList,
-        appendAble: this.proAppendAble,
-        hideCheckbox: this.proHideCheckbox
-      }
-    },
-    watch: {
-      proSize (value) {
-        this.size = value
-      },
-      proButtonList (value) {
-        this.buttons = value
-      },
-      proAppendAble (value) {
-        this.appendAble = value
-      },
-      proHideCheckbox (value) {
-        this.hideCheckbox = value
       }
     },
     methods: {

@@ -1,13 +1,11 @@
 <template>
-  <div>
     <el-row type="flex" :gutter="20">
-      <el-col v-for="(label,index) in labels" :span="2" class="item" :key="index" :class="{editing:label===edited}">
-        <label @dblclick="edit(label)" @keyup.enter="edit(label)" :class="{active:index==num}"  @click="tab(index)">{{ label.name }}</label>
+      <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:label===edited}">
+        <label @dblclick="edit(label)" @keyup.enter="edit(label)" :class="{active:index==num}"  @click="tab(index)" >{{ label.name }}</label>
         <input type="text"  @keyup="edit(label)" v-model="label.name" @keyup.enter="edit(label)" @blur="edit(label)"
                @keyup.esc="cancel(label)" class="edit">
       </el-col>
     </el-row>
-  </div>
 </template>
 <script>
   import Vue from 'vue'
@@ -19,14 +17,9 @@
   Vue.use(Col)
   export default {
     name: 'SubGroup',
+    props: ['subtitle'],
     data () {
       return {
-        labels: [
-          {name: '基本功能'},
-          {name: '电商功能'},
-          {name: '社交功能'},
-          {name: '其他功能'}
-        ],
         edited: null,
         active: false,
         num: 0
@@ -36,12 +29,14 @@
       edit (label) {
         this.editedCache = label.name
         this.edited = label
+        console.log(label)
         if (!label) {
           this.remove(label)
         }
       },
       tab (index) {
         this.num = index
+        console.log(this.labels)
       },
       status () {
         this.active = !this.active

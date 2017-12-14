@@ -1,8 +1,8 @@
 <template>
-  <div class="selector-button" v-bind:class="{'selected' : selected, 'remove-able' : removeAble}">
-    <div class="wrapper" v-on:click="toggleSelect">
+  <div class="selector-button" :class="{'selected' : selected, 'remove-able' : removeAble}">
+    <div class="wrapper" @click="toggleSelect" >
       <label v-show="!editAble">{{ label }}</label>
-      <input v-show="editAble" type="text" v-model="label">
+      <input v-show="editAble" type="radio" v-model="label">
       <span v-show="selected" class="icon icon-checked"></span>
     </div>
     <a href="#" v-show="removeAble" class="action-remove"><span class="icon icon-remove">X</span></a>
@@ -65,9 +65,9 @@
       proLabel: {
 
       },
-      proSelected: {
-        default: false
-      },
+//      proSelected: {
+//        default: false
+//      },
       proRemoveAble: {
         default: false
       },
@@ -89,24 +89,24 @@
       }
     },
     watch: {
-      proId (value) {
-        this.id = value
-      },
-      proLabel (value) {
-        this.label = value
-      },
-      proSelected (value) {
-        this.selected = value
-      },
-      proRemoveAble (value) {
-        this.removeAble = value
-      },
-      proEditAble (value) {
-        this.editAble = value
-      },
-      proIndex (value) {
-        this.index = value
-      }
+//      proId (value) {
+//        this.id = value
+//      },
+//      proLabel (value) {
+//        this.label = value
+//      },
+//      proSelected (value) {
+//        this.selected = value
+//      },
+//      proRemoveAble (value) {
+//        this.removeAble = value
+//      },
+//      proEditAble (value) {
+//        this.editAble = value
+//      },
+//      proIndex (value) {
+//        this.index = value
+//      }
     },
     methods: {
       toggleSelect: function (event) {
