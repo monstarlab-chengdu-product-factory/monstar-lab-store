@@ -28,10 +28,9 @@
     methods: {
       getChecked (checkboxes) {
         this.id = checkboxes
-        console.log(this.id)
       },
       next () {
-        this.$router.push({name: 'order', params: {id: this.id}})
+        this.$router.push({name: 'productList', query: {id: this.id}})
       }
     }
   }

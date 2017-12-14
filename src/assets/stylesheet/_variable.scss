@@ -1,4 +1,3 @@
-
 $global-color-base: (
   primary: #2ba08e,
   primary-dark: #174e46,
@@ -6,13 +5,15 @@ $global-color-base: (
   third: #3cba92,
   a: #2d2d2d,
   b: #696969,
-  c:#dddddd,
+  c: #dddddd,
   d: #404040,
-  e: #e9e9e9
+  e: #e9e9e9,
+  f: #4586db,
+  g: #f4f4f4,
 );
 
 $global-color: (
-  border: map-get($global-color-base, c),
+  border: map-get($global-color-base, primary),
   footer: map-get($global-color-base, a),
   text-main: map-get($global-color-base, d),
 );

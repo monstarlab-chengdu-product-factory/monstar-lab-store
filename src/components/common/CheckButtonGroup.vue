@@ -1,11 +1,19 @@
 <template>
-  <el-checkbox-group :size="size">
-    <ms-check-button v-for="(button, index) in buttons" :key="button.id" :proHideCheckbox="hideCheckbox" :proLabel="button.name" :proIndex="index"></ms-check-button>
+  <el-checkbox-group :size="proSize">
+    <check-button v-for="(button, index) in proButtonList" :key="button.id" :proHideCheckbox="proHideCheckbox"
+                  :proLabel="button.title" :proIndex="index"
+                  :subButton="button.functionUnits"></check-button>
   </el-checkbox-group>
 </template>
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
+  .el-checkbox-group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+     margin: 20px 0;
+  }
 </style>
 
 
@@ -14,11 +22,11 @@
   export default {
     name: 'CheckButtonGroup',
     components: {
-      'ms-check-button': CheckButton
+      'check-button': CheckButton
     },
     props: {
       proSize: {
-        default: 'small'
+        default: 'big'
       },
       proAppendAble: {
         default: false
@@ -32,24 +40,6 @@
     },
     data () {
       return {
-        size: this.proSize,
-        buttons: this.proButtonList,
-        appendAble: this.proAppendAble,
-        hideCheckbox: this.proHideCheckbox
-      }
-    },
-    watch: {
-      proSize (value) {
-        this.size = value
-      },
-      proButtonList (value) {
-        this.buttons = value
-      },
-      proAppendAble (value) {
-        this.appendAble = value
-      },
-      proHideCheckbox (value) {
-        this.hideCheckbox = value
       }
     },
     methods: {
