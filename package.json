@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "precommit": "npm test",
-    "prepush": "npm test",
     "dev": "node build/dev-server.js",
     "start": "npm test && npm run dev",
     "build": "node build/build.js && node build/server.js",
