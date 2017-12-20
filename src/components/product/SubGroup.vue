@@ -10,18 +10,7 @@
     </el-row>
 </template>
 <script>
-  import Vue from 'vue'
   import bus from '../../util/bus.js'
-  import {
-    Row,
-    Col,
-    Tabs,
-    TabPane
-  } from 'element-ui'
-  Vue.use(Row)
-  Vue.use(Col)
-  Vue.use(Tabs)
-  Vue.use(TabPane)
   export default {
     name: 'SubGroup',
     props: ['subtitle'],
@@ -50,8 +39,6 @@
       },
       tab (index, label) {
         this.num = index
-        bus.$emit('typeId', label.id)
-        console.log(label.id)
       },
       status () {
         this.active = !this.active
@@ -71,6 +58,20 @@
         this.subtitle.splice(index, 1)
         console.log(index)
       }
+    },
+    created () {
+      let _this = this
+      bus.$on('nextOne', function () {
+        _this.num++
+      })
+    },
+    watch: {
+      num: function (newValue) {
+        bus.$emit('typeId', this.subtitle[newValue].id)
+      }
+    },
+    beforeUpdate () {
+      bus.$emit('typeId', this.subtitle[this.num].id)
     }
   }
 </script>

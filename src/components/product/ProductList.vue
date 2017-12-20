@@ -4,12 +4,12 @@
     <product-type-tab ></product-type-tab>
     <el-row class="model-title" :gutter="20">
       <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
-      <el-button class="all">全选</el-button>
+      <el-button class="all" @click="checkAll">全选</el-button>
     </el-row>
     <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'" ></type-product-list>
     <div class="next-button">
-      <el-button type="primary" plain  class="function-next">下一步</el-button>
-      <router-link to="/">跳过其他功能进入下一平台</router-link>
+      <el-button type="primary" plain  class="function-next" @click="toNext()">下一步</el-button>
+      <router-link to="/" >跳过其他功能进入下一平台</router-link>
     </div>
   </div>
 </template>
@@ -31,9 +31,8 @@
     data () {
       return {
         title: '第二步: 功能评估',
-        products: [{}],
-        property: {
-        },
+        products: [],
+        property: [],
         table: [
           {'name': '模块'},
           {'name': '机能'}
@@ -54,6 +53,14 @@
       bus.$on('typeId', function (value) {
         _this.proper = _this.property.filter(v => v.functionTypeId === value)
       })
+    },
+    methods: {
+      checkAll () {
+        console.log('this')
+      },
+      toNext () {
+        bus.$emit('nextOne')
+      }
     }
 //    computed: {
 //      ids: function () {
