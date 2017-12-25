@@ -61,14 +61,19 @@
       let _this = this
       bus.$on('nextOne', function () {
         _this.num++
+        if (_this.num === _this.subtitle.length) {
+          this.$emit('nextType')
+        }
       })
     },
     watch: {
-      num: function (newValue) {
+      num: function ({newValue = 0}) {
+//        let _this = this
         bus.$emit('typeId', this.subtitle[newValue].id)
       }
     },
-    beforeUpdate () {
+    updated () {
+//      let _this = this
       bus.$emit('typeId', this.subtitle[this.num].id)
     }
   }

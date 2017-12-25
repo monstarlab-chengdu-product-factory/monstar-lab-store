@@ -1,9 +1,5 @@
 <template>
   <el-checkbox-group :size="proSize">
-    <!--<check-button v-for="(button, index) in proButtonList" :key="button.id" :proHideCheckbox="proHideCheckbox"-->
-                  <!--:proLabel="button.title" :proIndex="index"-->
-                  <!--:subButton="button.functionUnits">-->
-    <!--</check-button>-->
     <div class="checkbox-group" v-for="(button, bigIndex) in proButtonList">
       <div  class="category">
         <label>{{ button.title }}</label>
@@ -11,7 +7,7 @@
       </div>
       <ul class="child-button">
         <li v-for="(item,index) in button.functionUnits" :key="item.id">
-          <input type="checkbox">
+          <input type="checkbox" v-model="checkbox">
           <input type="text" autofocus v-model="item.title" v-if="item.editing" @blur="edit(item)" @keyup.enter="edit(item)">
           <label @dblclick="edit(item)">{{ item.title }}</label>
           <span v-if="item.editable" class="action-remove" @click="remove(bigIndex,index)">x</span>
@@ -43,7 +39,8 @@
     },
     data () {
       return {
-        editAble: false
+        editAble: false,
+        checkbox: []
       }
     },
     methods: {
@@ -52,8 +49,8 @@
           title: '输入默认值'
         })
       },
-      addItem (index) {
-        this.proButtonList[index].functionUnits.push({
+      addItem (bigIndex) {
+        this.proButtonList[bigIndex].functionUnits.push({
           title: '输入机能名',
           editing: false,
           editable: true
@@ -74,7 +71,6 @@
   .el-checkbox-group{
     width: 100%;
     display: flex;
-    /*align-items: center;*/
     flex-direction: column;
     margin: 20px 0;
   }
