@@ -13,6 +13,7 @@
 <script>
   import SelectorButton from './SelectorButton'
   import SubGroup from '../product/SubGroup'
+  import bus from '../../util/bus.js'
   export default {
     name: 'SelectorButtonGroup',
     components: {
@@ -30,9 +31,22 @@
         num: 0
       }
     },
+    created () {
+      let _this = this
+      bus.$on('nextType', function () {
+        _this.num++
+        console.log(_this.num)
+//        if (_this.num === _this.buttons.length - 1) {
+//          return _this.num === 0
+//        }
+      })
+    },
     watch: {
       proButtonList (value) {
         this.buttons = value
+      },
+      num: function () {
+        this.$emit('tab-change', this.num)
       }
     },
     computed: {

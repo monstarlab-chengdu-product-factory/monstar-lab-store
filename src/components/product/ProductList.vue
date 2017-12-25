@@ -9,7 +9,7 @@
     <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'" ></type-product-list>
     <div class="next-button">
       <el-button type="primary" plain  class="function-next" @click="toNext()">下一步</el-button>
-      <router-link to="/" >跳过其他功能进入下一平台</router-link>
+      <p @click="nextType" class="skip-type">跳过其他功能进入下一平台</p>
     </div>
   </div>
 </template>
@@ -60,6 +60,9 @@
       },
       toNext () {
         bus.$emit('nextOne')
+      },
+      nextType () {
+        bus.$emit('nextType')
       }
     }
 //    computed: {
@@ -133,6 +136,12 @@
     height: 50px;
     font-size: 18px;
     font-weight:300;
+  }
+  .skip-type{
+    color: #3a99d8;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
   }
 
 </style>

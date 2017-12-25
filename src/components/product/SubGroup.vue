@@ -2,7 +2,7 @@
     <el-row type="flex" :gutter="20">
       <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:edited===label}">
         <label @dblclick="edit(label,index)"
-               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}{{label.id}}</label>
+               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}</label>
         <input type="text"  v-model="label.name" @keyup.enter="blur(label,index)"  @keyup.esc="cancel(label)" @blur="blur(label,index)" class="edit">
         <span v-show="label.editable" class="action-remove" @click="removeItem(index)">x</span>
       </el-col>
@@ -45,7 +45,6 @@
       },
       cancel (label) {
         label.name = this.editedCache
-        console.log('this')
         this.edited = null
       },
       addItem () {
@@ -56,7 +55,6 @@
       },
       removeItem (index) {
         this.subtitle.splice(index, 1)
-        console.log(index)
       }
     },
     created () {
