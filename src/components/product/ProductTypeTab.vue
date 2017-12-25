@@ -1,7 +1,7 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <selector-group :proButtonList="productTypes" v-on:tab-change="tabChange" :editable="editing"></selector-group>
+      <selector-group :proButtonList="productTypes" @tab-change="tabChange" :editable="editing"></selector-group>
       <div class="alternative" v-if="alternative">
         <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
       </div>

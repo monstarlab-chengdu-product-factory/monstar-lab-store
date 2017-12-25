@@ -3,7 +3,15 @@
     <ul class="selector-button-group">
       <li v-for="(button, index) in buttons" :key="button.id"   :id="button.id">
         <div @click=tab(index) >
-          <selector-button :ref="'button'+index" :proLabel="button.name" :proIndex="index" />
+          <div class="selector-button "  :class="{'selected' : selected}" >
+            <input type="radio" name="check">
+            <div class="wrapper">
+              <label >{{ button.name }}</label>
+              <!--<input v-show="proEditAble" type="radio" v-model="proLabel">-->
+              <!--<span v-show="selected" class="icon icon-checked"></span>-->
+            </div>
+            <!--<span v-show='proRemoveAble'   class="action-remove" >x</span>-->
+          </div>
         </div>
         <span v-show="editable" class="action-remove" @click="remove(index)">x</span>
       </li>
@@ -11,12 +19,11 @@
   </div>
 </template>
 <script>
-  import SelectorButton from './SelectorButton'
   import SubGroup from '../product/SubGroup'
+  import bus from '../../util/bus.js'
   export default {
     name: 'SelectorButtonGroup',
     components: {
-      'selector-button': SelectorButton,
       'sub-type': SubGroup
     },
     props: [
@@ -27,12 +34,26 @@
     data () {
       return {
         buttons: this.proButtonList,
-        num: 0
+        num: 0,
+        active: false,
+        selected: ''
       }
+    },
+    created () {
+      let _this = this
+      bus.$on('nextType', function () {
+        _this.num++
+        if (_this.num === _this.buttons.length) {
+          _this.$router.push({name: 'confirm', params: {id: this.id}})
+        }
+      })
     },
     watch: {
       proButtonList (value) {
         this.buttons = value
+      },
+      num: function () {
+        this.$emit('tab-change', this.num)
       }
     },
     computed: {
@@ -80,6 +101,55 @@
 
   .action-add {
   @extend %smallActionButton;
+  }
+  .selector-button {
+  @include box($display: inline-block, $width: 150px, $height: 48px, $line-height: 48px, $text-align: center, $overflow: visible);
+  @include bd(1px, solid, map-get($global-color, border));
+  @include border-radius (4px);
+    background-color: #fff;
+    min-height: rem(40px);
+    color: map-get($global-color-base, primary);
+    width: 150px;
+    position: relative;
+  .wrapper {
+  @include font-size(16px);
+    cursor: pointer;
+    padding: 0 rem(10px);
+  }
+  label {
+    cursor: pointer;
+  }
+  &.remove-able {
+     margin-right: rem(26px);
+  .action-remove {
+    display: block;
+  }
+  }
+  input[type="radio"]:checked +.wrapper{
+    color: #fff;
+    background-color: map-get($global-color-base, primary);
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  input[type='radio']{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    border: 0;
+    margin: 0;
+    /*z-index: -1;*/
+    top: 0;
+  &:checked{
+     outline: none;
+   }
+  &:focus{
+     outline: none;
+   }
+  }
   }
 
 </style>

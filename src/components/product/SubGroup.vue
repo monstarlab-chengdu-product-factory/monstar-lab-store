@@ -2,7 +2,7 @@
     <el-row type="flex" :gutter="20">
       <el-col v-for="(label,index) in subtitle" :span="2" class="item" :key="index" :class="{editing:edited===label}">
         <label @dblclick="edit(label,index)"
-               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}{{label.id}}</label>
+               :class="{active:index==num}"  @click="tab(index,label)" >{{ label.name }}</label>
         <input type="text"  v-model="label.name" @keyup.enter="blur(label,index)"  @keyup.esc="cancel(label)" @blur="blur(label,index)" class="edit">
         <span v-show="label.editable" class="action-remove" @click="removeItem(index)">x</span>
       </el-col>
@@ -10,18 +10,7 @@
     </el-row>
 </template>
 <script>
-  import Vue from 'vue'
   import bus from '../../util/bus.js'
-  import {
-    Row,
-    Col,
-    Tabs,
-    TabPane
-  } from 'element-ui'
-  Vue.use(Row)
-  Vue.use(Col)
-  Vue.use(Tabs)
-  Vue.use(TabPane)
   export default {
     name: 'SubGroup',
     props: ['subtitle'],
@@ -50,15 +39,12 @@
       },
       tab (index, label) {
         this.num = index
-        bus.$emit('typeId', label.id)
-        console.log(label.id)
       },
       status () {
         this.active = !this.active
       },
       cancel (label) {
         label.name = this.editedCache
-        console.log('this')
         this.edited = null
       },
       addItem () {
@@ -69,8 +55,26 @@
       },
       removeItem (index) {
         this.subtitle.splice(index, 1)
-        console.log(index)
       }
+    },
+    created () {
+      let _this = this
+      bus.$on('nextOne', function () {
+        _this.num++
+        if (_this.num === _this.subtitle.length) {
+          this.$emit('nextType')
+        }
+      })
+    },
+    watch: {
+      num: function ({newValue = 0}) {
+//        let _this = this
+        bus.$emit('typeId', this.subtitle[newValue].id)
+      }
+    },
+    updated () {
+//      let _this = this
+      bus.$emit('typeId', this.subtitle[this.num].id)
     }
   }
 </script>
