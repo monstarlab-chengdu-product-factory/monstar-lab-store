@@ -1,25 +1,5 @@
 <template>
-  <el-checkbox-group :size="proSize">
-    <div class="checkbox-group" v-for="(button, bigIndex) in proButtonList">
-      <div class="category">
-        <label>{{ button.title }}</label>
-        <input type="checkbox">
-      </div>
-      <ul class="child-button">
-        <li v-for="(item,index) in button.functionUnits" :key="item.id">
-          <input type="checkbox" v-model="checkbox">
-          <input type="text" autofocus v-model="item.title" v-if="item.editing" @blur="edit(item)"
-                 @keyup.enter="edit(item)">
-          <label @dblclick="edit(item)">{{ item.title }}</label>
-          <span v-if="item.editable" class="action-remove" @click="remove(bigIndex,index)">x</span>
-        </li>
-      </ul>
-      <!--add function item-->
-      <div class="add" @click="addItem(bigIndex)">+</div>
-    </div>
-    <!--category add-->
-    <div class="add" @click="addCategory">+</div>
-  </el-checkbox-group>
+
 </template>
 <script>
   export default {
