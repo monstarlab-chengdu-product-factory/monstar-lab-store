@@ -42,9 +42,12 @@
     created () {
       let _this = this
       bus.$on('nextType', function () {
-        _this.num++
+        if (_this.num < _this.buttons.length) {
+          _this.num++
+        }
         if (_this.num === _this.buttons.length) {
           _this.$router.push({name: 'confirm', params: {id: this.id}})
+          _this.num = 0
         }
       })
     },

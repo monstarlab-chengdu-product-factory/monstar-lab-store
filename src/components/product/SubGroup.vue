@@ -60,9 +60,12 @@
     created () {
       let _this = this
       bus.$on('nextOne', function () {
-        _this.num++
+        if (_this.num < _this.subtitle.length) {
+          _this.num++
+        }
         if (_this.num === _this.subtitle.length) {
           this.$emit('nextType')
+          _this.num = 0
         }
       })
     },
@@ -73,7 +76,6 @@
     },
     beforeUpdate () {
       bus.$emit('typeId', this.subtitle[this.num].id)
-      console.log(this.subtitle[this.num].id)
     }
   }
 </script>
