@@ -5,7 +5,7 @@
       <!--v-if="type.active"-->
     </div>
     <div class="change-type">
-      <button class="change-btn" @click="changeType">{{alternative?'保存':'修改平台'}}</button>
+      <button class="change-btn" @click="changeType">{{alternative ? '保存' : '修改平台'}}</button>
     </div>
     <div class="unit-con">
       <div class="unit-item">共功能呢</div>
@@ -14,26 +14,43 @@
       <div class="unit-item">基本能呢</div>
       <div class="icon-add">+</div>
     </div>
-  </div>
+    <div class="product-type-tab">
+      <div class="cat-selector">
+        <selector-group :proButtonList="productTypes" @tab-change="tabChange" :editable="editing"></selector-group>
 
-  <div class="product-type-tab">
-    <div class="cat-selector">
-      <selector-group :proButtonList="productTypes" @tab-change="tabChange" :editable="editing"></selector-group>
-      <div class="alternative" v-if="alternative">
-        <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
-      </div>
-      <div class="type-selector">
-        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
+        <div>
+          <ul class="selector-button-group">
+            <li v-for="(button, index) in buttons" :key="button.id" :id="button.id">
+              <div @click=tab(index)>
+                <div class="selector-button " :class="{'selected' : selected}">
+                  <input type="radio" name="check">
+                  <div class="wrapper">
+                    <label>{{ button.name }}</label>
+                  </div>
+                </div>
+              </div>
+              <span v-show="editable" class="action-remove" @click="remove(index)">x</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="alternative" v-if="alternative">
+          <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
+        </div>
+        <div class="type-selector">
+          <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
-  import { ProductService } from './Product.service.js'
-  import SelectorButtonGroup from '../common/SelectorButtonGroup'
-  import SubGroup from '../product/SubGroup'
+  import {mapGetters} from 'vuex'
+  import SelectorButtonGroup from './SelectorButtonGroup'
+  import SubGroup from './SubGroup'
   export default {
-    name: 'ProductTypeTab',
+    name: 'ProductListTab',
     components: {
       'selector-group': SelectorButtonGroup,
       'sub-type': SubGroup
@@ -50,16 +67,15 @@
       }
     },
     computed: {
+      ...mapGetters({
+        types: 'allProductTypes'
+      }),
       subtitles () {
         return this.productTypes[this.num].functions
       }
     },
     created () {
-      let service = new ProductService()
-      service.getProducts()
-        .then((data) => {
-          this.productTypes = data
-        })
+      this.$store.dispatch('getAllProductTypes')
     },
     methods: {
       changeTpye () {
@@ -137,13 +153,9 @@
     .type-item {
       margin-right: 15px;
       margin-bottom: 15px;
-      @include normal-button(150px, 48px, 15px);
       cursor: pointer;
       span {
         padding-left: 5px;
-      }
-      &:hover {
-        @extend %active;
       }
     }
   }
@@ -152,7 +164,6 @@
     width: 20%;
     text-align: right;
     button {
-      @include normal-button(auto, 48px, 0);
       padding: 0 15px;
       background-color: map-get($global-color-base, primary);
       color: #fff;

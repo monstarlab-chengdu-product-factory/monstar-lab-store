@@ -7,10 +7,7 @@
             <input type="radio" name="check">
             <div class="wrapper">
               <label>{{ button.name }}</label>
-              <!--<input v-show="proEditAble" type="radio" v-model="proLabel">-->
-              <!--<span v-show="selected" class="icon icon-checked"></span>-->
             </div>
-            <!--<span v-show='proRemoveAble'   class="action-remove" >x</span>-->
           </div>
         </div>
         <span v-show="editable" class="action-remove" @click="remove(index)">x</span>
@@ -19,13 +16,9 @@
   </div>
 </template>
 <script>
-  import SubGroup from '../product/SubGroup'
   import bus from '../../util/bus.js'
   export default {
     name: 'SelectorButtonGroup',
-    components: {
-      'sub-type': SubGroup
-    },
     props: [
       'showIds',
       'proButtonList',
@@ -73,7 +66,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "../../assets/stylesheet/_variable.scss";
+  @import "../../assets/stylesheet/variable";
 
   .selector-button-group {
     .active {

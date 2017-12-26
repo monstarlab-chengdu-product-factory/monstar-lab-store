@@ -1,5 +1,14 @@
 <template>
   <div class="container">
+
+    <el-row class="model-title" :gutter="20">
+      <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
+      <el-button class="all" @click="checkAll">全选</el-button>
+    </el-row>
+
+    <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
+
+
     <div class="table-con">
       <header>
         <div class="header-title title-module">模块</div>

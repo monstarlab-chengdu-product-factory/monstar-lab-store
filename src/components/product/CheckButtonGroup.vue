@@ -68,7 +68,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "../../assets/stylesheet/_variable.scss";
+  @import "../../assets/stylesheet/variable";
 
   .el-checkbox-group {
     width: 100%;

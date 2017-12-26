@@ -2,7 +2,7 @@ import Vue from 'vue'
 // import ProductTypeTab from '@/components/product/ProductTypeTab'
 import vueRouter from 'vue-router'
 Vue.use(vueRouter)
-describe('ProductTypeTab.vue', () => {
+describe('ProductListTab.vue', () => {
   // const Constructor = Vue.extend(ProductTypeTab)
   // const vm = new Constructor().$mount()
   // it('it has the virtual data', () => {

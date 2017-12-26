@@ -2,15 +2,18 @@
   <div class="container-fluid">
     <div class="bg-white">
       <product-title name="第二步:功能评估"></product-title>
-      <product-type-tab/>
+      <product-list-tab/>
     </div>
 
     <div class="bg-grey">
-      <el-row class="model-title" :gutter="20">
-        <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
-        <el-button class="all" @click="checkAll">全选</el-button>
-      </el-row>
-      <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'"></type-product-list>
+      <modules-points/>
+
+      <!--<el-row class="model-title" :gutter="20">-->
+        <!--<el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>-->
+        <!--<el-button class="all" @click="checkAll">全选</el-button>-->
+      <!--</el-row>-->
+      <!--<type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'"></type-product-list>-->
+
       <div class="next-button">
         <el-button type="primary" plain class="function-next" @click="toNext()">下一步</el-button>
         <p @click="nextType" class="skip-type">跳过其他功能进入下一平台</p>
@@ -23,18 +26,18 @@
   import ProductTitle from '../common/ProductTitle.vue'
   import ModulesPoints from './ModulesPoints.vue'
   import NextButton from '../common/NextButton.vue'
-  import ProductTypeTab from './ProductTypeTab'
-  import CheckButtonGroup from '../common/CheckButtonGroup'
-  import {ProductService} from './Product.service.js'
+  import ProductListTab from './ProductListTab'
+  import CheckButtonGroup from './CheckButtonGroup'
   import Products from '../../api/property.js'
   import bus from '../../util/bus.js'
+
   export default {
     name: 'ProductList',
     components: {
       ProductTitle,
       ModulesPoints,
       NextButton,
-      'product-type-tab': ProductTypeTab,
+      ProductListTab,
       'type-product-list': CheckButtonGroup
     },
     props: [],
@@ -50,11 +53,6 @@
       }
     },
     created () {
-      let productService = new ProductService()
-      productService.getProducts()
-        .then(data => {
-          this.products = data
-        })
       Products.getProperties(properties => {
         this.property = properties
       })
@@ -77,8 +75,9 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../assets/stylesheet/_variable.scss";
+
   .bg-white {
     width: 100%;
     max-width: 1200px;
@@ -146,6 +145,7 @@
     margin-top: 20px;
     cursor: pointer;
   }
+
   .bg-grey {
     width: 100%;
     min-height: 50vh;
