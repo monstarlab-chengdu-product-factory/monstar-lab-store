@@ -1,8 +1,35 @@
 <template>
+  <div class="tab-con">
+    <div class="type-con">
+      <div class="type-item" v-for="(type, index) in types">{{type.name}}<span>30</span></div>
+      <!--v-if="type.active"-->
+    </div>
+    <div class="change-type">
+      <button class="change-btn" @click="changeType">{{alternative?'保存':'修改平台'}}</button>
+    </div>
+    <div class="unit-con">
+      <div class="unit-item">共功能呢</div>
+      <div class="unit-item">基本能呢</div>
+      <div class="unit-item">基本共功</div>
+      <div class="unit-item">基本能呢</div>
+      <div class="icon-add">+</div>
+    </div>
+  </div>
 
+  <div class="product-type-tab">
+    <div class="cat-selector">
+      <selector-group :proButtonList="productTypes" @tab-change="tabChange" :editable="editing"></selector-group>
+      <div class="alternative" v-if="alternative">
+        <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
+      </div>
+      <div class="type-selector">
+        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-  import {ProductService} from './Product.service.js'
+  import { ProductService } from './Product.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
   export default {
@@ -35,7 +62,7 @@
         })
     },
     methods: {
-      change () {
+      changeTpye () {
         this.alternative = !this.alternative
         this.editing = !this.editing
       },
@@ -96,5 +123,77 @@
       top: 0;
       font-size: 16px;
     }
+  }
+
+  .tab-con {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .type-con {
+    width: 80%;
+    .type-item {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      @include normal-button(150px, 48px, 15px);
+      cursor: pointer;
+      span {
+        padding-left: 5px;
+      }
+      &:hover {
+        @extend %active;
+      }
+    }
+  }
+
+  .change-type {
+    width: 20%;
+    text-align: right;
+    button {
+      @include normal-button(auto, 48px, 0);
+      padding: 0 15px;
+      background-color: map-get($global-color-base, primary);
+      color: #fff;
+    }
+  }
+
+  .unit-con {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    .unit-item {
+      display: inline-block;
+      width: 140px;
+      height: 42px;
+      margin-right: 10px;
+      border-bottom: 4px solid map-get($global-color-base, c);
+      font-size: 20px;
+      color: map-get($global-color-base, k);
+      line-height: 1.6;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: map-get($global-color-base, d);
+        border-bottom-color: map-get($global-color, border);
+      }
+    }
+    .icon-add {
+      margin-left: 15px;
+    }
+  }
+
+  .icon-add {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid map-get($global-color-base, h);
+    border-radius: 2px;
+    color: map-get($global-color-base, h);
+    line-height: 12px;
+    text-align: center;
+    cursor: pointer;
   }
 </style>
