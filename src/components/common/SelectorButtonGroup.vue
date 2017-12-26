@@ -1,12 +1,12 @@
 <template>
   <div>
     <ul class="selector-button-group">
-      <li v-for="(button, index) in buttons" :key="button.id"   :id="button.id">
-        <div @click=tab(index) >
-          <div class="selector-button "  :class="{'selected' : selected}" >
+      <li v-for="(button, index) in buttons" :key="button.id" :id="button.id">
+        <div @click=tab(index)>
+          <div class="selector-button " :class="{'selected' : selected}">
             <input type="radio" name="check">
             <div class="wrapper">
-              <label >{{ button.name }}</label>
+              <label>{{ button.name }}</label>
               <!--<input v-show="proEditAble" type="radio" v-model="proLabel">-->
               <!--<span v-show="selected" class="icon icon-checked"></span>-->
             </div>
@@ -73,83 +73,77 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "../../assets/stylesheet/components_import";
+  @import "../../assets/stylesheet/_variable.scss";
+
   .selector-button-group {
-  .active{
-    color: red;
+    .active {
+      color: red;
+    }
+    li {
+      margin-right: rem(30px);
+      position: relative;
+    }
+    .action-remove {
+      line-height: 1.3;
+      margin-top: rem(-8px);
+      cursor: pointer;
+      &:hover {
+        background-color: map_get($global-color-base, b);
+      }
+    }
   }
-  @include flexbox($justify-content: left);
-  li {
-    margin-right: rem(30px);
-    position: relative;
-  }
-  .action-remove {
-  @extend %smallActionButton;
-  @include position-location ($top: 50%, $left: auto, $right: -25px);
-  @include border-radius (8px);
-    line-height: 1.3;
-    margin-top: rem(-8px);
-    cursor: pointer;
-  &:hover{
-    background-color: map_get($global-color-base,b);
-   }
-  }
-  }
+
   .action-cell {
     text-align: center;
   }
 
   .action-add {
-  @extend %smallActionButton;
   }
+
   .selector-button {
-  @include box($display: inline-block, $width: 150px, $height: 48px, $line-height: 48px, $text-align: center, $overflow: visible);
-  @include bd(1px, solid, map-get($global-color, border));
-  @include border-radius (4px);
     background-color: #fff;
     min-height: rem(40px);
     color: map-get($global-color-base, primary);
     width: 150px;
     position: relative;
-  .wrapper {
-  @include font-size(16px);
-    cursor: pointer;
-    padding: 0 rem(10px);
+    .wrapper {
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0 10px;
+    }
+    label {
+      cursor: pointer;
+    }
+    &.remove-able {
+      margin-right: 26px;
+      .action-remove {
+        display: block;
+      }
+    }
+    input[type="radio"]:checked + .wrapper {
+      color: #fff;
+      background-color: map-get($global-color-base, primary);
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    input[type='radio'] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      left: 0;
+      border: 0;
+      margin: 0;
+      /*z-index: -1;*/
+      top: 0;
+      &:checked {
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
-  label {
-    cursor: pointer;
-  }
-  &.remove-able {
-     margin-right: rem(26px);
-  .action-remove {
-    display: block;
-  }
-  }
-  input[type="radio"]:checked +.wrapper{
-    color: #fff;
-    background-color: map-get($global-color-base, primary);
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  input[type='radio']{
-    -webkit-appearance: none;
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    border: 0;
-    margin: 0;
-    /*z-index: -1;*/
-    top: 0;
-  &:checked{
-     outline: none;
-   }
-  &:focus{
-     outline: none;
-   }
-  }
-  }
-
 </style>

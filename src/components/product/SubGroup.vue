@@ -79,7 +79,7 @@
   }
 </script>
 <style lang='scss' scoped>
-  @import "../../assets/stylesheet/components_import";
+  @import "../../assets/stylesheet/_variable.scss";
   .item {
     min-width: 14rem;
     height: 4rem;
@@ -105,11 +105,7 @@
     align-items: center;
   }
   .action-remove {
-  @extend %smallActionButton;
-  @include position-location ($top: 50%, $left: auto, $right: 10px);
-  @include border-radius (8px);
     line-height: 1.3;
-    margin-top: rem(-8px);
     cursor: pointer;
   }
   label{
@@ -119,7 +115,7 @@
     text-align: center;
     font-size: 20px;
     color: map_get($global-color-base,b);
-    border-bottom: 4px solid map_get($global-color-base,c);
+    border-bottom: 4px solid map-get($global-color-base,c);
 
   }
   .edit{
@@ -131,18 +127,18 @@
       width: 100%;
       text-align: center;
       font-size: 1.8rem;
-      color: map_get($global-color-base,primary);
+      color: map-get($global-color-base,primary);
       height: 100%
     }
   }
   .active{
-    border-bottom: 4px solid map_get($global-color-base,primary);
+    border-bottom: 4px solid map-get($global-color-base,primary);
     color: #000;
   }
   .add{
     width: 15px;
     height: 15px;
-    border: 1px solid map_get($global-color-base,c);
+    border: 1px solid map-get($global-color-base,c);
     text-align: center;
     cursor: pointer;
   }

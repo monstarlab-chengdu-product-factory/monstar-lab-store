@@ -1,7 +1,7 @@
 <template>
   <div>
-    <index-commercial/>
-    <index-list/>
+    <commercial/>
+    <commercial-list/>
   </div>
 </template>
 
@@ -11,8 +11,8 @@
   export default {
     name: 'Marketing',
     components: {
-      'index-commercial': Commercial,
-      'index-list': List
+      Commercial,
+      'commercial-list': List
     }
   }
 </script>

@@ -6,8 +6,7 @@
           <div class="text-con">
             <h1>{{item.name}}</h1>
             <p>{{item.brief}}</p>
-            <router-link to="/product">{{buttonText}}</router-link>
-            <!--<el-button type="primary" @click="next">{{buttonText}}</el-button>-->
+            <router-link to="/products">{{buttonText}}</router-link>
           </div>
           <div class="img-con">
             <img v-bind:src="item.coverUrl" alt="cover">
@@ -19,7 +18,7 @@
 </template>
 <script>
   import { Carousel, CarouselItem } from 'element-ui'
-  import { CommercialService } from './Commercial.service.js'
+  import service from '../../api/commercials'
   export default {
     name: 'Commercial',
     data () {
@@ -28,21 +27,14 @@
         buttonText: '开始我的报价'
       }
     },
-//    methods: {
-//      next () {
-//        this.$router.push({name: 'product'})
-//      }
-//    },
     components: {
       Carousel,
       CarouselItem
     },
     created () {
-      let service = new CommercialService()
-      service.getCommercials().then(data => {
+      service.getCommercials(data => {
         this.items = data
       })
-      //        .catch(console.error('vue error'))
     }
   }
 </script>
@@ -77,7 +69,7 @@
         padding-bottom: 4rem;
         font-size: 2rem;
       }
-      a{
+      a {
         display: block;
         width: 15rem;
         padding: 1rem 0;
@@ -86,8 +78,8 @@
         font-weight: 400;
         text-align: center;
         color: #fff;
-        &:hover{
-          color: map-get($global-color,text-main);
+        &:hover {
+          color: map-get($global-color, text-main);
           background-color: #fff;
         }
       }
