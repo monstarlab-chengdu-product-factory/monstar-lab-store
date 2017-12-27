@@ -8,11 +8,10 @@ import ProductList from '@/components/product/ProductList'
 import ProductTypeList from '@/components/product/ProductTypeList'
 import Product from '@/components/product/Product'
 
-// import OrderStep1 from '@/components/order/OrderStep1'
-
-const Order = () => import(/* webpackChunkName: "group-order" */ '@/components/order/Order')
-const OrderConfirm = () => import(/* webpackChunkName: "group-order" */
-  '@/components/order/OrderConfirm')
+// lazy load order module
+const Order = () => import(/* webpackChunkName: "group-order" */'@/components/order/Order')
+const OrderConfirm = () => import(/* webpackChunkName: "group-order" */'@/components/order/OrderConfirm')
+const OrderList = () => import(/* webpackChunkName: "group-order" */'@/components/order/OrderList')
 
 Vue.use(Router)
 
@@ -24,16 +23,16 @@ export default new Router({
     {
       path: '/orders',
       component: Order,
-      name: 'orders',
       children: [
         {
           path: 'confirm',
-          name: 'confirm',
+          name: 'orderConfirm',
           component: OrderConfirm
         },
         {
           path: '',
-          redirect: '/'
+          name: 'orderList',
+          component: OrderList
         }
       ]
     },
