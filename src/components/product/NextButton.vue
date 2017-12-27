@@ -15,7 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/stylesheet/_variable.scss";
+  @import "../../assets/stylesheet/variable";
   button{
     display: block;
     width: 300px;

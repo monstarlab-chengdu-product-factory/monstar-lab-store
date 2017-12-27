@@ -13,7 +13,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
-  import NextButton from '../common/NextButton.vue'
+  import NextButton from './NextButton.vue'
   import CheckboxItem from '../common/CheckboxItem.vue'
 
   export default {

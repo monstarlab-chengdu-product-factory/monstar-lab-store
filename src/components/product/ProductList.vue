@@ -30,6 +30,16 @@
         </div>
       </div>
 
+      <selector-group :proButtonList="types" @tab-change="tabChange" :editable="editing"></selector-group>
+      <div class="alternative" v-if="alternative">
+        <selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>
+
+      </div>
+      <div class="type-selector">
+        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
+      </div>
+      <el-button class="change" plain type="primary" @click="change">{{alternative ? '保存' : '修改平台'}}</el-button>
+
     </div>
 
     <div class="bg-grey">
@@ -44,29 +54,54 @@
   import {mapGetters} from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
   import ModulesPoints from './ModulesPoints.vue'
-  import NextButton from '../common/NextButton.vue'
+  import NextButton from './NextButton.vue'
+  import SelectorButtonGroup from './SelectorButtonGroup'
+  import SubGroup from './SubGroup'
 
   export default {
     name: 'ProductList',
     components: {
       ProductTitle,
       ModulesPoints,
-      NextButton
+      NextButton,
+      'selector-group': SelectorButtonGroup,
+      'sub-type': SubGroup
     },
     data () {
       return {
         path: '/orders/confirm',
-        activeName: '1'
+        activeName: '1',
+        types: [{}],
+        subTypes: [{}],
+        alternative: false,
+        num: 0,
+        editing: false,
+        property: ''
       }
     },
     created () {
       this.$store.dispatch('getAllProductTypes')
     },
-    computed: mapGetters({
-      types: 'allProductTypes'
-    }),
-
-    methods: {}
+    computed: {
+      ...mapGetters({
+        types: 'allProductTypes'
+      }),
+      subtitles () {
+        return this.types[this.num].functions
+      }
+    },
+    methods: {
+      change () {
+        this.alternative = !this.alternative
+        this.editing = !this.editing
+      },
+      tabChange (val) {
+        this.num = val
+      },
+      pushItem () {
+        console.log('s')
+      }
+    }
   }
 </script>
 
@@ -195,4 +230,5 @@
     font-size: 16px;
     padding-bottom: 6em;
   }
+
 </style>
