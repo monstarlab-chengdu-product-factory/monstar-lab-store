@@ -31,7 +31,6 @@
     data () {
       return {
         title: '第二步: 功能评估',
-        products: [],
         property: [],
         table: [
           {'name': '模块'},

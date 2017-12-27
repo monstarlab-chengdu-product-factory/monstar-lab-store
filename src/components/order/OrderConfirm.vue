@@ -1,5 +1,6 @@
 <template>
   <section class="confirm-con">
+    {{$route.params.data}}这里
     <div class="wrapper">
       <h1>第三步：报价试算</h1>
 

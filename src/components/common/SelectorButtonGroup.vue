@@ -36,17 +36,21 @@
         buttons: this.proButtonList,
         num: 0,
         active: false,
-        selected: ''
+        selected: '',
+        functionData: ''
       }
     },
     created () {
       let _this = this
+      bus.$on('functionData', function (value) {
+        _this.functionData = value
+      })
       bus.$on('nextType', function () {
         if (_this.num < _this.buttons.length) {
           _this.num++
         }
         if (_this.num === _this.buttons.length) {
-          _this.$router.push({name: 'confirm', params: {id: this.id}})
+          _this.$router.push({name: 'confirm', params: {data: _this.functionData}})
           _this.num = 0
         }
       })

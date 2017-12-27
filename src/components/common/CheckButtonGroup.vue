@@ -7,7 +7,7 @@
       </div>
       <ul class="child-button">
         <li v-for="(item,index) in button.functionUnits" :key="item.id">
-          <input type="checkbox" v-model="checkbox">
+          <input type="checkbox" v-model="checkbox" v-bind:value="item">
           <input type="text" autofocus v-model="item.title" v-if="item.editing" @blur="edit(item)" @keyup.enter="edit(item)">
           <label @dblclick="edit(item)">{{ item.title }}</label>
           <span v-if="item.editable" class="action-remove" @click="remove(bigIndex,index)">x</span>
@@ -21,6 +21,7 @@
   </el-checkbox-group>
 </template>
 <script>
+  import bus from '../../util/bus.js'
   export default {
     name: 'CheckButtonGroup',
     props: {
@@ -41,6 +42,12 @@
       return {
         editAble: false,
         checkbox: []
+      }
+    },
+    watch: {
+      checkbox: function () {
+        console.log(this.checkbox)
+        bus.$emit('functionData', this.checkbox)
       }
     },
     methods: {
