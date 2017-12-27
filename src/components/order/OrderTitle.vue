@@ -4,7 +4,7 @@
 
 <style lang="scss">
   @import "../../assets/stylesheet/components_import";
-  
+
   h1 {
     @include font-size(36px);
     padding-top: rem(40px);
