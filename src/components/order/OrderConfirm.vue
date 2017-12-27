@@ -2,7 +2,6 @@
   <section class="confirm-con">
     {{$route.params.data}}这里
     <div class="wrapper">
-      <h1>第三步：报价试算</h1>
 
       <div class="total-con">
         <h2>该项目预计需要：</h2>
@@ -36,7 +35,7 @@
 </template>
 
 <script>
-  import OrderDetail from './OrderDetail'
+  import OrderDetail from '../order/OrderDetail'
   export default {
     name: 'OrderConfirm',
     data () {
@@ -56,7 +55,7 @@
 
   .confirm-con {
     width: 100%;
-    background-color: map-get($global-color-base, e);
+    background-color: map-get($global-color-base, g);
     .wrapper {
       width: 100%;
       max-width: map-get($global-width, break-point-lg);
@@ -115,9 +114,9 @@
       width: 30%;
       padding: 1rem 0;
       text-align: center;
-      background-color: map-get($global-color-base,primary);
+      background-color: map-get($global-color-base, primary);
       color: #fff;
-      border-radius:3px;
+      border-radius: 3px;
       font-size: 1.8rem;
     }
   }
