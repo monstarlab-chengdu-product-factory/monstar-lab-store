@@ -16,7 +16,7 @@
 
 <script>
   import { Menu, MenuItem } from 'element-ui'
-  import { NavService } from './Nav.service.js'
+  import service from '../../api/navs'
 
   export default {
     name: 'AppNav',
@@ -30,14 +30,8 @@
       elMenuItem: MenuItem
     },
     created () {
-      let service = new NavService()
-      service.getNavs()
-        .then(data => {
-          this.items = data
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      service.getNavs(data =>
+        (this.items = data))
     }
 
   }
@@ -54,12 +48,12 @@
     width: 100%;
     height: map-get($nav-height, a);
     background-color: map-get($global-color-base, primary);
-    .wrapper{
+    .wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width:map-get($global-width,break-point-lg);
+      max-width: map-get($global-width, break-point-lg);
       margin: 0 auto;
       padding: 0 map-get($global-padding, a);
     }

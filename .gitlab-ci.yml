@@ -5,7 +5,7 @@ cache:
 
 CI:
   script:
-       - echo  "Running npm install"
+       - echo "Running npm install"
        - npm install
        - npm run test
 

@@ -4,9 +4,9 @@ import NotFound from '@/components/common/NotFound'
 
 import Marketing from '@/components/marketing/Marketing'
 
-import ProductList from '@/components/product/ProductList'
-import ProductTypeList from '@/components/product/ProductTypeList'
 import Product from '@/components/product/Product'
+import ProductTypes from '@/components/product/ProductTypes'
+import ProductList from '@/components/product/ProductList'
 
 // lazy load order module
 const Order = () => import(/* webpackChunkName: "group-order" */'@/components/order/Order')
@@ -19,7 +19,22 @@ export default new Router({
   mode: 'history',
   base: __dirname,
   routes: [
-    {path: '/products', name: 'productList', component: ProductList},
+    {
+      path: '/products',
+      component: Product,
+      children: [
+        {
+          path: 'list',
+          name: 'pdList',
+          component: ProductList
+        },
+        {
+          path: '/',
+          name: 'pdTypes',
+          component: ProductTypes
+        }
+      ]
+    },
     {
       path: '/orders',
       component: Order,
@@ -36,8 +51,6 @@ export default new Router({
         }
       ]
     },
-    {path: '/product', name: 'product', component: Product},
-    {path: '/productTypeList', name: 'productTypeList', component: ProductTypeList},
     {path: '', name: 'marketing', component: Marketing},
     {path: '*', component: NotFound}
   ]

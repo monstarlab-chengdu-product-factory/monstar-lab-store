@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <app-nav/>
     <div class="app-main">
       <router-view/>
@@ -14,9 +14,22 @@
   export default {
     name: 'app',
     components: {
-      AppFooter,
-      'app-nav': AppNav,
-      'app-footer': AppFooter
+      AppNav,
+      AppFooter
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  @import "./assets/stylesheet/_variable.scss";
+
+  .app {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-main {
+    min-height: 100%;
+    padding-top: map-get($nav-height, a);
+  }
+</style>

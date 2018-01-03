@@ -1,147 +1,207 @@
 <template>
-  <div class="product-list">
-    <order-title :proTitle="title"></order-title>
-    <product-type-tab ></product-type-tab>
-    <el-row class="model-title" :gutter="20">
-      <el-col v-for="item in table" :span="3" :key="item.id">{{item.name}}</el-col>
-      <el-button class="all" @click="checkAll">全选</el-button>
-    </el-row>
-    <type-product-list :proButtonList="proper" :proHideCheckbox="true" :proSize="'big'" ></type-product-list>
-    <div class="next-button">
-      <el-button type="primary" plain  class="function-next" @click="toNext()">下一步</el-button>
-      <p @click="nextType" class="skip-type">跳过其他功能进入下一平台</p>
+  <div class="container-fluid">
+    <div class="bg-white">
+      <product-title name="第二步:功能评估"></product-title>
+
+      <div class="tab-con">
+        <div class="type-con">
+          <div class="selected-type">
+            <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
+              <div class="type-item">{{type.name}}<span>30</span></div>
+              <div class="icon-close el-icon-circle-close" v-if="isModify" @click="selectType({item: type})"></div>
+            </div>
+          </div>
+
+          <div class="hidden-type" v-if="isModify">
+            <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
+              <div class="type-item" @click="cancelType({item: type})">{{type.name}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="change-type">
+          <button @click="handleModifyClick">{{isModify ? '保存' : '修改平台'}}</button>
+        </div>
+        <div class="unit-con">
+          <div class="unit-item">共功能呢</div>
+          <div class="unit-item">基本能呢</div>
+          <div class="unit-item">基本共功</div>
+          <div class="unit-item">基本能呢</div>
+          <div class="icon-add">+</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bg-grey">
+      <modules-points/>
+      <next-button :path="path"/>
+      <router-link :to="path" class="link-item">跳过其他功能进入下一平台</router-link>
     </div>
   </div>
 </template>
+
 <script>
-  import OrderTitle from '../order/OrderTitle'
-  import ProductTypeTab from './ProductTypeTab'
-  import CheckButtonGroup from '../common/CheckButtonGroup'
-  import { ProductService } from './Product.service.js'
-  import Products from '../../api/property.js'
-  import bus from '../../util/bus.js'
+  import {mapGetters, mapMutations} from 'vuex'
+  import ProductTitle from '../common/ProductTitle.vue'
+  import ModulesPoints from './ModulesPoints.vue'
+  import NextButton from './NextButton.vue'
+
   export default {
     name: 'ProductList',
     components: {
-      'product-type-tab': ProductTypeTab,
-      'order-title': OrderTitle,
-      'type-product-list': CheckButtonGroup
+      ProductTitle,
+      ModulesPoints,
+      NextButton
     },
-    props: [],
     data () {
       return {
-        title: '第二步: 功能评估',
-        products: [],
-        property: [],
-        table: [
-          {'name': '模块'},
-          {'name': '机能'}
-        ],
-        proper: ''
+        isModify: false,
+        path: '/orders/confirm'
       }
     },
     created () {
-      let productService = new ProductService()
-      productService.getProducts()
-        .then(data => {
-          this.products = data
-        })
-      Products.getProperties(properties => {
-        this.property = properties
-      })
-      let _this = this
-      bus.$on('typeId', function (value) {
-        _this.proper = _this.property.filter(v => v.functionTypeId === value)
+      this.$store.dispatch('getAllProductTypes')
+    },
+    computed: {
+      ...mapGetters({
+        types: 'allProductTypes'
       })
     },
     methods: {
-      checkAll () {
-        console.log('this')
+      handleModifyClick () {
+        this.isModify = !this.isModify
       },
-      toNext () {
-        bus.$emit('nextOne')
-      },
-      nextType () {
-        bus.$emit('nextType')
-      }
+      ...mapMutations([
+        'cancelType',
+        'selectType'
+      ])
     }
-//    computed: {
-//      ids: function () {
-//        return this.$route.query.id.map(function (value) {
-//          return Number(value)
-//        })
-//      }
-//    },
-//    mounted () {
-//      console.log(this.$route.params.id)
-//      console.log(this.$route.query.id)
-//    }
   }
 </script>
 
-<style lang="scss">
-  @import "../../assets/stylesheet/components_import";
+<style lang="scss" scoped>
   @import "../../assets/stylesheet/_variable.scss";
 
-  .product-list {
-    width: rem(1200px);
-    margin: 0 auto;
+  @mixin normal-button($width, $height,$margin-right) {
+    display: inline-block;
+    width: $width;
+    height: $height;
+    border: 1px solid map-get($global-color, border);
+    border-radius: 4px;
+    color: map-get($global-color-base, primary);
+    line-height: $height;
+    text-align: center;
+    font-size: 20px;
   }
-  .model-title{
+
+  %active {
+    background-color: map-get($global-color-base, primary);
+    color: #fff;
+  }
+
+  .bg-white {
     width: 100%;
-    height: 4rem;
-    font-size: 16px;
-    border: solid 1px map_get($global-color-base,c);
-    position: relative;
-    background-color: #f8f8f8;
-    .el-col{
-      text-align: center;
-      line-height: 48px;
-      &:nth-child(1){
-        border-right: 1px solid map_get($global-color-base,c);
-       }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .tab-con {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .type-con {
+    width: 80%;
+    .wrapper {
+      display: inline-block;
+      position: relative;
+      .icon-close {
+        position: absolute;
+        right: 25px;
+        top: 18px;
+        color: map-get($global-color-base, h);
+        cursor: pointer;
+      }
+    }
+    .type-item {
+      margin-right: 45px;
+      margin-bottom: 15px;
+      @include normal-button(150px, 48px, 15px);
+      cursor: pointer;
+      span {
+        padding-left: 5px;
+      }
+      &:hover {
+        @extend %active;
+      }
     }
   }
-  .all{
-    position: absolute;
-    right: 1rem;
-    top:.5rem;
-    width: 84px;
-    height: 34px;
-    border-radius: 4px;
-    color: map_get($global-color-base,primary);
-    background-color: #ffffff;
-    border: solid 1px map_get($global-color-base,c);
+
+  .hidden-type {
+    padding-top: 5px;
+    .wrapper {
+      margin-top: -1px;
+      margin-right: -1px;
+      border: 1px dashed map-get($global-color-base, c);
+    }
+    .type-item {
+      margin: 20px 30px;
+    }
   }
-  .next-button{
-    margin: 60px 0;
-    width: 100%;
+
+  .change-type {
+    width: 20%;
+    text-align: right;
+    button {
+      @include normal-button(auto, 48px, 0);
+      min-width: 120px;
+      padding: 0 15px;
+      background-color: map-get($global-color-base, primary);
+      color: #fff;
+    }
+  }
+
+  .unit-con {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-  a{
+    width: 100%;
+    padding-top: 20px;
+    .unit-item {
+      display: inline-block;
+      width: 140px;
+      height: 42px;
+      margin-right: 10px;
+      border-bottom: 4px solid map-get($global-color-base, c);
+      font-size: 20px;
+      color: map-get($global-color-base, k);
+      line-height: 1.6;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: map-get($global-color-base, d);
+        border-bottom-color: map-get($global-color, border);
+      }
+    }
+    .icon-add {
+      margin-left: 15px;
+    }
+  }
+
+  .bg-grey {
+    width: 100%;
+    min-height: 50vh;
+    background-color: map-get($global-color-base, j);
+  }
+
+  .link-item {
     display: block;
-    width: 300px;
     text-align: center;
-    line-height: 2;
-    color:map_get($global-color-base,f);
-  &:hover{
-     text-decoration: underline;
-   }
-  }
-  }
-  .function-next{
-    width: 300px;
-    height: 50px;
-    font-size: 18px;
-    font-weight:300;
-  }
-  .skip-type{
-    color: #3a99d8;
+    color: map-get($global-color-base, f);
     font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
+    padding-bottom: 6em;
   }
 
 </style>

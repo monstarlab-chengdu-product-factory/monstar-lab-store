@@ -15,7 +15,7 @@
   </section>
 </template>
 <script>
-  import { ProductService } from '../product/Product.service.js'
+  import service from '../../api/productTypes'
   export default {
     name: 'List',
     data: function () {
@@ -24,13 +24,9 @@
       }
     },
     created () {
-      let service = new ProductService()
-      service.getProducts()
-        .then(data => {
-          console.log(data)
-          this.items = data
-        })
-//        .catch(console.log('product ERROR'))
+      service.getProductTypes(data => {
+        this.items = data
+      })
     }
   }
 </script>
