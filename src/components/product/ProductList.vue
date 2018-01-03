@@ -6,12 +6,12 @@
       <div class="tab-con">
         <div class="type-con">
           <div class="selected-type">
-            <div class="wrapper" v-for="(type, index) in types">
+            <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}<span>30</span></div>
-              <div class="icon-close el-icon-circle-close"></div>
+              <div class="icon-close el-icon-circle-close"  v-if="isModify"></div>
             </div>
           </div>
-          <div class="hidden-type">
+          <div class="hidden-type" v-if="isModify">
             <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}</div>
             </div>
@@ -29,14 +29,6 @@
         </div>
       </div>
 
-      <!--<selector-group :proButtonList="types" @tab-change="tabChange" :editable="editing"></selector-group>-->
-      <!--<div class="alternative" v-if="alternative">-->
-      <!--<selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>-->
-
-      <!--</div>-->
-      <!--<div class="type-selector">-->
-      <!--<sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>-->
-      <!--</div>-->
     </div>
 
     <div class="bg-grey">
