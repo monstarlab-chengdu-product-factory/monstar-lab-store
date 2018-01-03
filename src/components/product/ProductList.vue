@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="change-type">
-          <button>修改平台</button>
+          <button @click="handleModifyClick">{{isModify ? '保存' : '修改平台'}}</button>
         </div>
         <div class="unit-con">
           <div class="unit-item">共功能呢</div>
@@ -31,13 +31,12 @@
 
       <!--<selector-group :proButtonList="types" @tab-change="tabChange" :editable="editing"></selector-group>-->
       <!--<div class="alternative" v-if="alternative">-->
-        <!--<selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>-->
+      <!--<selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>-->
 
       <!--</div>-->
       <!--<div class="type-selector">-->
-        <!--<sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>-->
+      <!--<sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>-->
       <!--</div>-->
-      <!--<el-button class="change" plain type="primary" @click="change">{{alternative ? '保存' : '修改平台'}}</el-button>-->
     </div>
 
     <div class="bg-grey">
@@ -63,9 +62,8 @@
     },
     data () {
       return {
-        path: '/orders/confirm',
-        activeName: '1',
-        alternative: false
+        isModify: false,
+        path: '/orders/confirm'
       }
     },
     created () {
@@ -77,9 +75,9 @@
       })
     },
     methods: {
-      change () {
-        this.alternative = !this.alternative
-        this.editing = !this.editing
+      handleModifyClick () {
+        this.isModify = !this.isModify
+//        this.editing = !this.editing
       },
       tabChange (val) {
         this.num = val
@@ -166,6 +164,7 @@
     text-align: right;
     button {
       @include normal-button(auto, 48px, 0);
+      min-width: 120px;
       padding: 0 15px;
       background-color: map-get($global-color-base, primary);
       color: #fff;
