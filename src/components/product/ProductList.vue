@@ -9,11 +9,10 @@
             <div class="wrapper" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}<span>30</span></div>
               <div class="icon-close el-icon-circle-close"></div>
-              <!--v-if="type.active"-->
             </div>
           </div>
           <div class="hidden-type">
-            <div class="wrapper" v-for="(type, index) in types">
+            <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}</div>
             </div>
           </div>
@@ -67,12 +66,7 @@
       return {
         path: '/orders/confirm',
         activeName: '1',
-        types: [{}],
-        subTypes: [{}],
-        alternative: false,
-        num: 0,
-        editing: false,
-        property: ''
+        alternative: false
       }
     },
     created () {
@@ -81,10 +75,7 @@
     computed: {
       ...mapGetters({
         types: 'allProductTypes'
-      }),
-      subtitles () {
-        return this.types[this.num].functions
-      }
+      })
     },
     methods: {
       change () {
@@ -93,9 +84,6 @@
       },
       tabChange (val) {
         this.num = val
-      },
-      pushItem () {
-        console.log('s')
       }
     }
   }
@@ -145,6 +133,7 @@
         right: 25px;
         top: 18px;
         color: map-get($global-color-base, h);
+        cursor: pointer;
       }
     }
     .type-item {
@@ -214,9 +203,6 @@
     width: 100%;
     min-height: 50vh;
     background-color: map-get($global-color-base, j);
-    .type-item {
-
-    }
   }
 
   .link-item {
