@@ -30,15 +30,15 @@
         </div>
       </div>
 
-      <selector-group :proButtonList="types" @tab-change="tabChange" :editable="editing"></selector-group>
-      <div class="alternative" v-if="alternative">
-        <selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>
+      <!--<selector-group :proButtonList="types" @tab-change="tabChange" :editable="editing"></selector-group>-->
+      <!--<div class="alternative" v-if="alternative">-->
+        <!--<selector-group :proButtonList="types" :proSingleSelected="true" @click="pushItem"></selector-group>-->
 
-      </div>
-      <div class="type-selector">
-        <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
-      </div>
-      <el-button class="change" plain type="primary" @click="change">{{alternative ? '保存' : '修改平台'}}</el-button>
+      <!--</div>-->
+      <!--<div class="type-selector">-->
+        <!--<sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>-->
+      <!--</div>-->
+      <!--<el-button class="change" plain type="primary" @click="change">{{alternative ? '保存' : '修改平台'}}</el-button>-->
 
     </div>
 
@@ -55,17 +55,13 @@
   import ProductTitle from '../common/ProductTitle.vue'
   import ModulesPoints from './ModulesPoints.vue'
   import NextButton from './NextButton.vue'
-  import SelectorButtonGroup from './SelectorButtonGroup'
-  import SubGroup from './SubGroup'
 
   export default {
     name: 'ProductList',
     components: {
       ProductTitle,
       ModulesPoints,
-      NextButton,
-      'selector-group': SelectorButtonGroup,
-      'sub-type': SubGroup
+      NextButton
     },
     data () {
       return {

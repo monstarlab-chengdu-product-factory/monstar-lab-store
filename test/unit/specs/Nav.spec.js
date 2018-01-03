@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import vueRouter from 'vue-router'
-import Router from '../../../../src/router/index'
+import Router from '../../../src/router/index'
 import Nav from '@/components/common/Nav'
 Vue.use(vueRouter)
 const router = Router
