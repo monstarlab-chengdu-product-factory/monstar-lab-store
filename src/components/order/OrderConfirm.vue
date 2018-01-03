@@ -1,6 +1,6 @@
 <template>
   <section class="confirm-con">
-    {{$route.params.data}}这里
+
     <div class="wrapper">
 
       <div class="total-con">

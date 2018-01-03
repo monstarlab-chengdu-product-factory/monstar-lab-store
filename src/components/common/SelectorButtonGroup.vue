@@ -50,7 +50,7 @@
           _this.num++
         }
         if (_this.num === _this.buttons.length) {
-          _this.$router.push({name: 'confirm', params: {data: _this.functionData}})
+          _this.$router.push({name: 'orderConfirm', params: {data: _this.functionData}})
           _this.num = 0
         }
       })
