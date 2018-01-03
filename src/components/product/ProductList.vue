@@ -38,7 +38,6 @@
         <!--<sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>-->
       <!--</div>-->
       <!--<el-button class="change" plain type="primary" @click="change">{{alternative ? '保存' : '修改平台'}}</el-button>-->
-
     </div>
 
     <div class="bg-grey">

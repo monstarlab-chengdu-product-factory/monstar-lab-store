@@ -34,13 +34,16 @@
 </template>
 
 <script>
+  import ProductTitle from '../common/ProductTitle.vue'
   import OrderDetail from './OrderDetail'
+
   export default {
     name: 'OrderConfirm',
     data () {
       return {}
     },
     components: {
+      ProductTitle,
       OrderDetail
     },
     created () {
@@ -113,9 +116,9 @@
       width: 30%;
       padding: 1rem 0;
       text-align: center;
-      background-color: map-get($global-color-base,primary);
+      background-color: map-get($global-color-base, primary);
       color: #fff;
-      border-radius:3px;
+      border-radius: 3px;
       font-size: 1.8rem;
     }
   }
