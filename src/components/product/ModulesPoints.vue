@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import CheckboxItem from '../common/CheckboxItem.vue'
+  import CheckboxItem from './CheckboxItem.vue'
   export default {
     name: 'ModulesPoints',
     components: {

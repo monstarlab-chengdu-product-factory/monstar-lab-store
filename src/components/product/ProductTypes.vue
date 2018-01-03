@@ -14,7 +14,7 @@
   import { mapGetters } from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
   import NextButton from './NextButton.vue'
-  import CheckboxItem from '../common/CheckboxItem.vue'
+  import CheckboxItem from './CheckboxItem.vue'
 
   export default {
     name: 'ProductTypes',

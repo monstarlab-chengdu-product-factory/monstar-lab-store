@@ -30,7 +30,18 @@ export const mutations = {
 
   toggleType (state, {item}) {
     item.active = !item.active
-    console.log(state)
+  },
+
+  selectType (state, {item}) {
+    if (!item.active) {
+      item.active = !item.active
+    }
+  },
+
+  cancelType (state, {item}) {
+    if (item.active) {
+      item.active = !item.active
+    }
   },
 
   [types.ADD_NEW_UNIT]: (state, {id}) => {

@@ -8,9 +8,10 @@
           <div class="selected-type">
             <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}<span>30</span></div>
-              <div class="icon-close el-icon-circle-close"  v-if="isModify"></div>
+              <div class="icon-close el-icon-circle-close" v-if="isModify" @click="deleteType(type.id)"></div>
             </div>
           </div>
+
           <div class="hidden-type" v-if="isModify">
             <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}</div>
@@ -69,10 +70,10 @@
     methods: {
       handleModifyClick () {
         this.isModify = !this.isModify
-//        this.editing = !this.editing
       },
-      tabChange (val) {
-        this.num = val
+
+      deleteType (id) {
+        console.log(id)
       }
     }
   }
