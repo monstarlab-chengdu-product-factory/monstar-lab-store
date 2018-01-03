@@ -6,26 +6,24 @@
       <div class="tab-con">
         <div class="type-con">
           <div class="selected-type">
-            <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
+            <div class="wrapper" v-if="type.show" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}<span>30</span></div>
-              <div class="icon-close el-icon-circle-close" v-if="isModify" @click="selectType({item: type})"></div>
+              <div class="icon-close el-icon-circle-close" v-if="isChange" @click="toggleTypeShow(type)"></div>
             </div>
           </div>
 
-          <div class="hidden-type" v-if="isModify">
-            <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
-              <div class="type-item" @click="cancelType({item: type})">{{type.name}}</div>
+          <div class="hidden-type" v-if="isChange">
+            <div class="wrapper" v-if="!type.show" v-for="(type, index) in types">
+              <div class="type-item" @click="toggleTypeShow(type)">{{type.name}}</div>
             </div>
           </div>
         </div>
         <div class="change-type">
-          <button @click="handleModifyClick">{{isModify ? '保存' : '修改平台'}}</button>
+          <button @click="handleModifyClick">{{isChange ? '保存' : '修改平台'}}</button>
         </div>
+
         <div class="unit-con">
           <div class="unit-item">共功能呢</div>
-          <div class="unit-item">基本能呢</div>
-          <div class="unit-item">基本共功</div>
-          <div class="unit-item">基本能呢</div>
           <div class="icon-add">+</div>
         </div>
       </div>
@@ -55,12 +53,12 @@
     },
     data () {
       return {
-        isModify: false,
+        isChange: false,
         path: '/orders/confirm'
       }
     },
     created () {
-      this.$store.dispatch('getAllProductTypes')
+//      this.$store.dispatch('getAllProductTypes')
     },
     computed: {
       ...mapGetters({
@@ -68,13 +66,12 @@
       })
     },
     methods: {
-      handleModifyClick () {
-        this.isModify = !this.isModify
-      },
       ...mapMutations([
-        'cancelType',
-        'selectType'
-      ])
+        'toggleTypeShow'
+      ]),
+      handleModifyClick () {
+        this.isChange = !this.isChange
+      }
     }
   }
 </script>

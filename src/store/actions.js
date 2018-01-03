@@ -1,7 +1,8 @@
-import * as types from './mutation-types'
+// import * as types from './mutation-types'
 
-export const addToCart = ({commit}, ProductType) => {
-  commit(types.ADD_TO_CART, {
-    id: ProductType.id
-  })
-}
+// export const toggleTypeToCart = ({commit}, item) => {
+//   commit(types.TOGGLE_PRODUCTTYPE, {item})
+//   // commit(types.TOGGLE_TYPE_TO_CART, {
+//   //   id: item.id
+//   // })
+// }

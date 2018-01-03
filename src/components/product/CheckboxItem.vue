@@ -3,7 +3,7 @@
     <input class="toggle"
            type="checkbox"
            :checked="item.active"
-           @change="toggleType({item: item})">
+           @change="toggleTypeSelected(item)">
     <label v-bind:for="item.id">
       <img v-if="item.icon" v-bind:src="item.icon" :alt="item.active">
       <div class="text-con">
@@ -25,7 +25,7 @@
     directives: {},
     methods: {
       ...mapMutations([
-        'toggleType'
+        'toggleTypeSelected'
       ])
     }
   }
@@ -185,5 +185,4 @@
       }
     }
   }
-
 </style>
