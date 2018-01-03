@@ -33,14 +33,16 @@ export const mutations = {
   },
 
   selectType (state, {item}) {
-    if (!item.active) {
+    if (item.active) {
       item.active = !item.active
+      console.log(state)
     }
   },
 
   cancelType (state, {item}) {
-    if (item.active) {
+    if (!item.active) {
       item.active = !item.active
+      console.log(state)
     }
   },
 

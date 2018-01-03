@@ -8,13 +8,13 @@
           <div class="selected-type">
             <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
               <div class="type-item">{{type.name}}<span>30</span></div>
-              <div class="icon-close el-icon-circle-close" v-if="isModify" @click="deleteType(type.id)"></div>
+              <div class="icon-close el-icon-circle-close" v-if="isModify" @click="selectType({item: type})"></div>
             </div>
           </div>
 
           <div class="hidden-type" v-if="isModify">
             <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
-              <div class="type-item">{{type.name}}</div>
+              <div class="type-item" @click="cancelType({item: type})">{{type.name}}</div>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
   import ModulesPoints from './ModulesPoints.vue'
   import NextButton from './NextButton.vue'
@@ -71,10 +71,10 @@
       handleModifyClick () {
         this.isModify = !this.isModify
       },
-
-      deleteType (id) {
-        console.log(id)
-      }
+      ...mapMutations([
+        'cancelType',
+        'selectType'
+      ])
     }
   }
 </script>
