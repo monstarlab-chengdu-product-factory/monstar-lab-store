@@ -1,3 +1,4 @@
+/*
 import Vue from 'vue'
 import ProductTypeTab from '@/components/product/ProductTypeTab'
 import vueRouter from 'vue-router'
@@ -19,3 +20,4 @@ describe('ProductTypeTab.vue', () => {
     expect(vm.$el.querySelector('.change').innerText).to.equal('修改平台')
   })
 })
+*/
