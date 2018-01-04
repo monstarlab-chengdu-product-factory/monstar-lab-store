@@ -3,9 +3,6 @@
       <li v-for="type in types" :key="type.id" class="type-item "   v-model="checkbox">
         <product-item :type="type" v-on:checkbox="checkVal"></product-item>
       </li>
-      <ul>
-        <li v-for="add in adds">{{add.id}}</li>
-      </ul>
     </ul>
 
 </template>
@@ -21,14 +18,12 @@
     },
     data: function () {
       return {
-//        types: {},
         checkbox: []
       }
     },
     computed: {
       ...mapGetters({
-        types: 'allTypes',
-        adds: 'allAdds'
+        types: 'allTypes'
       })
     },
     methods: {

@@ -11,7 +11,6 @@ const getters = {
 }
 const mutations = {
   [types.ADD_TO_CART] (state, {id}) {
-    console.log('wha')
     state.added.push({
       id
     })

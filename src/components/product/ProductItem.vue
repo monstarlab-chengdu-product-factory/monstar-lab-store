@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <input type="checkbox" :id="type.id" :value="type.id" @click="click(type.id,$event)" >
+    <input type="checkbox" :id="type.id" :value="type.id" @click="addToCart" >
     <label v-bind:for="type.id">
       <img v-bind:src='type.icon' alt='icon'>
       <div class="description-container"><h1>{{type.name}}</h1>
@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+  import {mapActions} from 'vuex'
   export default {
     name: 'ProductItem',
     props: ['type'],
@@ -17,7 +18,15 @@
         types: {}
       }
     },
+    computed: {
+//      ...mapActions({
+//        addToCart: 'addToCart'
+//      })
+    },
     methods: {
+      ...mapActions({
+        addToCart: 'addToCart'
+      }),
       click (typeId, event) {
         let checked = event.target.checked
         this.$emit('checkbox', checked, typeId)

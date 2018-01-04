@@ -1,8 +1,7 @@
 import * as types from '../mutation-types'
 import TypeService from '../../api/type'
 const state = {
-  all: [],
-  addedOne: []
+  all: []
 }
 const actions = {
   getAllTypes ({commit}) {
@@ -20,8 +19,7 @@ const mutations = {
   }
 }
 const getters = {
-  allTypes: state => state.all,
-  allAdds: state => state.addedOne
+  allTypes: state => state.all
 }
 export default {
   state,

@@ -1,9 +1,9 @@
 <template>
   <div class="product-type-tab">
     <div class="cat-selector">
-      <selector-group :proButtonList="productTypes" @tab-change="tabChange" :editable="editing"></selector-group>
+      <selector-group :proButtonList="allAdded" @tab-change="tabChange" :editable="editing"></selector-group>
       <div class="alternative" v-if="alternative">
-        <selector-group :proButtonList="productTypes" :proSingleSelected="true" @click="pushItem"></selector-group>
+        <selector-group :proButtonList="allAdded" :proSingleSelected="true" @click="pushItem"></selector-group>
       </div>
       <div class="type-selector">
         <sub-type :proSingleSelected="true" :subtitle="subtitles" class="sub-type"></sub-type>
@@ -16,6 +16,7 @@
   import { ProductService } from './Product.service.js'
   import SelectorButtonGroup from '../common/SelectorButtonGroup'
   import SubGroup from '../product/SubGroup'
+  import {mapGetters} from 'vuex'
   export default {
     name: 'ProductTypeTab',
     components: {
@@ -34,6 +35,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        allAdded: 'cartProducts'
+      }),
       subtitles () {
         return this.productTypes[this.num].functions
       }
