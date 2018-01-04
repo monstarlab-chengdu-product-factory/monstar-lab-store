@@ -2,7 +2,7 @@
   <div class="tab-con">
     <div class="type-con">
       <div class="selected-type">
-        <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
+        <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
           <!--TODO: point counts isActive-->
           <div class="type-item" :class="{'is-selected':index === selectedType}" @click="handleTabClick(index)">
             {{type.name}}<span>30</span>
