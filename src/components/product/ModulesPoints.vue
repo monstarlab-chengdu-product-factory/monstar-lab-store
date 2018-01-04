@@ -11,12 +11,10 @@
 
       <section class="row-con">
         <div class="module-con">
-          <checkbox-item class="text-checkbox big-size" :item="module"/>
+          <checkbox-item class="text-checkbox bg-dark" :item="module"/>
         </div>
         <div class="point-con">
-          <checkbox-item class="text-checkbox small-size" :item="point"/>
-          <checkbox-item class="text-checkbox small-size" :item="point"/>
-          <checkbox-item class="text-checkbox small-size" :item="point"/>
+          <checkbox-item class="text-checkbox bg-light" :item="point"/>
           <div class="icon-add">+</div>
         </div>
       </section>

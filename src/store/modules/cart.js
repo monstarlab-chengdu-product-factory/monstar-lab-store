@@ -1,33 +1,28 @@
-// import service from '../../api/productTypes'
+import _ from 'lodash'
 import * as types from '../mutation-types'
 
 const state = {
-  added: [],
-  checkoutStatus: null
+  typeAdded: []
 }
 
 const getters = {
-  checkoutStatus: state => state.checkoutStatus
+  typeCart: state => state.typeAdded
 }
 
-const actions = {
-  checkout ({commit, state}, productTypes) {
-    const savedCartItems = [...state.added]
-    console.log(savedCartItems)
-    commit(types.CHECKOUT_REQUEST)
-    // service.buyProducts(
-    //   products,
-    //   () => commit(types.CHECKOUT_SUCCESS),
-    //   () => commit(types.CHECKOUT_FAILURE, { savedCartItems })
-    // )
-  }
-}
+const actions = {}
 
 const mutations = {
-  [types.ADD_TO_CART] (state, {id}) {
-    state.checkoutStatus = null
-    const record = state.added.find(p => p.id === id)
-    console.log(record)
+  [types.TOGGLE_TYPE_TO_CART] (state, {id}) {
+    const handleType = state.typeAdded.find(t => t.id === id)
+    if (handleType) {
+      let i = _.findIndex(state.typeAdded, {id: id})
+      console.log(i)
+      console.log(state.typeAdded)
+    } else {
+      state.typeAdded.push({
+        id
+      })
+    }
   }
 }
 

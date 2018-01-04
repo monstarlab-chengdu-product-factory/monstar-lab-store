@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import service from '../../api/productTypes'
 import * as types from '../mutation-types'
 
@@ -15,11 +14,15 @@ const getters = {
 // actions
 const actions = {
   getAllProductTypes ({commit}) {
-    // commit('REQUEST_PRODUCTS')
     service.getProductTypes(productTypes => {
       commit(types.RECEIVE_PRODUCTTYPES, {productTypes})
     })
+  },
+  commitProductTypesChange ({commit}, items) {
+    // TODO:判断最小list长为1
+    commit(types.COMMIT_PRODUCTTYPES_CHANGE, {items})
   }
+
 }
 
 // mutations
@@ -27,31 +30,16 @@ export const mutations = {
   [types.RECEIVE_PRODUCTTYPES]: (state, {productTypes}) => {
     state.all = productTypes
   },
-
-  toggleType (state, {item}) {
-    item.active = !item.active
+  toggleTypeSelected: (state, item) => {
+    item.show = item.active = !item.active
   },
-
-  selectType (state, {item}) {
-    if (item.active) {
-      item.active = !item.active
-      console.log(state)
+  toggleTypeShow: (state, item) => {
+    item.show = !item.show
+  },
+  [types.COMMIT_PRODUCTTYPES_CHANGE]: (state, {items}) => {
+    for (let i in items) {
+      items[i].active = items[i].show
     }
-  },
-
-  cancelType (state, {item}) {
-    if (!item.active) {
-      item.active = !item.active
-      console.log(state)
-    }
-  },
-
-  [types.ADD_NEW_UNIT]: (state, {id}) => {
-    let index = _.findIndex(state.all, {id: id})
-    console.log(index)
-    // state.all[index].units.push({
-    //   id: (index + 1) * 10 +
-    // })
   }
 }
 
