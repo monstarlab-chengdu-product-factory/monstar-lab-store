@@ -22,7 +22,6 @@ const actions = {
     // TODO:判断最小list长为1
     commit(types.COMMIT_PRODUCTTYPES_CHANGE, {items})
   }
-
 }
 
 // mutations

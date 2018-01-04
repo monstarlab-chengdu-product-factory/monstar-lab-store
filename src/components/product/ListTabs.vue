@@ -2,9 +2,11 @@
   <div class="tab-con">
     <div class="type-con">
       <div class="selected-type">
-        <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
+        <div class="wrapper" v-if="!type.active" v-for="(type, index) in types">
           <!--TODO: point counts isActive-->
-          <div class="type-item">{{type.name}}<span>30</span></div>
+          <div class="type-item" :class="{'is-selected':index === selectedType}" @click="handleTabClick(index)">
+            {{type.name}}<span>30</span>
+          </div>
         </div>
       </div>
 
@@ -20,7 +22,12 @@
     </div>
 
     <div class="unit-con">
-      <div class="unit-item">共功能呢</div>
+      <div class="unit-list" v-for="(type, index) in types" :class="{'hidden': index != selectedType}">
+        <div class="unit-item" v-for="(unit, index) in type.units" :class="{'is-selected':index === selectedUnit}"
+             @click="handleSubTabClick(index)">
+          {{unit.name}}
+        </div>
+      </div>
       <div class="icon-add">+</div>
     </div>
   </div>
@@ -29,6 +36,7 @@
 <script>
   import {mapGetters} from 'vuex'
   import CheckboxItem from './CheckboxItem.vue'
+
   export default {
     name: 'ProductList',
     components: {
@@ -36,8 +44,13 @@
     },
     data () {
       return {
-        isChange: false
+        isChange: false,
+        selectedType: 0,
+        selectedUnit: 0
       }
+    },
+    created () {
+      return {}
     },
     computed: {
       ...mapGetters({
@@ -50,6 +63,12 @@
         if (!this.isChange) {
           this.$store.dispatch('commitProductTypesChange', types)
         }
+      },
+      handleSubTabClick (index) {
+        this.selectedUnit = index
+      },
+      handleTabClick (index) {
+        this.selectedType = index
       }
     }
   }
@@ -73,6 +92,11 @@
   %active {
     background-color: map-get($global-color-base, primary);
     color: #fff;
+  }
+
+  %unit-active {
+    color: map-get($global-color-base, d);
+    border-bottom-color: map-get($global-color, border);
   }
 
   .tab-con {
@@ -113,16 +137,25 @@
     }
   }
 
+  .selected-type {
+    .type-item {
+      &.is-selected {
+        color: #fff;
+        background-color: map-get($global-color-base, primary);
+      }
+    }
+  }
+
   .type-list {
     padding-top: 5px;
     .wrapper {
       margin-top: -1px;
       margin-right: -1px;
       border: 1px dashed map-get($global-color-base, c);
-      .type-item {
-        margin: 20px 30px;
-        border:none;
-      }
+    }
+    .type-item {
+      margin: 20px 30px;
+      border: none;
     }
   }
 
@@ -143,8 +176,10 @@
       text-align: center;
       cursor: pointer;
       &:hover {
-        color: map-get($global-color-base, d);
-        border-bottom-color: map-get($global-color, border);
+        @extend %unit-active;
+      }
+      &.is-selected {
+        @extend %unit-active;
       }
     }
     .icon-add {

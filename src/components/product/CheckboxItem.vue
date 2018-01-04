@@ -129,6 +129,12 @@
       border-radius: 4px;
       background-color: #fff;
     }
+
+    input:hover {
+      + label {
+        border-color: map-get($global-color, border);
+      }
+    }
     input:checked {
       + label {
         &::after {
