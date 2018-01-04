@@ -1,14 +1,13 @@
 <template>
   <div class="item">
-    <input class="toggle"
-           type="checkbox"
+    <input type="checkbox"
            :checked="item.active"
            @change="toggleTypeSelected(item)">
     <label v-bind:for="item.id">
-      <img v-if="item.icon" v-bind:src="item.icon" :alt="item.active">
+      <img :class="{hidden:isHidden}" v-if="item.icon" v-bind:src="item.icon" :alt="item.active">
       <div class="text-con">
         <h3>{{item.name}}</h3>
-        <p v-if="item.icon">{{item.brief}}</p>
+        <p :class="{hidden:isHidden}" v-if="item.icon">{{item.brief}}</p>
       </div>
     </label>
   </div>
@@ -18,9 +17,10 @@
   import {mapMutations} from 'vuex'
   export default {
     name: 'CheckboxItem',
-    props: ['item'],
+    props: ['item', 'isHidden'],
     data () {
-      return {}
+      return {
+      }
     },
     directives: {},
     methods: {
@@ -145,7 +145,7 @@
     }
   }
 
-  .big-size {
+  .bg-dark {
     max-width: 100px;
     height: 40px;
     margin: 0 auto;
@@ -166,7 +166,7 @@
     }
   }
 
-  .small-size {
+  .bg-light {
     min-width: 84px;
     height: 34px;
     h3 {
@@ -183,6 +183,12 @@
           background: url("../../assets/image/icon-right-green.svg");
         }
       }
+    }
+  }
+
+  .type-item{
+    h3{
+      font-size: 20px;
     }
   }
 </style>
