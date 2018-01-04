@@ -22,7 +22,6 @@ const actions = {
     // TODO:判断最小list长为1
     commit(types.COMMIT_PRODUCTTYPES_CHANGE, {items})
   }
-
 }
 
 // mutations
@@ -34,6 +33,9 @@ export const mutations = {
     item.show = item.active = !item.active
   },
   toggleTypeShow: (state, item) => {
+    if (!item.active) {
+      item.show = false
+    }
     item.show = !item.show
   },
   [types.COMMIT_PRODUCTTYPES_CHANGE]: (state, {items}) => {

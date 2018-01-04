@@ -23,6 +23,9 @@
         path: 'products/list'
       }
     },
+    created () {
+      this.$store.dispatch('getAllProductTypes')
+    },
     components: {
       ProductTitle,
       NextButton,
@@ -30,10 +33,7 @@
     },
     computed: mapGetters({
       types: 'allProductTypes'
-    }),
-    created () {
-      this.$store.dispatch('getAllProductTypes')
-    }
+    })
   }
 </script>
 

@@ -2,7 +2,7 @@
   <div class="item">
     <input type="checkbox"
            :checked="item.active"
-           @change="toggleTypeSelected(item)">
+           @change="isHidden ?toggleTypeShow(item) : toggleTypeSelected(item)">
     <label v-bind:for="item.id">
       <img :class="{hidden:isHidden}" v-if="item.icon" v-bind:src="item.icon" :alt="item.active">
       <div class="text-con">
@@ -19,13 +19,13 @@
     name: 'CheckboxItem',
     props: ['item', 'isHidden'],
     data () {
-      return {
-      }
+      return {}
     },
     directives: {},
     methods: {
       ...mapMutations([
-        'toggleTypeSelected'
+        'toggleTypeSelected',
+        'toggleTypeShow'
       ])
     }
   }
@@ -129,6 +129,12 @@
       border-radius: 4px;
       background-color: #fff;
     }
+
+    input:hover {
+      + label {
+        border-color: map-get($global-color, border);
+      }
+    }
     input:checked {
       + label {
         &::after {
@@ -186,8 +192,8 @@
     }
   }
 
-  .type-item{
-    h3{
+  .type-item {
+    h3 {
       font-size: 20px;
     }
   }

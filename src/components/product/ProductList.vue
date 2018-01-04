@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="bg-white">
+    <div class="wrapper">
       <product-title name="第二步:功能评估"></product-title>
       <list-tabs/>
     </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapMutations} from 'vuex'
+//  import {mapGetters, mapMutations} from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
   import ListTabs from './ListTabs.vue'
   import ModulesPoints from './ModulesPoints.vue'
@@ -33,11 +33,8 @@
         path: '/orders/confirm'
       }
     },
-    computed: {
-      ...mapGetters({})
-    },
-    methods: {
-      ...mapMutations([])
+    created () {
+      this.$store.dispatch('getAllProductTypes')
     }
   }
 </script>
@@ -45,7 +42,7 @@
 <style lang="scss" scoped>
   @import "../../assets/stylesheet/_variable.scss";
 
-  .bg-white {
+  .wrapper {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
