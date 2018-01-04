@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import * as actions from './actions'
+import type from './modules/type.js'
+import property from './modules/property.js'
 // import * as getters from './getters'
-// import products from './modules/products'
-
+// import * as actions from './actions'
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -11,19 +11,9 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   // actions,
   // getters,
-  strict: debug,
-  // modules: {
-  //   products
-  // },
-  state: {
-    count: 1
+  modules: {
+    type,
+    property
   },
-  mutations: {
-    increment: state => state.count++,
-    decrement: state => {
-      if (state.count > 1) {
-        state.count--
-      }
-    }
-  }
+  strict: debug
 })

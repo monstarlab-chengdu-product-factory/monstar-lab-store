@@ -3,13 +3,17 @@
       <li v-for="type in types" :key="type.id" class="type-item "   v-model="checkbox">
         <product-item :type="type" v-on:checkbox="checkVal"></product-item>
       </li>
+      <ul>
+        <li v-for="add in adds">{{add.id}}</li>
+      </ul>
     </ul>
+
 </template>
 
 <script>
-  import {ProductService} from '../product/Product.service.js'
+//  import {ProductService} from '../product/Product.service.js'
   import ProductItem from '../product/ProductItem.vue'
-
+  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'ProductTypeList',
     components: {
@@ -17,11 +21,20 @@
     },
     data: function () {
       return {
-        types: {},
+//        types: {},
         checkbox: []
       }
     },
+    computed: {
+      ...mapGetters({
+        types: 'allTypes',
+        adds: 'allAdds'
+      })
+    },
     methods: {
+      ...mapActions({
+        addToCart: 'addToCart'
+      }),
       checkVal (checked, value) {
         if (checked) {
           this.checkbox.push(value)
@@ -32,11 +45,7 @@
       }
     },
     created () {
-      let service = new ProductService()
-      service.getProducts(this)
-        .then(data => {
-          this.types = data
-        })
+      this.$store.dispatch('getAllTypes')
     }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="selector-button-group">
-      <li v-for="(button, index) in buttons" :key="button.id"   :id="button.id">
+      <li v-for="(button, index) in allAdded" :key="button.id"   :id="button.id">
         <div @click=tab(index) >
           <div class="selector-button "  :class="{'selected' : selected}" >
             <input type="radio" name="check">
@@ -21,6 +21,8 @@
 <script>
   import SubGroup from '../product/SubGroup'
   import bus from '../../util/bus.js'
+  import {mapGetters} from 'vuex'
+
   export default {
     name: 'SelectorButtonGroup',
     components: {
@@ -64,6 +66,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        allAdded: 'allAdded'
+      }),
       subtitles () {
         return this.buttons[this.num].functions
       }

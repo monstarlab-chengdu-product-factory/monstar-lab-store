@@ -1,7 +1,7 @@
 import axios from 'axios'
 export class ProductService {
   constructor () {
-    this.productUrl = '/api/products'
+    this.productUrl = '../api/type'
   }
   getProducts () {
     return axios.get(this.productUrl)
