@@ -38,7 +38,6 @@ export const mutations = {
       item.show = false
     }
     item.show = !item.show
-    console.log(item.show)
   },
   [types.COMMIT_PRODUCTTYPES_CHANGE]: (state, {items}) => {
     for (let i in items) {
