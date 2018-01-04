@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapGetters} from 'vuex'
   import CheckboxItem from './CheckboxItem.vue'
   export default {
     name: 'ProductList',
@@ -39,23 +39,12 @@
         isChange: false
       }
     },
-    created () {
-      this.$store.dispatch('getAllProductTypes')
-    },
     computed: {
       ...mapGetters({
         types: 'allProductTypes'
       })
     },
     methods: {
-      ...mapMutations([
-        'toggleTypeShow'
-      ]),
-
-      handleToggleType () {
-
-      },
-
       handleChangeClick (types) {
         this.isChange = !this.isChange
         if (!this.isChange) {
