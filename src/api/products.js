@@ -3,8 +3,20 @@
  */
 import products from './products.json'
 const _products = products
+
+var getProductsArr = function (unitId) {
+  let products = []
+  for (let p of _products) {
+    if (p.unitId === unitId) {
+      products.push(p)
+    }
+  }
+  return products
+}
+
 export default {
-  getProducts (cb) {
-    setTimeout(() => cb(_products), 100)
+  async getProducts (unitId, cb) {
+    await
+    cb(getProductsArr(unitId))
   }
 }

@@ -1,8 +1,4 @@
-export const cartTypes = state => {
-  return state.types.added.map((id, name) => {
-    const type = state.productTypes.all.find(t => t.id === id)
-    return {
-      name: type.name
-    }
-  })
+export const pointsCount = state => {
+  // add up for count
+  return state.pointsCount
 }

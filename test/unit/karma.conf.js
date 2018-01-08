@@ -29,12 +29,6 @@ module.exports = function (config) {
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
-    // proxies: {
-    //   '/api/navs': `${apiHost}/api/navs`,
-    //   '/api/commercials': `${apiHost}/api/commercials`,
-    //   '/api/products': `${apiHost}/api/products`,
-    //   '/api/productTypes': `${apiHost}/api/productTypes`,
-    // },
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true

@@ -3,12 +3,15 @@ import * as types from '../mutation-types'
 
 // initial state
 const state = {
-  all: []
+  allTypes: [],
+  activeTypeId: 0,
+  activeUnitId: 0
 }
 
 // getters
 const getters = {
-  allProductTypes: state => state.all
+  allProductTypes: state => state.allTypes,
+  activeUnitId: state => state.activeUnitId
 }
 
 // actions
@@ -19,15 +22,20 @@ const actions = {
     })
   },
   commitProductTypesChange ({commit}, items) {
-    // TODO:判断最小list长为1
     commit(types.COMMIT_PRODUCTTYPES_CHANGE, {items})
   }
+  // TODO: If first active type changes, renders unit items
 }
 
 // mutations
-export const mutations = {
+const mutations = {
   [types.RECEIVE_PRODUCTTYPES]: (state, {productTypes}) => {
-    state.all = productTypes
+    state.allTypes = productTypes
+  },
+  [types.COMMIT_PRODUCTTYPES_CHANGE]: (state, {items}) => {
+    for (let i in items) {
+      items[i].active = items[i].show
+    }
   },
   toggleTypeSelected: (state, item) => {
     item.show = item.active = !item.active
@@ -38,10 +46,12 @@ export const mutations = {
     }
     item.show = !item.show
   },
-  [types.COMMIT_PRODUCTTYPES_CHANGE]: (state, {items}) => {
-    for (let i in items) {
-      items[i].active = items[i].show
-    }
+  unitSelected: (state, unitId) => {
+    state.activeUnitId = unitId
+    console.log(state.activeUnitId)
+  },
+  typeSelected: (state, typeId) => {
+    state.avtiveTypeId = typeId
   }
 }
 

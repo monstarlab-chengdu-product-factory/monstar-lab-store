@@ -11,10 +11,11 @@
 
       <section class="row-con">
         <div class="module-con">
+          {{items[0]}}
           <checkbox-item class="text-checkbox bg-dark" :item="module"/>
         </div>
         <div class="point-con">
-          <checkbox-item class="text-checkbox bg-light" :item="point"/>
+          <checkbox-item class="text-checkbox bg-light" :item="module"/>
           <div class="icon-add">+</div>
         </div>
       </section>
@@ -33,21 +34,28 @@
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
   import CheckboxItem from './CheckboxItem.vue'
   export default {
     name: 'ModulesPoints',
     components: {
       CheckboxItem
     },
+    created () {
+      this.$store.dispatch('getProducts', 1)
+    },
     data () {
       return {
-        module: {
-          name: 'dsfdfsd'
-        },
-        point: {
-          name: 'dddd'
-        }
+        module: 'ffff'
       }
+    },
+    computed: mapGetters({
+      items: 'products'
+    }),
+    methods: {
+      ...mapActions([
+        'getProducts'
+      ])
     }
   }
 </script>

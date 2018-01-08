@@ -14,7 +14,6 @@
 </template>
 
 <script>
-//  import {mapGetters, mapMutations} from 'vuex'
   import ProductTitle from '../common/ProductTitle.vue'
   import ListTabs from './ListTabs.vue'
   import ModulesPoints from './ModulesPoints.vue'
@@ -32,9 +31,6 @@
       return {
         path: '/orders/confirm'
       }
-    },
-    created () {
-      this.$store.dispatch('getAllProductTypes')
     }
   }
 </script>

@@ -4,7 +4,8 @@
       <div class="selected-type">
         <div class="wrapper" v-if="type.active" v-for="(type, index) in types">
           <!--TODO: point counts isActive-->
-          <div class="type-item" :class="{'is-selected':index === selectedType}" @click="handleTabClick(index)">
+          <div class="type-item" :class="{'is-selected':index === selectedType}"
+               @click="handleTabClick(index, type.id)">
             {{type.name}}<span>30</span>
           </div>
         </div>
@@ -24,7 +25,7 @@
     <div class="unit-con">
       <div class="unit-list" v-for="(type, index) in types" :class="{'hidden': index != selectedType}">
         <div class="unit-item" v-for="(unit, index) in type.units" :class="{'is-selected':index === selectedUnit}"
-             @click="handleSubTabClick(index)">
+             @click="handleSubTabClick(index, unit.id)">
           {{unit.name}}
         </div>
       </div>
@@ -34,7 +35,8 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import * as messages from '../../consist/message'
   import CheckboxItem from './CheckboxItem.vue'
 
   export default {
@@ -58,17 +60,32 @@
       })
     },
     methods: {
+      ...mapActions([
+        'getProducts'
+      ]),
+      ...mapMutations([
+        'typeSelected', 'unitSelected'
+      ]),
       handleChangeClick (types) {
-        this.isChange = !this.isChange
-        if (!this.isChange) {
-          this.$store.dispatch('commitProductTypesChange', types)
+        let activeItem = types.find(t => t.show === true)
+        if (!activeItem) {
+          return alert(messages.MUSTSELECTED.Chinese)
+        } else {
+          this.isChange = !this.isChange
+          if (!this.isChange) {
+            this.$store.dispatch('commitProductTypesChange', types)
+          }
         }
       },
-      handleSubTabClick (index) {
-        this.selectedUnit = index
-      },
-      handleTabClick (index) {
+      handleTabClick (index, typeId) {
         this.selectedType = index
+        this.selectedUnit = 0
+        console.log(typeId)
+        this.typeSelected(typeId)
+      },
+      handleSubTabClick (index, unitId) {
+        this.selectedUnit = index
+        this.unitSelected(unitId)
       }
     }
   }

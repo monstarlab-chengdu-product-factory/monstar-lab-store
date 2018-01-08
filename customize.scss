@@ -1,7 +1,7 @@
-/* 改变主题色变量 */
+/* Change main color-base of ElementUI */
 $--color-primary: #2ba08e;
 
-/* 改变 icon 字体路径变量，必需 */
+/* Change icon font path must have*/
 $--font-path: 'node_modules/element-ui/lib/theme-chalk/fonts';
 
 @import "node_modules/element-ui/packages/theme-chalk/src/index";
