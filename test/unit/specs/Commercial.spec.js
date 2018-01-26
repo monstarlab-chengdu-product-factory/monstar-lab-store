@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import vueRouter from 'vue-router'
-import Router from '../../../../src/router/index'
-// import data from '../../../../data.json'
+import Router from '../../../src/router/index'
 import Commercial from '@/components/marketing/Commercial'
 
 Vue.use(vueRouter)

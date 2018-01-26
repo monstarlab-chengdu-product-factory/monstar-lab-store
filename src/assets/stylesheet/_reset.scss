@@ -1,7 +1,7 @@
 //-------------------------------------
 //  Reset a.k.a @include global-reset
 //-------------------------------------
-// Based on Eric Meyer's reset 2.0 Global reset rules. 
+// Based on Eric Meyer's reset 2.0 Global reset rules.
 // For more specific resets, use the reset mixins provided below
 // http://meyerweb.com/eric/tools/css/reset/
 
@@ -23,33 +23,64 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
+
 html {
   line-height: 1;
 }
-ol,ul,li{
+
+ol, ul, li {
   list-style: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 caption, th, td {
   text-align: inherit;
   font-weight: inherit;
   vertical-align: middle;
 }
+
 q, blockquote {
   quotes: none;
 }
+
 a img {
   border: none;
 }
+
 article, aside, details, figure, footer, header, menu, nav, section, summary {
   display: block;
 }
-div:focus{
+
+div:focus {
   outline: none;
   background: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+button, input {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img{
+  display: block;
 }
 

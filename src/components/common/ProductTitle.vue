@@ -1,16 +1,14 @@
 <template>
- <h1>{{name}}</h1>
+  <h1>{{name}}</h1>
 </template>
 <script>
   export default {
-    name: 'ProductName',
+    name: 'ProductTitle',
     props: ['name']
   }
 </script>
 <style lang='scss' scoped>
-h1{
-  font-size: 36px;
-  letter-spacing: 1px;
-  font-weight:400;
-}
+  h1 {
+    letter-spacing: 1px;
+  }
 </style>

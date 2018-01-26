@@ -1,8 +1,8 @@
-export const cartProducts = state => {
-  return state.property.added.map(({id}) => {
-    const product = state.type.all.find(p => p.id === id)
+export const cartTypes = state => {
+  return state.types.added.map((id, name) => {
+    const type = state.productTypes.all.find(t => t.id === id)
     return {
-      id: product.id
+      name: type.name
     }
   })
 }

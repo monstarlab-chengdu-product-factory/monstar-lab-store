@@ -2,7 +2,7 @@
   <section class="confirm-con">
 
     <div class="wrapper">
-
+      <product-title name="第三步:报价试算"></product-title>
       <div class="total-con">
         <h2>该项目预计需要：</h2>
         <el-row>
@@ -35,13 +35,16 @@
 </template>
 
 <script>
-  import OrderDetail from '../order/OrderDetail'
+  import ProductTitle from '../common/ProductTitle.vue'
+  import OrderDetail from './OrderDetail'
+
   export default {
     name: 'OrderConfirm',
     data () {
       return {}
     },
     components: {
+      ProductTitle,
       OrderDetail
     },
     created () {
@@ -55,7 +58,7 @@
 
   .confirm-con {
     width: 100%;
-    background-color: map-get($global-color-base, g);
+    background-color: map-get($global-color-base, e);
     .wrapper {
       width: 100%;
       max-width: map-get($global-width, break-point-lg);

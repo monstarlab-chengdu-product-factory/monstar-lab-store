@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>green</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="功能评估-01-button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-315.000000, -548.000000)">
+        <g id="green" transform="translate(315.000000, 548.000000)" fill="#289B8E">
+            <g id="icon-checked02">
+                <path d="M9.82842712,12.363961 L7.70710678,10.2426407 L7,10.9497475 L9.12132034,13.0710678 L9.82842712,13.7781746 L14.7781746,8.82842712 L14.0710678,8.12132034 L9.82842712,12.363961 Z M16,0 L16,13 C16,14.6568542 14.6568542,16 13,16 L0,16 L16,0 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -12,3 +12,4 @@ test/e2e/reports
 # Editor directories and files
 .vscode
 .gitignore
+monstar-lab-store-dev.iml
