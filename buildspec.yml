@@ -16,7 +16,7 @@ phases:
 
     commands:
 
-      - docker build --tag $REPO_URL:$TAG
+      - docker build --tag $REPO_URL:$TAG .
 
   post_build:
 
