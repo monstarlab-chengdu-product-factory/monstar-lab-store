@@ -10,20 +10,21 @@ phases:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
 
       - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+      - REPO_URL=548284823708.dkr.ecr.us-east-2.amazonaws.com/store
 
   build:
 
     commands:
 
-      - docker build --tag "548284823708.dkr.ecr.us-east-2.amazonaws.com/store:${TAG}" .
+      - docker build --tag $REPO_URL:$TAG
 
   post_build:
 
     commands:
 
-      - docker push "548284823708.dkr.ecr.us-east-2.amazonaws.com/store:${TAG}"
+      - docker push $REPO_URL:$TAG
 
-      - printf '{"store":"%s"}' $TAG > store.json
+      - printf '[{"name":"store","imageUrl":"%s"}]' $REPO_URL:$TAG > store.json
 
 artifacts:
 
