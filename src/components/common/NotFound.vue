@@ -6,6 +6,3 @@
     name: 'NotFound'
   }
 </script>
-<style>
-
-</style>

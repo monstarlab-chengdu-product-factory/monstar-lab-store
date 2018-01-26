@@ -42,7 +42,7 @@
       CheckboxItem
     },
     created () {
-      this.$store.dispatch('getProducts', 1)
+      this.$store.dispatch('getProducts')
     },
     data () {
       return {
