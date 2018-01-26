@@ -1,5 +1,6 @@
 <template>
   <section class="confirm-con">
+
     <div class="wrapper">
       <product-title name="第三步:报价试算"></product-title>
       <div class="total-con">

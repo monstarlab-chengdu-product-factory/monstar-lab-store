@@ -1,6 +1,7 @@
 <template>
   <div class="list-con">
-    <div class="list-item" v-for="p in products" :key="p.id">
+    {{$route.params.data}}这里
+    <div class="list-item" v-for="(p,index) in products" :key="p.id">
       <header class="table-title">
         <p>{{p.firstClassName}} 机能数88</p>
         <router-link to='/'>调整需求</router-link>
@@ -15,9 +16,9 @@
         </tr>
 
         <tr class="table-body">
-          <td class="unit"></td>
-          <td class="module"></td>
-          <td class="point"></td>
+          <td class="unit">{{moc[0].id}}</td>
+          <td class="module">{{moc[0].id}}</td>
+          <td class="point">{{moc[0].title}}</td>
           <td class="hour">
             <el-input-number v-model="count" @change="handleChange" :min="1" :max="100" size="mini"></el-input-number>
           </td>
@@ -56,6 +57,7 @@
         total: {
           price: 19922.00
         },
+        moc: [],
         products: [
           {
             id: 1,
@@ -87,6 +89,10 @@
           }
         ]
       }
+    },
+    created () {
+      this.moc = this.$route.params.data
+      console.log(this.moc)
     },
     methods: {
       objectSpanMethod ({row, column, rowIndex, columnIndex}) {

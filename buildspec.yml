@@ -14,16 +14,16 @@ phases:
 
     commands:
 
-      - docker build --tag "877278458853.dkr.ecr.ap-northeast-1.amazonaws.com/tokai-cicd-ecr:${TAG}" .
+      - docker build --tag "548284823708.dkr.ecr.us-east-2.amazonaws.com/store:${TAG}" .
 
   post_build:
 
     commands:
 
-      - docker push "877278458853.dkr.ecr.ap-northeast-1.amazonaws.com/tokai-cicd-ecr:${TAG}"
+      - docker push "548284823708.dkr.ecr.us-east-2.amazonaws.com/store:${TAG}"
 
-      - printf '{"tag":"%s"}' $TAG > build.json
+      - printf '{"store":"%s"}' $TAG > store.json
 
 artifacts:
 
-  files: build.json
+  files: store.json

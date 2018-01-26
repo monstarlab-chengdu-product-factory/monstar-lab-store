@@ -100,7 +100,7 @@
       {
         "id": 53,
         "moduleCode": "M0201",
-        "title": "QQ登录",
+        "title": "登录",
         "brief": "QQ登录模块",
         "icon": "/resource/images/products/icon/M0201.jpg",
         "price": 398.00,
@@ -169,7 +169,7 @@
       {
         "id": 53,
         "moduleCode": "M0201",
-        "title": "QQ登录",
+        "title": "Q登录",
         "brief": "QQ登录模块",
         "icon": "/resource/images/products/icon/M0201.jpg",
         "price": 398.00,
@@ -188,7 +188,7 @@
       {
         "id": 54,
         "moduleCode": "M0202",
-        "title": "微信登录",
+        "title": "微登录",
         "brief": "微信登录模块",
         "icon": "/resource/images/products/icon/M0202.jpg",
         "price": 398.00,
@@ -207,7 +207,7 @@
       {
         "id": 55,
         "moduleCode": "M0203",
-        "title": "微博登录",
+        "title": "echo登录",
         "brief": "微博登录模块",
         "icon": "/resource/images/products/icon/M0203.jpg",
         "price": 398.00,
@@ -238,7 +238,7 @@
       {
         "id": 53,
         "moduleCode": "M0201",
-        "title": "QQ登录",
+        "title": "wechat",
         "brief": "QQ登录模块",
         "icon": "/resource/images/products/icon/M0201.jpg",
         "price": 398.00,
@@ -257,7 +257,7 @@
       {
         "id": 54,
         "moduleCode": "M0202",
-        "title": "微信登录",
+        "title": "webo",
         "brief": "微信登录模块",
         "icon": "/resource/images/products/icon/M0202.jpg",
         "price": 398.00,
@@ -276,7 +276,7 @@
       {
         "id": 55,
         "moduleCode": "M0203",
-        "title": "微博登录",
+        "title": "qq",
         "brief": "微博登录模块",
         "icon": "/resource/images/products/icon/M0203.jpg",
         "price": 398.00,
@@ -307,7 +307,7 @@
       {
         "id": 53,
         "moduleCode": "M0201",
-        "title": "QQ登录",
+        "title": "注册功能",
         "brief": "QQ登录模块",
         "icon": "/resource/images/products/icon/M0201.jpg",
         "price": 398.00,
@@ -326,7 +326,7 @@
       {
         "id": 54,
         "moduleCode": "M0202",
-        "title": "微信登录",
+        "title": "退出功能",
         "brief": "微信登录模块",
         "icon": "/resource/images/products/icon/M0202.jpg",
         "price": 398.00,
@@ -345,7 +345,7 @@
       {
         "id": 55,
         "moduleCode": "M0203",
-        "title": "微博登录",
+        "title": "找回密码功能",
         "brief": "微博登录模块",
         "icon": "/resource/images/products/icon/M0203.jpg",
         "price": 398.00,
@@ -376,7 +376,7 @@
       {
         "id": 53,
         "moduleCode": "M0201",
-        "title": "QQ登录",
+        "title": "what",
         "brief": "QQ登录模块",
         "icon": "/resource/images/products/icon/M0201.jpg",
         "price": 398.00,
@@ -395,7 +395,7 @@
       {
         "id": 54,
         "moduleCode": "M0202",
-        "title": "微信登录",
+        "title": "when",
         "brief": "微信登录模块",
         "icon": "/resource/images/products/icon/M0202.jpg",
         "price": 398.00,
@@ -414,7 +414,76 @@
       {
         "id": 55,
         "moduleCode": "M0203",
-        "title": "微博登录",
+        "title": "who",
+        "brief": "微博登录模块",
+        "icon": "/resource/images/products/icon/M0203.jpg",
+        "price": 398.00,
+        "cycle": 2,
+        "description": "微博登录模块",
+        "rate": 27,
+        "attachments": [
+          {
+            "id": 1,
+            "title": "功能文档",
+            "type": "doc",
+            "url": "/resource/files/products/M0203.doc"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "moduleCode": "M02",
+    "title": "第三方登录",
+    "brief": "第三方登录模块",
+    "icon": "/resource/images/products/icon/M02.jpg",
+    "description": "第三方登录模块",
+    "functionTypeId": 40,
+    "functionTypeName": "高级功能",
+    "functionUnits": [
+      {
+        "id": 53,
+        "moduleCode": "M0201",
+        "title": "where",
+        "brief": "QQ登录模块",
+        "icon": "/resource/images/products/icon/M0201.jpg",
+        "price": 398.00,
+        "cycle": 2,
+        "description": "QQ登录模块",
+        "rate": 98,
+        "attachments": [
+          {
+            "id": 1,
+            "title": "功能文档",
+            "type": "doc",
+            "url": "/resource/files/products/M0201.doc"
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "moduleCode": "M0202",
+        "title": "why",
+        "brief": "微信登录模块",
+        "icon": "/resource/images/products/icon/M0202.jpg",
+        "price": 398.00,
+        "cycle": 3,
+        "description": "微信登录",
+        "rate": 28,
+        "attachments": [
+          {
+            "id": 1,
+            "title": "功能文档",
+            "type": "doc",
+            "url": "/resource/files/products/M0202.doc"
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "moduleCode": "M0203",
+        "title": "whatever",
         "brief": "微博登录模块",
         "icon": "/resource/images/products/icon/M0203.jpg",
         "price": 398.00,
