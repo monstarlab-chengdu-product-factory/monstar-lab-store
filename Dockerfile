@@ -13,6 +13,6 @@ RUN npm install
 
 ADD ./ .
 
-RUN npm rebuild node-sass --force
+#RUN npm rebuild node-sass --force
 
 CMD npm run dev
